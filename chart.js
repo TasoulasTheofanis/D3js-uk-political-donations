@@ -388,7 +388,13 @@ function mouseover(d, i) {
 								+ "<p> Recipient: <b>" + party + "</b></p>"
 								+ "<p> Type of donor: <b>" + entity + "</b></p>"
 								+ "<p> Total value: <b>&#163;" + comma(amount) + "</b></p>";
-/* Paradoteo 2: i create a new message that will be narrated, when someone goes over any circle*/
+	
+	// image url that want to check
+var imageFile = "https://raw.githubusercontent.com/ioniodi/D3js-uk-political-donations/master/photos/" + donor + ".ico";
+	
+	
+	
+/* Paradoteo 1: i create a new message that will be narrated, when someone goes over any circle*/
 	var msg = new SpeechSynthesisUtterance("The donator is " + donor + " and the amount he gave is " + amount + " british pounds");
 	window.speechSynthesis.speak(msg);
 	
@@ -402,7 +408,7 @@ function mouseover(d, i) {
 
 function mouseout() {
 	/* no more tooltips */
-/* Paradoteo 2: Cancel the voice if the mouse is no longer over a circle*/	
+/* Paradoteo 1: Cancel the voice if the mouse is no longer over a circle*/	
 		window.speechSynthesis.cancel();
 		var mosie = d3.select(this);
 		mosie.classed("active", false);
