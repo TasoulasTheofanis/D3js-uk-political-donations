@@ -408,7 +408,7 @@ function mouseover(d, i) {
 			.style("display","block");
 	
 	
-}
+
 /*______________________VIEW IMAGE ON CIRCLE__________________________________________*/
 	
 	
