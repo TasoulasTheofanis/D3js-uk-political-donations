@@ -389,6 +389,8 @@ function mouseover(d, i) {
 								+ "<p> Type of donor: <b>" + entity + "</b></p>"
 								+ "<p> Total value: <b>&#163;" + comma(amount) + "</b></p>";
 	
+
+/*______________________VIEW IMAGE ON CIRCLE__________________________________________*/	
 	// image url that want to check
 	var imageFile = "https://raw.githubusercontent.com/ioniodi/D3js-uk-political-donations/master/photos/" + donor + ".ico";
 	
@@ -398,6 +400,16 @@ function mouseover(d, i) {
 								+ "<p> Type of donor: <b>" + entity + "</b></p>"
 + "<p> Total value: <b>&#163;" + comma(amount) + "</b></p>";
 	
+	mosie.classed("active", true);
+	d3.select(".tooltip")
+  	.style("left", (parseInt(d3.select(this).attr("cx") - 80) + offset.left) + "px")
+    .style("top", (parseInt(d3.select(this).attr("cy") - (d.radius+150)) + offset.top) + "px")
+		.html(infoBox)
+			.style("display","block");
+	
+	
+}
+/*______________________VIEW IMAGE ON CIRCLE__________________________________________*/
 	
 	
 	
