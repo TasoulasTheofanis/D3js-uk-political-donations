@@ -72,4 +72,11 @@ function collide(node) {
   };
 }
 
+$(document).ready(function() {
+		d3.selectAll(".switch").on("click", function(d) {
+      var id = d3.select(this).attr("id");
+      return transition(id);
+    });
+    return d3.csv("data/7500up.csv", display);
+
 </script>
