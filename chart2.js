@@ -380,9 +380,9 @@ function mouseover(d, i) {
 	// tooltip popup
 	var mosie = d3.select(this);
 	var amount = mosie.attr("amount");
-	var donor = d.Έτος;
-	var party = d.Θάνατοι_Απόλυτοι_αριθμοί;
-	var entity = d.Θάνατοι_Επί_1000;
+	var donor = d.Ονομασία;
+	var party = d.Κατηγορία_αποβλήτου;
+	var entity = d.Έτος;
 	var offset = $("svg").offset();
 	var infoBox = "<p> Source: <b>" + Έτος + "</b></p>"
 								+ "<p> Deaths_In_Total: <b>" + Θάνατοι_Απόλυτοι_αριθμοί + "</b></p>"
