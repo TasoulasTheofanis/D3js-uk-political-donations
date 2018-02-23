@@ -383,9 +383,9 @@ function mouseover(d, i) {
 	var entity = d.Θάνατοι_Επί_1000;
 	var offset = $("svg").offset();
 	var infoBox = "<p> Source: <b>" + Έτος + "</b></p>"
-								+ "<p> Recipient: <b>" + Θάνατοι_Απόλυτοι_αριθμοί + "</b></p>"
-								+ "<p> Type of donor: <b>" + Θάνατοι_Επί_1000 + "</b></p>"
-								+ "<p> Type of donor: <b>" +  Θάνατοι_κάτω_του_1_έτους + "</b></p>"
+								+ "<p> Deaths_In_Total: <b>" + Θάνατοι_Απόλυτοι_αριθμοί + "</b></p>"
+								+ "<p> Deaths_Rate_Of_1000---: <b>" + Θάνατοι_Επί_1000 + "</b></p>"
+								+ "<p> Deaths_Of_1_Year_Old_or_Less_: <b>" +  Θάνατοι_κάτω_του_1_έτους + "</b></p>"
 								+ "<p> Type of donor: <b>" +  Επί_1000_γεννηθέντων_ζώντων + "</b></p>";
 	
 
