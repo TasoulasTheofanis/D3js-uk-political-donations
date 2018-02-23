@@ -354,11 +354,9 @@ function display(data) {
 				radius: radiusScale(d.Έτος) / 5,
 				value: d.Έτος,
 				donor: d.Θάνατοι_Απόλυτοι_αριθμοί,
-				party: d. Θάνατοι_Επί_1000,
-				partyLabel: d. Θάνατοι_κάτω_του_1_έτους,
-			        entity: d. Επί_1000_γεννηθέντων_ζώντων,
-				entityLabel: d.Έτος,
-				color: d.Έτος,
+				party: d.Θάνατοι_Επί_1000,
+				partyLabel: d.Θάνατοι_κάτω_του_1_έτους,
+			        entity: d.Επί_1000_γεννηθέντων_ζώντων,
 				x: Math.random() * w,
 				y: -y
       };
@@ -380,42 +378,19 @@ function mouseover(d, i) {
 	// tooltip popup
 	var mosie = d3.select(this);
 	var amount = mosie.attr("amount");
-	var donor = d.donor;
-	var party = d.partyLabel;
-	var entity = d.entityLabel;
+	var donor = d.Έτος;
+	var party = d.Θάνατοι_Απόλυτοι_αριθμοί;
+	var entity = d.Θάνατοι_Επί_1000;
 	var offset = $("svg").offset();
-	var infoBox = "<p> Source: <b>" + donor + "</b></p>"
-								+ "<p> Recipient: <b>" + party + "</b></p>"
-								+ "<p> Type of donor: <b>" + entity + "</b></p>"
-								+ "<p> Total value: <b>&#163;" + comma(amount) + "</b></p>";
+	var infoBox = "<p> Source: <b>" + Έτος + "</b></p>"
+								+ "<p> Recipient: <b>" + Θάνατοι_Απόλυτοι_αριθμοί + "</b></p>"
+								+ "<p> Type of donor: <b>" + Θάνατοι_Επί_1000 + "</b></p>"
+								+ "<p> Type of donor: <b>" +  Θάνατοι_κάτω_του_1_έτους + "</b></p>"
+								+ "<p> Type of donor: <b>" +  Επί_1000_γεννηθέντων_ζώντων + "</b></p>";
 	
 
-/*______________________VIEW IMAGE ON CIRCLE__________________________________________*/	
-	// image url that want to check
-	var imageFile = "https://raw.githubusercontent.com/TasoulasTheofanis/D3js-uk-political-donations/master/photos/" + donor + ".ico";
-	
-	var infoBox = "<p> Source: <b>" + donor + "</b> " +  "<span><img src='" + imageFile + "' height='42' width='42' onError='this.src=\"https://github.com/favicon.ico\";'></span></p>" 	
-	
-	 							+ "<p> Recipient: <b>" + party + "</b></p>"
-								+ "<p> Type of donor: <b>" + entity + "</b></p>"
-+ "<p> Total value: <b>&#163;" + comma(amount) + "</b></p>";
-	
-	mosie.classed("active", true);
-	d3.select(".tooltip")
-  	.style("left", (parseInt(d3.select(this).attr("cx") - 80) + offset.left) + "px")
-    .style("top", (parseInt(d3.select(this).attr("cy") - (d.radius+150)) + offset.top) + "px")
-		.html(infoBox)
-			.style("display","block");
-	
-	
-
-/*______________________VIEW IMAGE ON CIRCLE__________________________________________*/
-	
-	
-	
-	
 /* Paradoteo 1: i create a new message that will be narrated, when someone goes over any circle*/
-	var msg = new SpeechSynthesisUtterance("The donator is " + donor + " and the amount he gave is " + amount + " british pounds");
+	var msg = new SpeechSynthesisUtterance("At " + Έτος + " a total of " + Θάνατοι_Απόλυτοι_αριθμοί + " people died");
 	window.speechSynthesis.speak(msg);
 	
 	mosie.classed("active", true);
