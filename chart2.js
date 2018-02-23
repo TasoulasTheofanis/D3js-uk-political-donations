@@ -351,14 +351,14 @@ function display(data) {
 	data.forEach(function(d, i) {
 		var y = radiusScale(d.amount);
 		var node = {
-				radius: radiusScale(d.amount) / 5,
-				value: d.amount,
-				donor: d.donor,
-				party: d.party,
-				partyLabel: d.partyname,
-			        entity: d.entity,
-				entityLabel: d.entityname,
-				color: d.color,
+				radius: radiusScale(d.Έτος) / 5,
+				value: d.Έτος,
+				donor: d.Θάνατοι_Απόλυτοι_αριθμοί,
+				party: d. Θάνατοι_Επί_1000,
+				partyLabel: d. Θάνατοι_κάτω_του_1_έτους,
+			        entity: d. Επί_1000_γεννηθέντων_ζώντων,
+				entityLabel: d.Έτος,
+				color: d.Έτος,
 				x: Math.random() * w,
 				y: -y
       };
