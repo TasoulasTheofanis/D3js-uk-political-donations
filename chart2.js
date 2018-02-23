@@ -353,10 +353,12 @@ function display(data) {
 		var node = {
 				radius: radiusScale(d.Έτος) / 5,
 				value: d.Έτος,
-				donor: d.Θάνατοι_Απόλυτοι_αριθμοί,
-				party: d.Θάνατοι_Επί_1000,
-				partyLabel: d.Θάνατοι_κάτω_του_1_έτους,
-			        entity: d.Επί_1000_γεννηθέντων_ζώντων,
+				donor: d.Κωδικός,
+				party: d.Κατηγορία_αποβλήτου,
+				partyLabel: d.Ονομασία,
+			        entity: d.Επικινδυνότητα,
+				entityLabel: d.Διάθεση_επί_ή_εντός_του_εδάφους,
+				color: d.Επεξεργασία_σε_χερσαίο_χώρο_απόρριψη_σε_υδάτινα_σώματα,
 				x: Math.random() * w,
 				y: -y
       };
