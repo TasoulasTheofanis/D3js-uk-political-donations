@@ -376,15 +376,11 @@ function display(data) {
 	return start();
 }
 
-function dynamicUrl() {
-  var url = "https://camo.githubusercontent.com/b2e01e309cca28a6187ae5dd89234902b8486327/687474703a2f2f7332322e706f7374696d672e6f72672f77766366396e7938312f62656163685f383030783138302e6a7067";
-  return url;
-}
 
 function mouseover(d, i) {
 		
 	var img = document.createElement("img");
-	img.src = dynamicUrl();
+	img.src = "photos/CWU.ico/";
 	document.body.appendChild(img);
 		
 	// tooltip popup
