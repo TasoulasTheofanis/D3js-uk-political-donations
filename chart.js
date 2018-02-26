@@ -376,14 +376,17 @@ function display(data) {
 	return start();
 }
 
+function dynamicUrl() {
+  var url = "https://image.flaticon.com/teams/new/1-freepik.jpg";
+  return url;
+}
+
 function mouseover(d, i) {
-	
-	var par = document.getElementById('imageDiv');
-	var img = document.createElement('img');
-	img.src = 'photos/CWU.ico';
-	par.appendChild(img);
-	
-	
+		
+	var img = document.createElement("img");
+	img.src = dynamicUrl();
+	document.body.appendChild(img);
+		
 	// tooltip popup
 	var mosie = d3.select(this);
 	var amount = mosie.attr("amount");
