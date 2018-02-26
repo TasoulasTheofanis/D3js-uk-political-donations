@@ -377,7 +377,7 @@ function display(data) {
 }
 
 function dynamicUrl() {
-  var url = "https://image.flaticon.com/teams/new/1-freepik.jpg";
+  var url = "https://camo.githubusercontent.com/b2e01e309cca28a6187ae5dd89234902b8486327/687474703a2f2f7332322e706f7374696d672e6f72672f77766366396e7938312f62656163685f383030783138302e6a7067";
   return url;
 }
 
