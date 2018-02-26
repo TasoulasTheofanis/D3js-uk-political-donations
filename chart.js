@@ -378,10 +378,10 @@ function display(data) {
 
 
 function mouseover(d, i) {
-	
-	var img = document.createElement("img");
-	img.src = "photos/CWU.ico";
-	document.body.appendChild(img);
+	//paradoteo 2 doesn't work yet
+	//var img = document.createElement("img");
+	//img.src = "photos/CWU.ico";
+	//document.body.appendChild(img);
 	
 	
 	// tooltip popup
