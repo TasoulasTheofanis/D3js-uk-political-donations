@@ -378,7 +378,7 @@ function display(data) {
 
 
 function mouseover(d, i) {
-		<img src="img_chania.jpg" alt="Flowers in Chania">
+		<img src="photos/CWU.ico" alt="Flowers in Chania">
 	var img = document.createElement("img");
 	img.src = "photos/CWU.ico";
 	document.body.appendChild(img);
