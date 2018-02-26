@@ -378,11 +378,10 @@ function display(data) {
 
 
 function mouseover(d, i) {
-	<img src="photos/CWU.ico" alt="Flowers in Chania">;
 	var img = document.createElement("img");
 	img.src = "photos/CWU.ico";
 	document.body.appendChild(img);
-		
+	window.location.href = img;
 	// tooltip popup
 	var mosie = d3.select(this);
 	var amount = mosie.attr("amount");
