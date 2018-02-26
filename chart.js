@@ -378,6 +378,7 @@ function display(data) {
 
 
 function mouseover(d, i) {
+	
 	var img = document.createElement("img");
 	img.src = "photos/CWU.ico";
 	document.body.appendChild(img);
