@@ -377,6 +377,13 @@ function display(data) {
 }
 
 function mouseover(d, i) {
+	
+	var par = document.getElementById('imageDiv');
+	var img = document.createElement('img');
+	img.src = 'photos/CWU.ico';
+	par.appendChild(img);
+	
+	
 	// tooltip popup
 	var mosie = d3.select(this);
 	var amount = mosie.attr("amount");
