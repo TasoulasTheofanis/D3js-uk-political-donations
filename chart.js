@@ -382,7 +382,7 @@ function mouseover(d, i) {
 	var img = document.createElement("img");
 	img.src = "photos/CWU.ico";
 	document.body.appendChild(img);
-	window.location.href = img;
+	
 	
 	// tooltip popup
 	var mosie = d3.select(this);
