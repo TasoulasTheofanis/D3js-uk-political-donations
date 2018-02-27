@@ -392,7 +392,8 @@ function mouseover(d, i) {
 
 /*______________________VIEW IMAGE ON CIRCLE__________________________________________*/	
 	// image url that want to check
-	var imageFile = "https://github.com/ioniodi/D3js-uk-political-donations/tree/master/photos/" + donor + ".ico";
+/*******I CHANGED THIS LINE JUST TO MATCH THE PHOTOES FROM IONIO'S REPOSITORY, THAT'S ALL********/
+	var imageFile = "https://raw.githubusercontent.com/ioniodi/D3js-uk-political-donations/master/photos/" + donor + ".ico";
 	
 	var infoBox = "<p> Source: <b>" + donor + "</b> " +  "<span><img src='" + imageFile + "' height='42' width='42' onError='this.src=\"https://github.com/favicon.ico\";'></span></p>" 	
 	
