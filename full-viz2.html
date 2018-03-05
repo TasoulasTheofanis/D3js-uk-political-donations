@@ -53,10 +53,7 @@ d3.json("data/7500up.json", function(error, imports) {
       matrix = [],
       n = 0;
 
-  // Returns the Flare package name for the given class name.
-  function name(name) {
-    return name.substring(0, name.lastIndexOf(".")).substring(6);
-  }
+
 
   // Compute a unique index for each package name.
   imports.forEach(function(d) {
