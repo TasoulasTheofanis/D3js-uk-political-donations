@@ -14,6 +14,67 @@ var force = d3.layout.force()
     .nodes(nodes)
     .size([width, height]);
 
+
+function transition(name) {
+	if (name === "all-donations") {
+		sound.currentTime=0;    /*paradoteo 1: start from the beginning*/
+		sound.play();           /*paradoteo 1: play the sound.mp3*/
+		$("#initial-content").fadeIn(250);
+		$("#value-scale").fadeIn(1000);
+		$("#view-donor-type").fadeOut(250);
+		$("#view-source-type").fadeOut(250);
+		$("#view-party-type").fadeOut(250);
+		$("#view-amount-type").fadeOut(250); /*Paradoteo 1: new amount view*/
+		return total();
+		//location.reload();
+	}
+	if (name === "group-by-party") {
+		sound.currentTime=0;    /*paradoteo 1: start from the beginning*/
+		sound.play();           /*paradoteo 1: play the sound.mp3*/
+		$("#initial-content").fadeOut(250);
+		$("#value-scale").fadeOut(250);
+		$("#view-donor-type").fadeOut(250);
+		$("#view-source-type").fadeOut(250);
+		$("#view-party-type").fadeIn(1000);
+		$("#view-amount-type").fadeOut(250);
+		return partyGroup();
+	}
+	if (name === "group-by-donor-type") {
+		sound.currentTime=0;  
+		sound.play();
+		$("#initial-content").fadeOut(250);
+		$("#value-scale").fadeOut(250);
+		$("#view-party-type").fadeOut(250);
+		$("#view-source-type").fadeOut(250);
+		$("#view-donor-type").fadeIn(1000);
+		$("#view-amount-type").fadeOut(250);
+		return donorType();
+	}
+	if (name === "group-by-money-source"){
+		sound.currentTime=0; 
+		sound.play();
+		$("#initial-content").fadeOut(250);
+		$("#value-scale").fadeOut(250);
+		$("#view-donor-type").fadeOut(250);
+		$("#view-party-type").fadeOut(250);
+		$("#view-source-type").fadeIn(1000);
+		$("#view-amount-type").fadeOut(250);
+		return fundsType();
+	}
+/*paradoteo 1: new slpit by. This block of code makes view-amount-type to appear, while it hides every other view.*/
+	if (name === "group-by-amount"){
+		sound.currentTime=0; 
+		sound.play();
+		$("#initial-content").fadeOut(250);
+		$("#value-scale").fadeOut(250);
+		$("#view-donor-type").fadeOut(250);
+		$("#view-party-type").fadeOut(250);
+		$("#view-source-type").fadeOut(1000);
+		$("#view-amount-type").fadeIn(250);
+		return amountType();
+	}
+}
+
 force.start();
 
 var svg = d3.select("body").append("svg")
