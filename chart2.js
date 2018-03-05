@@ -1,5 +1,4 @@
-<script src="//d3js.org/d3.v3.min.js"></script>
-<script>
+<script src="//d3js.org/d3.v3.min.js">
 
 var width = 960,
     height = 500;
