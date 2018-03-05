@@ -1,5 +1,3 @@
-<script src="//d3js.org/d3.v3.min.js">
-
 var width = 960,
     height = 500;
 
@@ -78,4 +76,3 @@ $(document).ready(function() {
     });
     return d3.csv("data/7500up.csv", display);
 
-</script>
