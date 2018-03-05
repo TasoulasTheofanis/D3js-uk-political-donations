@@ -15,6 +15,16 @@ body {
 <script src="//d3js.org/d3.v3.min.js"></script>
 <script>
 
+  var paragraphs = document.getElementsByTagName("p");
+for (var i = 0; i < paragraphs.length; i++) {
+  var paragraph = paragraphs.item(i);
+  paragraph.style.setProperty("color", "white", null);
+}
+  d3.selectAll("circle").transition()
+    .duration(750)
+    .delay(function(d, i) { return i * 10; })
+    .attr("r", function(d) { return Math.sqrt(d * scale); });
+  
 var outerRadius = 960 / 2,
     innerRadius = outerRadius - 130;
 
@@ -103,8 +113,7 @@ d3.json("data/7500up.json", function(error, imports) {
 d3.select(self.frameElement).style("height", outerRadius * 2 + "px");
 
 </script>
-  
-  <script src="https://d3js.org/d3.v4.min.js"></script>
+
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script>
     window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')
