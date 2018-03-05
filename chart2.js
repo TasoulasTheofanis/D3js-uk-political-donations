@@ -7,7 +7,7 @@ var tree = d3.cluster()
     .size([height, width - 160]);
 
 var stratify = d3.stratify()
-    .parentId(function(d) { return d.id.substring(0, d3.id.lastIndexOf(".")); });
+    .parentId(function(d) { return d3.id.substring(0, d.id.lastIndexOf(".")); });
 
 d3.csv("data/7500up.csv", function(error, data) {
   if (error) throw error;
