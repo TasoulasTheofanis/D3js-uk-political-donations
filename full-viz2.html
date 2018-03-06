@@ -12,8 +12,8 @@ svg {
 </style>
 <svg width="960" height="570"></svg>
 <form>
-  <label><input type="radio" name="mode" value="sumBySize" checked> Size</label>
-  <label><input type="radio" name="mode" value="sumByCount"> Count</label>
+  <label><input type="radio" " value="sumBySize" checked> Size</label>
+  <label><input type="radio" " value="sumByCount"> Count</label>
 </form>
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script>
@@ -36,7 +36,7 @@ d3.json("data/7500up.json", function(error, donor) {
   if (error) throw error;
 
   var root = d3.hierarchy(donor)
-      .eachBefore(function(d) { d.donor.id = (d.parent ? d.parent.donor.id + "." : "") + d.donor.name; })
+      .eachBefore(function(d) { d.donor.id = (d.parent ? d.parent.donor.id + "." : "") + d.donor; })
       .sum(sumBySize)
       .sort(function(a, b) { return b.height - a.height || b.value - a.value; });
 
@@ -61,7 +61,7 @@ d3.json("data/7500up.json", function(error, donor) {
   cell.append("text")
       .attr("clip-path", function(d) { return "url(#clip-" + d.donor.id + ")"; })
     .selectAll("tspan")
-      .donor(function(d) { return d.donor.name.split(/(?=[A-Z][^A-Z])/g); })
+      .donor(function(d) { return d.donor.split(/(?=[A-Z][^A-Z])/g); })
     .enter().append("tspan")
       .attr("x", 4)
       .attr("y", function(d, i) { return 13 + i * 10; })
@@ -71,7 +71,7 @@ d3.json("data/7500up.json", function(error, donor) {
       .text(function(d) { return d.donor.id + "\n" + format(d.value); });
 
   d3.selectAll("input")
-      .donor([sumBySize, sumByCount], function(d) { return d ? d.name : this.value; })
+      .donor([sumBySize, sumByCount], function(d) { return d ? d.amount : this.value; })
       .on("change", changed);
 
   var timeout = d3.timeout(function() {
