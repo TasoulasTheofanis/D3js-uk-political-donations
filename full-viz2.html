@@ -60,7 +60,7 @@ d3.json("data/7500up.json", function(error, donor) {
   cell.append("text")
       .attr("clip-path", function(d) { return "url(#clip-" + d.donor + ")"; })
     .selectAll("tspan")
-      .selectAll(function(d) { return d.donor.split(/(?=[A-Z][^A-Z])/g); })
+      .selectAll(function(d) { return d.donor(/(?=[A-Z][^A-Z])/g); })
     .enter().append("tspan")
       .attr("x", 4)
       .attr("y", function(d, i) { return 13 + i * 10; })
