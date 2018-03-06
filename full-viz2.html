@@ -2,87 +2,140 @@
 <meta charset="utf-8">
 <style>
 
-.node circle {
-  fill: #999;
-}
-
-.node text {
+svg {
   font: 10px sans-serif;
+  padding: 10px;
 }
 
-.node--internal circle {
-  fill: #555;
+.axis,
+.frame {
+  shape-rendering: crispEdges;
 }
 
-.node--internal text {
-  text-shadow: 0 1px 0 #fff, 0 -1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff;
+.axis line {
+  stroke: #ddd;
 }
 
-.link {
+.axis path {
+  display: none;
+}
+
+.cell text {
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.frame {
   fill: none;
-  stroke: #555;
-  stroke-opacity: 0.4;
-  stroke-width: 1.5px;
+  stroke: #aaa;
+}
+
+circle {
+  fill-opacity: .7;
 }
 
 </style>
-<svg width="960" height="1060"></svg>
-<script src="https://d3js.org/d3.v4.min.js"></script>
-<script src="d3.js"></script>
-<script src="d3.min.js"></script>
-<script type="text/javascript">
+<body>
+<script src="//d3js.org/d3.v3.min.js"></script>
+<script>
 
-var svg = d3.select("svg"),
-    width = +svg.attr("width"),
-    height = +svg.attr("height"),
-    g = svg.append("g").attr("transform", "translate(" + (width / 2 + 40) + "," + (height / 2 + 90) + ")");
+var width = 960,
+    size = 230,
+    padding = 20;
 
-var stratify = d3.stratify()
-    .parentId(function(d) { return d.id.substring(0, d.id.lastIndexOf(".")); });
+var x = d3.scale.linear()
+    .range([padding / 2, size - padding / 2]);
 
-var tree = d3.tree()
-    .size([2 * Math.PI, 500])
-    .separation(function(a, b) { return (a.parent == b.parent ? 1 : 2) / a.depth; });
+var y = d3.scale.linear()
+    .range([size - padding / 2, padding / 2]);
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom")
+    .ticks(6);
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left")
+    .ticks(6);
+
+var color = d3.scale.category10();
 
 d3.csv("data/7500up.csv", function(error, data) {
   if (error) throw error;
 
-  var root = tree(stratify(data));
+  var domainByTrait = {},
+      traits = d3.keys(data[0]).filter(function(d) { return d !== "species"; }),
+      n = traits.length;
 
-  var link = g.selectAll(".link")
-    .data(root.links())
-    .enter().append("path")
-      .attr("class", "link")
-      .attr("d", d3.linkRadial()
-          .angle(function(d) { return d.x; })
-          .radius(function(d) { return d.y; }));
+  traits.forEach(function(trait) {
+    domainByTrait[trait] = d3.extent(data, function(d) { return d[trait]; });
+  });
 
-  var node = g.selectAll(".node")
-    .data(root.descendants())
+  xAxis.tickSize(size * n);
+  yAxis.tickSize(-size * n);
+
+  var svg = d3.select("body").append("svg")
+      .attr("width", size * n + padding)
+      .attr("height", size * n + padding)
+    .append("g")
+      .attr("transform", "translate(" + padding + "," + padding / 2 + ")");
+
+  svg.selectAll(".x.axis")
+      .data(traits)
     .enter().append("g")
-      .attr("class", function(d) { return "node" + (d.children ? " node--internal" : " node--leaf"); })
-      .attr("transform", function(d) { return "translate(" + radialPoint(d.x, d.y) + ")"; });
+      .attr("class", "x axis")
+      .attr("transform", function(d, i) { return "translate(" + (n - i - 1) * size + ",0)"; })
+      .each(function(d) { x.domain(domainByTrait[d]); d3.select(this).call(xAxis); });
 
-  node.append("circle")
-      .attr("r", 2.5);
+  svg.selectAll(".y.axis")
+      .data(traits)
+    .enter().append("g")
+      .attr("class", "y axis")
+      .attr("transform", function(d, i) { return "translate(0," + i * size + ")"; })
+      .each(function(d) { y.domain(domainByTrait[d]); d3.select(this).call(yAxis); });
 
-  node.append("text")
-      .attr("dy", "0.31em")
-      .attr("x", function(d) { return d.x < Math.PI === !d.children ? 6 : -6; })
-      .attr("text-anchor", function(d) { return d.x < Math.PI === !d.children ? "start" : "end"; })
-      .attr("transform", function(d) { return "rotate(" + (d.x < Math.PI ? d.x - Math.PI / 2 : d.x + Math.PI / 2) * 180 / Math.PI + ")"; })
-      .text(function(d) { return d.id.substring(d.id.lastIndexOf(".") + 1); });
+  var cell = svg.selectAll(".cell")
+      .data(cross(traits, traits))
+    .enter().append("g")
+      .attr("class", "cell")
+      .attr("transform", function(d) { return "translate(" + (n - d.i - 1) * size + "," + d.j * size + ")"; })
+      .each(plot);
+
+  // Titles for the diagonal.
+  cell.filter(function(d) { return d.i === d.j; }).append("text")
+      .attr("x", padding)
+      .attr("y", padding)
+      .attr("dy", ".71em")
+      .text(function(d) { return d.x; });
+
+  function plot(p) {
+    var cell = d3.select(this);
+
+    x.domain(domainByTrait[p.x]);
+    y.domain(domainByTrait[p.y]);
+
+    cell.append("rect")
+        .attr("class", "frame")
+        .attr("x", padding / 2)
+        .attr("y", padding / 2)
+        .attr("width", size - padding)
+        .attr("height", size - padding);
+
+    cell.selectAll("circle")
+        .data(data)
+      .enter().append("circle")
+        .attr("cx", function(d) { return x(d[p.x]); })
+        .attr("cy", function(d) { return y(d[p.y]); })
+        .attr("r", 4)
+        .style("fill", function(d) { return color(d.species); });
+  }
 });
 
-function radialPoint(x, y) {
-  return [(y = +y) * Math.cos(x -= Math.PI / 2), y * Math.sin(x)];
+function cross(a, b) {
+  var c = [], n = a.length, m = b.length, i, j;
+  for (i = -1; ++i < n;) for (j = -1; ++j < m;) c.push({x: a[i], i: i, y: b[j], j: j});
+  return c;
 }
 
 </script>
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script>
-    window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')
-    </script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.2.2/d3.v3.min.js" charset="utf-8"></script>
-    <script src="chart.js"></script>
