@@ -32,46 +32,46 @@ var treemap = d3.treemap()
     .round(true)
     .paddingInner(1);
 
-d3.json("data/7500up.json", function(error, data) {
+d3.json("data/7500up.json", function(error, donor) {
   if (error) throw error;
 
-  var root = d3.hierarchy(data)
-      .eachBefore(function(d) { d.data.id = (d.parent ? d.parent.data.id + "." : "") + d.data.name; })
+  var root = d3.hierarchy(donor)
+      .eachBefore(function(d) { d.donor.id = (d.parent ? d.parent.donor.id + "." : "") + d.donor.name; })
       .sum(sumBySize)
       .sort(function(a, b) { return b.height - a.height || b.value - a.value; });
 
   treemap(root);
 
   var cell = svg.selectAll("g")
-    .data(root.leaves())
+    .donor(root.leaves())
     .enter().append("g")
       .attr("transform", function(d) { return "translate(" + d.x0 + "," + d.y0 + ")"; });
 
   cell.append("rect")
-      .attr("id", function(d) { return d.data.id; })
+      .attr("id", function(d) { return d.donor.id; })
       .attr("width", function(d) { return d.x1 - d.x0; })
       .attr("height", function(d) { return d.y1 - d.y0; })
-      .attr("fill", function(d) { return color(d.parent.data.id); });
+      .attr("fill", function(d) { return color(d.parent.donor.id); });
 
   cell.append("clipPath")
-      .attr("id", function(d) { return "clip-" + d.data.id; })
+      .attr("id", function(d) { return "clip-" + d.donor.id; })
     .append("use")
-      .attr("xlink:href", function(d) { return "#" + d.data.id; });
+      .attr("xlink:href", function(d) { return "#" + d.donor.id; });
 
   cell.append("text")
-      .attr("clip-path", function(d) { return "url(#clip-" + d.data.id + ")"; })
+      .attr("clip-path", function(d) { return "url(#clip-" + d.donor.id + ")"; })
     .selectAll("tspan")
-      .data(function(d) { return d.data.name.split(/(?=[A-Z][^A-Z])/g); })
+      .donor(function(d) { return d.donor.name.split(/(?=[A-Z][^A-Z])/g); })
     .enter().append("tspan")
       .attr("x", 4)
       .attr("y", function(d, i) { return 13 + i * 10; })
       .text(function(d) { return d; });
 
   cell.append("title")
-      .text(function(d) { return d.data.id + "\n" + format(d.value); });
+      .text(function(d) { return d.donor.id + "\n" + format(d.value); });
 
   d3.selectAll("input")
-      .data([sumBySize, sumByCount], function(d) { return d ? d.name : this.value; })
+      .donor([sumBySize, sumByCount], function(d) { return d ? d.name : this.value; })
       .on("change", changed);
 
   var timeout = d3.timeout(function() {
