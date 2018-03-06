@@ -43,8 +43,7 @@ d3.json("data/7500up.json", function(error, donor) {
   treemap(root);
 
   var cell = svg.selectAll("g")
-    .donor(root.leaves())
-    .enter().append("g")
+      .enter().append("g")
       .attr("transform", function(d) { return "translate(" + d.x0 + "," + d.y0 + ")"; });
 
   cell.append("rect")
