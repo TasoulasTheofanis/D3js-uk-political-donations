@@ -1,270 +1,248 @@
 donor,amount,party,entity,color,partyname,entityname
-AdvisoryVote14,3,1,Total,NP,Maintained,183
-AdvisoryVote14,3,1,Total,NP,RegisteredVoters,519
-AdvisoryVote14,3,1,Total,NP,Repealed,251
-AdvisoryVote14,3,1,Total,NP,TimesBlankVoted,51
-AdvisoryVote14,3,1,Total,NP,TimesCounted,485
-AdvisoryVote14,3,1,Total,NP,TimesOverVoted,0
-AdvisoryVote15,3,1,Total,NP,Maintained,220
-AdvisoryVote15,3,1,Total,NP,RegisteredVoters,519
-AdvisoryVote15,3,1,Total,NP,Repealed,222
-AdvisoryVote15,3,1,Total,NP,TimesBlankVoted,43
-AdvisoryVote15,3,1,Total,NP,TimesCounted,485
-AdvisoryVote15,3,1,Total,NP,TimesOverVoted,0
-AttorneyGeneral,3,1,Total,Dem,BobFerguson,357
-AttorneyGeneral,3,1,Total,Lib,JoshuaB.Trumbull,78
-AttorneyGeneral,3,1,Total,NP,RegisteredVoters,519
-AttorneyGeneral,3,1,Total,NP,TimesBlankVoted,46
-AttorneyGeneral,3,1,Total,NP,TimesCounted,485
-AttorneyGeneral,3,1,Total,NP,TimesOverVoted,0
-AttorneyGeneral,3,1,Total,NP,Write-In,4
-CommissionerofPublicLands,3,1,Total,Dem,HilaryFranz,254
-CommissionerofPublicLands,3,1,Total,NP,RegisteredVoters,519
-CommissionerofPublicLands,3,1,Total,NP,TimesBlankVoted,15
-CommissionerofPublicLands,3,1,Total,NP,TimesCounted,485
-CommissionerofPublicLands,3,1,Total,NP,TimesOverVoted,0
-CommissionerofPublicLands,3,1,Total,NP,Write-In,2
-CommissionerofPublicLands,3,1,Total,Rep,SteveMcLaughlin,214
-CongressionalDistrict1,3,1,Total,Dem,SuzanDelBene,277
-CongressionalDistrict1,3,1,Total,NP,RegisteredVoters,519
-CongressionalDistrict1,3,1,Total,NP,TimesBlankVoted,5
-CongressionalDistrict1,3,1,Total,NP,TimesCounted,485
-CongressionalDistrict1,3,1,Total,NP,TimesOverVoted,0
-CongressionalDistrict1,3,1,Total,NP,Write-In,0
-CongressionalDistrict1,3,1,Total,Rep,RobertJ.Sutherland,203
-CourtofAppealsJudgePosition1,3,1,Total,NP,MichaelJ.Trickey,313
-CourtofAppealsJudgePosition1,3,1,Total,NP,RegisteredVoters,519
-CourtofAppealsJudgePosition1,3,1,Total,NP,TimesBlankVoted,172
-CourtofAppealsJudgePosition1,3,1,Total,NP,TimesCounted,485
-CourtofAppealsJudgePosition1,3,1,Total,NP,TimesOverVoted,0
-CourtofAppealsJudgePosition1,3,1,Total,NP,Write-In,0
-Governor,3,1,Total,Dem,JayInslee,256
-Governor,3,1,Total,NP,RegisteredVoters,519
-Governor,3,1,Total,NP,TimesBlankVoted,4
-Governor,3,1,Total,NP,TimesCounted,485
-Governor,3,1,Total,NP,TimesOverVoted,0
+Advisory Vote 14,3,1,Total,NP,Maintained,183
+Advisory Vote 14,3,1,Total,NP,Registered Voters,519
+Advisory Vote 14,3,1,Total,NP,Repealed,251
+Advisory Vote 14,3,1,Total,NP,Times Blank Voted,51
+Advisory Vote 14,3,1,Total,NP,Times Counted,485
+Advisory Vote 14,3,1,Total,NP,Times Over Voted,0
+Advisory Vote 15,3,1,Total,NP,Maintained,220
+Advisory Vote 15,3,1,Total,NP,Registered Voters,519
+Advisory Vote 15,3,1,Total,NP,Repealed,222
+Advisory Vote 15,3,1,Total,NP,Times Blank Voted,43
+Advisory Vote 15,3,1,Total,NP,Times Counted,485
+Advisory Vote 15,3,1,Total,NP,Times Over Voted,0
+Attorney General,3,1,Total,Dem,Bob Ferguson,357
+Attorney General,3,1,Total,Lib,Joshua B. Trumbull,78
+Attorney General,3,1,Total,NP,Registered Voters,519
+Attorney General,3,1,Total,NP,Times Blank Voted,46
+Attorney General,3,1,Total,NP,Times Counted,485
+Attorney General,3,1,Total,NP,Times Over Voted,0
+Attorney General,3,1,Total,NP,Write-In,4
+Commissioner of Public Lands,3,1,Total,Dem,Hilary Franz,254
+Commissioner of Public Lands,3,1,Total,NP,Registered Voters,519
+Commissioner of Public Lands,3,1,Total,NP,Times Blank Voted,15
+Commissioner of Public Lands,3,1,Total,NP,Times Counted,485
+Commissioner of Public Lands,3,1,Total,NP,Times Over Voted,0
+Commissioner of Public Lands,3,1,Total,NP,Write-In,2
+Commissioner of Public Lands,3,1,Total,Rep,Steve McLaughlin,214
+Congressional District 1,3,1,Total,Dem,Suzan DelBene,277
+Congressional District 1,3,1,Total,NP,Registered Voters,519
+Congressional District 1,3,1,Total,NP,Times Blank Voted,5
+Congressional District 1,3,1,Total,NP,Times Counted,485
+Congressional District 1,3,1,Total,NP,Times Over Voted,0
+Congressional District 1,3,1,Total,NP,Write-In,0
+Congressional District 1,3,1,Total,Rep,Robert J. Sutherland,203
+Court of Appeals Judge Position 1,3,1,Total,NP,Michael J. Trickey,313
+Court of Appeals Judge Position 1,3,1,Total,NP,Registered Voters,519
+Court of Appeals Judge Position 1,3,1,Total,NP,Times Blank Voted,172
+Court of Appeals Judge Position 1,3,1,Total,NP,Times Counted,485
+Court of Appeals Judge Position 1,3,1,Total,NP,Times Over Voted,0
+Court of Appeals Judge Position 1,3,1,Total,NP,Write-In,0
+Governor,3,1,Total,Dem,Jay Inslee,256
+Governor,3,1,Total,NP,Registered Voters,519
+Governor,3,1,Total,NP,Times Blank Voted,4
+Governor,3,1,Total,NP,Times Counted,485
+Governor,3,1,Total,NP,Times Over Voted,0
 Governor,3,1,Total,NP,Write-In,1
-Governor,3,1,Total,Rep,BillBryant,224
-InitiativeMeasure1433,3,1,Total,NP,No,190
-InitiativeMeasure1433,3,1,Total,NP,RegisteredVoters,519
-InitiativeMeasure1433,3,1,Total,NP,TimesBlankVoted,30
-InitiativeMeasure1433,3,1,Total,NP,TimesCounted,485
-InitiativeMeasure1433,3,1,Total,NP,TimesOverVoted,0
-InitiativeMeasure1433,3,1,Total,NP,Yes,265
-InitiativeMeasure1464,3,1,Total,NP,No,279
-InitiativeMeasure1464,3,1,Total,NP,RegisteredVoters,519
-InitiativeMeasure1464,3,1,Total,NP,TimesBlankVoted,41
-InitiativeMeasure1464,3,1,Total,NP,TimesCounted,485
-InitiativeMeasure1464,3,1,Total,NP,TimesOverVoted,0
-InitiativeMeasure1464,3,1,Total,NP,Yes,165
-InitiativeMeasure1491,3,1,Total,NP,No,99
-InitiativeMeasure1491,3,1,Total,NP,RegisteredVoters,519
-InitiativeMeasure1491,3,1,Total,NP,TimesBlankVoted,13
-InitiativeMeasure1491,3,1,Total,NP,TimesCounted,485
-InitiativeMeasure1491,3,1,Total,NP,TimesOverVoted,0
-InitiativeMeasure1491,3,1,Total,NP,Yes,373
-InitiativeMeasure1501,3,1,Total,NP,No,190
-InitiativeMeasure1501,3,1,Total,NP,RegisteredVoters,519
-InitiativeMeasure1501,3,1,Total,NP,TimesBlankVoted,10
-InitiativeMeasure1501,3,1,Total,NP,TimesCounted,485
-InitiativeMeasure1501,3,1,Total,NP,TimesOverVoted,0
-InitiativeMeasure1501,3,1,Total,NP,Yes,285
-InitiativeMeasure732,3,1,Total,NP,No,289
-InitiativeMeasure732,3,1,Total,NP,RegisteredVoters,519
-InitiativeMeasure732,3,1,Total,NP,TimesBlankVoted,27
-InitiativeMeasure732,3,1,Total,NP,TimesCounted,485
-InitiativeMeasure732,3,1,Total,NP,TimesOverVoted,0
-InitiativeMeasure732,3,1,Total,NP,Yes,169
-InitiativeMeasure735,3,1,Total,NP,No,223
-InitiativeMeasure735,3,1,Total,NP,RegisteredVoters,519
-InitiativeMeasure735,3,1,Total,NP,TimesBlankVoted,25
-InitiativeMeasure735,3,1,Total,NP,TimesCounted,485
-InitiativeMeasure735,3,1,Total,NP,TimesOverVoted,0
-InitiativeMeasure735,3,1,Total,NP,Yes,237
-InsuranceCommissioner,3,1,Total,Dem,MikeKreidler,293
-InsuranceCommissioner,3,1,Total,NP,RegisteredVoters,519
-InsuranceCommissioner,3,1,Total,NP,TimesBlankVoted,20
-InsuranceCommissioner,3,1,Total,NP,TimesCounted,485
-InsuranceCommissioner,3,1,Total,NP,TimesOverVoted,0
-InsuranceCommissioner,3,1,Total,NP,Write-In,0
-InsuranceCommissioner,3,1,Total,Rep,RichardSchrock,172
-KingCountyCharterAmendment1,3,1,Total,NP,No,93
-KingCountyCharterAmendment1,3,1,Total,NP,RegisteredVoters,519
-KingCountyCharterAmendment1,3,1,Total,NP,TimesBlankVoted,27
-KingCountyCharterAmendment1,3,1,Total,NP,TimesCounted,485
-KingCountyCharterAmendment1,3,1,Total,NP,TimesOverVoted,0
-KingCountyCharterAmendment1,3,1,Total,NP,Yes,365
-KingCountyCharterAmendment2,3,1,Total,NP,No,175
-KingCountyCharterAmendment2,3,1,Total,NP,RegisteredVoters,519
-KingCountyCharterAmendment2,3,1,Total,NP,TimesBlankVoted,25
-KingCountyCharterAmendment2,3,1,Total,NP,TimesCounted,485
-KingCountyCharterAmendment2,3,1,Total,NP,TimesOverVoted,0
-KingCountyCharterAmendment2,3,1,Total,NP,Yes,285
-LegislativeDistrict45RepresentativePosition1,3,1,Total,Dem,RogerGoodman,258
-LegislativeDistrict45RepresentativePosition1,3,1,Total,GP,RamiroValderrama,201
-LegislativeDistrict45RepresentativePosition1,3,1,Total,NP,RegisteredVoters,519
-LegislativeDistrict45RepresentativePosition1,3,1,Total,NP,TimesBlankVoted,26
-LegislativeDistrict45RepresentativePosition1,3,1,Total,NP,TimesCounted,485
-LegislativeDistrict45RepresentativePosition1,3,1,Total,NP,TimesOverVoted,0
-LegislativeDistrict45RepresentativePosition1,3,1,Total,NP,Write-In,0
-LegislativeDistrict45RepresentativePosition2,3,1,Total,Dem,LarrySpringer,333
-LegislativeDistrict45RepresentativePosition2,3,1,Total,NP,RegisteredVoters,519
-LegislativeDistrict45RepresentativePosition2,3,1,Total,NP,TimesBlankVoted,147
-LegislativeDistrict45RepresentativePosition2,3,1,Total,NP,TimesCounted,485
-LegislativeDistrict45RepresentativePosition2,3,1,Total,NP,TimesOverVoted,0
-LegislativeDistrict45RepresentativePosition2,3,1,Total,NP,Write-In,5
-LieutenantGovernor,3,1,Total,Dem,CyrusHabib,258
-LieutenantGovernor,3,1,Total,NP,RegisteredVoters,519
-LieutenantGovernor,3,1,Total,NP,TimesBlankVoted,12
-LieutenantGovernor,3,1,Total,NP,TimesCounted,485
-LieutenantGovernor,3,1,Total,NP,TimesOverVoted,0
-LieutenantGovernor,3,1,Total,NP,Write-In,5
-LieutenantGovernor,3,1,Total,Rep,MartyMcClendon,210
-SecretaryofState,3,1,Total,Dem,TinaPodlodowski,183
-SecretaryofState,3,1,Total,NP,RegisteredVoters,519
-SecretaryofState,3,1,Total,NP,TimesBlankVoted,9
-SecretaryofState,3,1,Total,NP,TimesCounted,485
-SecretaryofState,3,1,Total,NP,TimesOverVoted,0
-SecretaryofState,3,1,Total,NP,Write-In,0
-SecretaryofState,3,1,Total,Rep,KimWyman,293
-SenateJointResolution8210,3,1,Total,NP,Approved,388
-SenateJointResolution8210,3,1,Total,NP,RegisteredVoters,519
-SenateJointResolution8210,3,1,Total,NP,Rejected,60
-SenateJointResolution8210,3,1,Total,NP,TimesBlankVoted,37
-SenateJointResolution8210,3,1,Total,NP,TimesCounted,485
-SenateJointResolution8210,3,1,Total,NP,TimesOverVoted,0
-StateAuditor,3,1,Total,Dem,Pat(Patrice)McCarthy,205
-StateAuditor,3,1,Total,NP,RegisteredVoters,519
-StateAuditor,3,1,Total,NP,TimesBlankVoted,15
-StateAuditor,3,1,Total,NP,TimesCounted,485
-StateAuditor,3,1,Total,NP,TimesOverVoted,1
-StateAuditor,3,1,Total,NP,Write-In,0
-StateAuditor,3,1,Total,Rep,MarkMiloscia,264
-StateSupremeCourtJusticePosition1,3,1,Total,NP,DavidDeWolf,139
-StateSupremeCourtJusticePosition1,3,1,Total,NP,MaryYu,285
-StateSupremeCourtJusticePosition1,3,1,Total,NP,RegisteredVoters,519
-StateSupremeCourtJusticePosition1,3,1,Total,NP,TimesBlankVoted,61
-StateSupremeCourtJusticePosition1,3,1,Total,NP,TimesCounted,485
-StateSupremeCourtJusticePosition1,3,1,Total,NP,TimesOverVoted,0
-StateSupremeCourtJusticePosition1,3,1,Total,NP,Write-In,0
-StateSupremeCourtJusticePosition5,3,1,Total,NP,BarbaraMadsen,292
-StateSupremeCourtJusticePosition5,3,1,Total,NP,GregZempel,123
-StateSupremeCourtJusticePosition5,3,1,Total,NP,RegisteredVoters,519
-StateSupremeCourtJusticePosition5,3,1,Total,NP,TimesBlankVoted,70
-StateSupremeCourtJusticePosition5,3,1,Total,NP,TimesCounted,485
-StateSupremeCourtJusticePosition5,3,1,Total,NP,TimesOverVoted,0
-StateSupremeCourtJusticePosition5,3,1,Total,NP,Write-In,0
-StateSupremeCourtJusticePosition6,3,1,Total,NP,Charles(Charlie)Wiggins,228
-StateSupremeCourtJusticePosition6,3,1,Total,NP,DaveLarson,188
-StateSupremeCourtJusticePosition6,3,1,Total,NP,RegisteredVoters,519
-StateSupremeCourtJusticePosition6,3,1,Total,NP,TimesBlankVoted,69
-StateSupremeCourtJusticePosition6,3,1,Total,NP,TimesCounted,485
-StateSupremeCourtJusticePosition6,3,1,Total,NP,TimesOverVoted,0
-StateSupremeCourtJusticePosition6,3,1,Total,NP,Write-In,0
-StateTreasurer,3,1,Total,NP,RegisteredVoters,519
-StateTreasurer,3,1,Total,NP,TimesBlankVoted,63
-StateTreasurer,3,1,Total,NP,TimesCounted,485
-StateTreasurer,3,1,Total,NP,TimesOverVoted,0
-StateTreasurer,3,1,Total,NP,Write-In,1
-StateTreasurer,3,1,Total,Rep,DuaneDavidson,241
-StateTreasurer,3,1,Total,Rep,MichaelWaite,180
-SuperintendentofPublicInstruction,3,1,Total,NP,ChrisReykdal,200
-SuperintendentofPublicInstruction,3,1,Total,NP,ErinJones,193
-SuperintendentofPublicInstruction,3,1,Total,NP,RegisteredVoters,519
-SuperintendentofPublicInstruction,3,1,Total,NP,TimesBlankVoted,92
-SuperintendentofPublicInstruction,3,1,Total,NP,TimesCounted,485
-SuperintendentofPublicInstruction,3,1,Total,NP,TimesOverVoted,0
-SuperintendentofPublicInstruction,3,1,Total,NP,Write-In,0
-SuperiorCourtJudgePosition14,3,1,Total,NP,DavidGreenspan,78
-SuperiorCourtJudgePosition14,3,1,Total,NP,NicoleGainesPhelps,315
-SuperiorCourtJudgePosition14,3,1,Total,NP,RegisteredVoters,519
-SuperiorCourtJudgePosition14,3,1,Total,NP,TimesBlankVoted,92
-SuperiorCourtJudgePosition14,3,1,Total,NP,TimesCounted,485
-SuperiorCourtJudgePosition14,3,1,Total,NP,TimesOverVoted,0
-SuperiorCourtJudgePosition14,3,1,Total,NP,Write-In,0
-SuperiorCourtJudgePosition26,3,1,Total,NP,DavidKeenan,310
-SuperiorCourtJudgePosition26,3,1,Total,NP,JohnH.O'Rourke,91
-SuperiorCourtJudgePosition26,3,1,Total,NP,RegisteredVoters,519
-SuperiorCourtJudgePosition26,3,1,Total,NP,TimesBlankVoted,84
-SuperiorCourtJudgePosition26,3,1,Total,NP,TimesCounted,485
-SuperiorCourtJudgePosition26,3,1,Total,NP,TimesOverVoted,0
-SuperiorCourtJudgePosition26,3,1,Total,NP,Write-In,0
-SuperiorCourtJudgePosition31,3,1,Total,NP,HelenHalpert,342
-SuperiorCourtJudgePosition31,3,1,Total,NP,MarcS.Stern,45
-SuperiorCourtJudgePosition31,3,1,Total,NP,RegisteredVoters,519
-SuperiorCourtJudgePosition31,3,1,Total,NP,TimesBlankVoted,98
-SuperiorCourtJudgePosition31,3,1,Total,NP,TimesCounted,485
-SuperiorCourtJudgePosition31,3,1,Total,NP,TimesOverVoted,0
-SuperiorCourtJudgePosition31,3,1,Total,NP,Write-In,0
-SuperiorCourtJudgePosition44,3,1,Total,NP,CathyMoore,143
-SuperiorCourtJudgePosition44,3,1,Total,NP,EricNewman,257
-SuperiorCourtJudgePosition44,3,1,Total,NP,RegisteredVoters,519
-SuperiorCourtJudgePosition44,3,1,Total,NP,TimesBlankVoted,85
-SuperiorCourtJudgePosition44,3,1,Total,NP,TimesCounted,485
-SuperiorCourtJudgePosition44,3,1,Total,NP,TimesOverVoted,0
-SuperiorCourtJudgePosition44,3,1,Total,NP,Write-In,0
-SuperiorCourtJudgePosition52,3,1,Total,NP,AnthonyGipe,134
-SuperiorCourtJudgePosition52,3,1,Total,NP,KristinRichardson,267
-SuperiorCourtJudgePosition52,3,1,Total,NP,RegisteredVoters,519
-SuperiorCourtJudgePosition52,3,1,Total,NP,TimesBlankVoted,84
-SuperiorCourtJudgePosition52,3,1,Total,NP,TimesCounted,485
-SuperiorCourtJudgePosition52,3,1,Total,NP,TimesOverVoted,0
-SuperiorCourtJudgePosition52,3,1,Total,NP,Write-In,0
-SuperiorCourtJudgePosition53,3,1,Total,NP,MarianeSpearman,303
-SuperiorCourtJudgePosition53,3,1,Total,NP,RegisteredVoters,519
-SuperiorCourtJudgePosition53,3,1,Total,NP,ThomasCline,94
-SuperiorCourtJudgePosition53,3,1,Total,NP,TimesBlankVoted,86
-SuperiorCourtJudgePosition53,3,1,Total,NP,TimesCounted,485
-SuperiorCourtJudgePosition53,3,1,Total,NP,TimesOverVoted,2
-SuperiorCourtJudgePosition53,3,1,Total,NP,Write-In,0
-USPresident&VicePresident,3,1,Total,CPN,DarrellL.Castle&ScottN.Bradley,0
-USPresident&VicePresident,3,1,Total,DPN,HillaryClinton&TimKaine,266
-USPresident&VicePresident,3,1,Total,GPN,JillStein&AjamuBaraka,1
-USPresident&VicePresident,3,1,Total,LPN,GaryJohnson&BillWeld,14
-USPresident&VicePresident,3,1,Total,NP,RegisteredVoters,519
-USPresident&VicePresident,3,1,Total,NP,TimesBlankVoted,12
-USPresident&VicePresident,3,1,Total,NP,TimesCounted,485
-USPresident&VicePresident,3,1,Total,NP,TimesOverVoted,0
-USPresident&VicePresident,3,1,Total,NP,Write-In,7
-USPresident&VicePresident,3,1,Total,RPN,DonaldJ.Trump&MichaelR.Pence,185
-USPresident&VicePresident,3,1,Total,SPN,GloriaEstelaLaRiva&EugenePuryear,0
-USPresident&VicePresident,3,1,Total,SWN,AlysonKennedy&OsborneHart,0
-USSenator,3,1,Total,Dem,PattyMurray,285
-USSenator,3,1,Total,NP,RegisteredVoters,519
-USSenator,3,1,Total,NP,TimesBlankVoted,8
-USSenator,3,1,Total,NP,TimesCounted,485
-USSenator,3,1,Total,NP,TimesOverVoted,0
-USSenator,3,1,Total,NP,Write-In,0
-USSenator,3,1,Total,Rep,ChrisVance,1923,1,Total,DPN,HillaryClinton&TimKaine,266
-ADAIR,USPresident&VicePresident,3,1,Total,GPN,JillStein&AjamuBaraka,1
-ADAIR,USPresident&VicePresident,3,1,Total,LPN,GaryJohnson&BillWeld,14
-ADAIR,USPresident&VicePresident,3,1,Total,NP,RegisteredVoters,519
-ADAIR,USPresident&VicePresident,3,1,Total,NP,TimesBlankVoted,12
-ADAIR,USPresident&VicePresident,3,1,Total,NP,TimesCounted,485
-ADAIR,USPresident&VicePresident,3,1,Total,NP,TimesOverVoted,0
-ADAIR,USPresident&VicePresident,3,1,Total,NP,Write-In,7
-ADAIR,USPresident&VicePresident,3,1,Total,RPN,DonaldJ.Trump&MichaelR.Pence,185
-ADAIR,USPresident&VicePresident,3,1,Total,SPN,GloriaEstelaLaRiva&EugenePuryear,0
-ADAIR,USPresident&VicePresident,3,1,Total,SWN,AlysonKennedy&OsborneHart,0
-ADAIR,USSenator,3,1,Total,Dem,PattyMurray,285
-ADAIR,USSenator,3,1,Total,NP,RegisteredVoters,519
-ADAIR,USSenator,3,1,Total,NP,TimesBlankVoted,8
-ADAIR,USSenator,3,1,Total,NP,TimesCounted,485
-ADAIR,USSenator,3,1,Total,NP,TimesOverVoted,0
-ADAIR,USSenator,3,1,Total,NP,Write-In,0
-ADAIR,USSenator,3,1,Total,Rep,ChrisVance,1925
-ADAIR,USPresident&VicePresident,45,3,1,Total,NP,TimesOverVoted,0
-ADAIR,USPresident&VicePresident,45,3,1,Total,NP,Write-In,7
-ADAIR,USPresident&VicePresident,45,3,1,Total,RPN,DonaldJ.Trump&MichaelR.Pence,185
-ADAIR,USPresident&VicePresident,45,3,1,Total,SPN,GloriaEstelaLaRiva&EugenePuryear,0
-ADAIR,USPresident&VicePresident,45,3,1,Total,SWN,AlysonKennedy&OsborneHart,0
-ADAIR,USSenator,45,3,1,Total,Dem,PattyMurray,285
-ADAIR,USSenator,45,3,1,Total,NP,RegisteredVoters,519
-ADAIR,USSenator,45,3,1,Total,NP,TimesBlankVoted,8
-ADAIR,USSenator,45,3,1,Total,NP,TimesCounted,485
-ADAIR,USSenator,45,3,1,Total,NP,TimesOverVoted,0
-ADAIR,USSenator,45,3,1,Total,NP,Write-In,0
-ADAIR,USSenator,45,3,1,Total,Rep,ChrisVance,192e-In,7
+Governor,3,1,Total,Rep,Bill Bryant,224
+Initiative Measure 1433,3,1,Total,NP,No,190
+Initiative Measure 1433,3,1,Total,NP,Registered Voters,519
+Initiative Measure 1433,3,1,Total,NP,Times Blank Voted,30
+Initiative Measure 1433,3,1,Total,NP,Times Counted,485
+Initiative Measure 1433,3,1,Total,NP,Times Over Voted,0
+Initiative Measure 1433,3,1,Total,NP,Yes,265
+Initiative Measure 1464,3,1,Total,NP,No,279
+Initiative Measure 1464,3,1,Total,NP,Registered Voters,519
+Initiative Measure 1464,3,1,Total,NP,Times Blank Voted,41
+Initiative Measure 1464,3,1,Total,NP,Times Counted,485
+Initiative Measure 1464,3,1,Total,NP,Times Over Voted,0
+Initiative Measure 1464,3,1,Total,NP,Yes,165
+Initiative Measure 1491,3,1,Total,NP,No,99
+Initiative Measure 1491,3,1,Total,NP,Registered Voters,519
+Initiative Measure 1491,3,1,Total,NP,Times Blank Voted,13
+Initiative Measure 1491,3,1,Total,NP,Times Counted,485
+Initiative Measure 1491,3,1,Total,NP,Times Over Voted,0
+Initiative Measure 1491,3,1,Total,NP,Yes,373
+Initiative Measure 1501,3,1,Total,NP,No,190
+Initiative Measure 1501,3,1,Total,NP,Registered Voters,519
+Initiative Measure 1501,3,1,Total,NP,Times Blank Voted,10
+Initiative Measure 1501,3,1,Total,NP,Times Counted,485
+Initiative Measure 1501,3,1,Total,NP,Times Over Voted,0
+Initiative Measure 1501,3,1,Total,NP,Yes,285
+Initiative Measure 732,3,1,Total,NP,No,289
+Initiative Measure 732,3,1,Total,NP,Registered Voters,519
+Initiative Measure 732,3,1,Total,NP,Times Blank Voted,27
+Initiative Measure 732,3,1,Total,NP,Times Counted,485
+Initiative Measure 732,3,1,Total,NP,Times Over Voted,0
+Initiative Measure 732,3,1,Total,NP,Yes,169
+Initiative Measure 735,3,1,Total,NP,No,223
+Initiative Measure 735,3,1,Total,NP,Registered Voters,519
+Initiative Measure 735,3,1,Total,NP,Times Blank Voted,25
+Initiative Measure 735,3,1,Total,NP,Times Counted,485
+Initiative Measure 735,3,1,Total,NP,Times Over Voted,0
+Initiative Measure 735,3,1,Total,NP,Yes,237
+Insurance Commissioner,3,1,Total,Dem,Mike Kreidler,293
+Insurance Commissioner,3,1,Total,NP,Registered Voters,519
+Insurance Commissioner,3,1,Total,NP,Times Blank Voted,20
+Insurance Commissioner,3,1,Total,NP,Times Counted,485
+Insurance Commissioner,3,1,Total,NP,Times Over Voted,0
+Insurance Commissioner,3,1,Total,NP,Write-In,0
+Insurance Commissioner,3,1,Total,Rep,Richard Schrock,172
+King County Charter Amendment 1,3,1,Total,NP,No,93
+King County Charter Amendment 1,3,1,Total,NP,Registered Voters,519
+King County Charter Amendment 1,3,1,Total,NP,Times Blank Voted,27
+King County Charter Amendment 1,3,1,Total,NP,Times Counted,485
+King County Charter Amendment 1,3,1,Total,NP,Times Over Voted,0
+King County Charter Amendment 1,3,1,Total,NP,Yes,365
+King County Charter Amendment 2,3,1,Total,NP,No,175
+King County Charter Amendment 2,3,1,Total,NP,Registered Voters,519
+King County Charter Amendment 2,3,1,Total,NP,Times Blank Voted,25
+King County Charter Amendment 2,3,1,Total,NP,Times Counted,485
+King County Charter Amendment 2,3,1,Total,NP,Times Over Voted,0
+King County Charter Amendment 2,3,1,Total,NP,Yes,285
+Legislative District 45 Representative Position 1,3,1,Total,Dem,Roger Goodman,258
+Legislative District 45 Representative Position 1,3,1,Total,GP,Ramiro Valderrama,201
+Legislative District 45 Representative Position 1,3,1,Total,NP,Registered Voters,519
+Legislative District 45 Representative Position 1,3,1,Total,NP,Times Blank Voted,26
+Legislative District 45 Representative Position 1,3,1,Total,NP,Times Counted,485
+Legislative District 45 Representative Position 1,3,1,Total,NP,Times Over Voted,0
+Legislative District 45 Representative Position 1,3,1,Total,NP,Write-In,0
+Legislative District 45 Representative Position 2,3,1,Total,Dem,Larry Springer,333
+Legislative District 45 Representative Position 2,3,1,Total,NP,Registered Voters,519
+Legislative District 45 Representative Position 2,3,1,Total,NP,Times Blank Voted,147
+Legislative District 45 Representative Position 2,3,1,Total,NP,Times Counted,485
+Legislative District 45 Representative Position 2,3,1,Total,NP,Times Over Voted,0
+Legislative District 45 Representative Position 2,3,1,Total,NP,Write-In,5
+Lieutenant Governor,3,1,Total,Dem,Cyrus Habib,258
+Lieutenant Governor,3,1,Total,NP,Registered Voters,519
+Lieutenant Governor,3,1,Total,NP,Times Blank Voted,12
+Lieutenant Governor,3,1,Total,NP,Times Counted,485
+Lieutenant Governor,3,1,Total,NP,Times Over Voted,0
+Lieutenant Governor,3,1,Total,NP,Write-In,5
+Lieutenant Governor,3,1,Total,Rep,Marty McClendon,210
+Secretary of State,3,1,Total,Dem,Tina Podlodowski,183
+Secretary of State,3,1,Total,NP,Registered Voters,519
+Secretary of State,3,1,Total,NP,Times Blank Voted,9
+Secretary of State,3,1,Total,NP,Times Counted,485
+Secretary of State,3,1,Total,NP,Times Over Voted,0
+Secretary of State,3,1,Total,NP,Write-In,0
+Secretary of State,3,1,Total,Rep,Kim Wyman,293
+Senate Joint Resolution 8210,3,1,Total,NP,Approved,388
+Senate Joint Resolution 8210,3,1,Total,NP,Registered Voters,519
+Senate Joint Resolution 8210,3,1,Total,NP,Rejected,60
+Senate Joint Resolution 8210,3,1,Total,NP,Times Blank Voted,37
+Senate Joint Resolution 8210,3,1,Total,NP,Times Counted,485
+Senate Joint Resolution 8210,3,1,Total,NP,Times Over Voted,0
+State Auditor,3,1,Total,Dem,Pat (Patrice) McCarthy,205
+State Auditor,3,1,Total,NP,Registered Voters,519
+State Auditor,3,1,Total,NP,Times Blank Voted,15
+State Auditor,3,1,Total,NP,Times Counted,485
+State Auditor,3,1,Total,NP,Times Over Voted,1
+State Auditor,3,1,Total,NP,Write-In,0
+State Auditor,3,1,Total,Rep,Mark Miloscia,264
+State Supreme Court Justice Position 1,3,1,Total,NP,David DeWolf,139
+State Supreme Court Justice Position 1,3,1,Total,NP,Mary Yu,285
+State Supreme Court Justice Position 1,3,1,Total,NP,Registered Voters,519
+State Supreme Court Justice Position 1,3,1,Total,NP,Times Blank Voted,61
+State Supreme Court Justice Position 1,3,1,Total,NP,Times Counted,485
+State Supreme Court Justice Position 1,3,1,Total,NP,Times Over Voted,0
+State Supreme Court Justice Position 1,3,1,Total,NP,Write-In,0
+State Supreme Court Justice Position 5,3,1,Total,NP,Barbara Madsen,292
+State Supreme Court Justice Position 5,3,1,Total,NP,Greg Zempel,123
+State Supreme Court Justice Position 5,3,1,Total,NP,Registered Voters,519
+State Supreme Court Justice Position 5,3,1,Total,NP,Times Blank Voted,70
+State Supreme Court Justice Position 5,3,1,Total,NP,Times Counted,485
+State Supreme Court Justice Position 5,3,1,Total,NP,Times Over Voted,0
+State Supreme Court Justice Position 5,3,1,Total,NP,Write-In,0
+State Supreme Court Justice Position 6,3,1,Total,NP,Charles (Charlie) Wiggins,228
+State Supreme Court Justice Position 6,3,1,Total,NP,Dave Larson,188
+State Supreme Court Justice Position 6,3,1,Total,NP,Registered Voters,519
+State Supreme Court Justice Position 6,3,1,Total,NP,Times Blank Voted,69
+State Supreme Court Justice Position 6,3,1,Total,NP,Times Counted,485
+State Supreme Court Justice Position 6,3,1,Total,NP,Times Over Voted,0
+State Supreme Court Justice Position 6,3,1,Total,NP,Write-In,0
+State Treasurer,3,1,Total,NP,Registered Voters,519
+State Treasurer,3,1,Total,NP,Times Blank Voted,63
+State Treasurer,3,1,Total,NP,Times Counted,485
+State Treasurer,3,1,Total,NP,Times Over Voted,0
+State Treasurer,3,1,Total,NP,Write-In,1
+State Treasurer,3,1,Total,Rep,Duane Davidson,241
+State Treasurer,3,1,Total,Rep,Michael Waite,180
+Superintendent of Public Instruction,3,1,Total,NP,Chris Reykdal,200
+Superintendent of Public Instruction,3,1,Total,NP,Erin Jones,193
+Superintendent of Public Instruction,3,1,Total,NP,Registered Voters,519
+Superintendent of Public Instruction,3,1,Total,NP,Times Blank Voted,92
+Superintendent of Public Instruction,3,1,Total,NP,Times Counted,485
+Superintendent of Public Instruction,3,1,Total,NP,Times Over Voted,0
+Superintendent of Public Instruction,3,1,Total,NP,Write-In,0
+Superior Court Judge Position 14,3,1,Total,NP,David Greenspan,78
+Superior Court Judge Position 14,3,1,Total,NP,Nicole Gaines Phelps,315
+Superior Court Judge Position 14,3,1,Total,NP,Registered Voters,519
+Superior Court Judge Position 14,3,1,Total,NP,Times Blank Voted,92
+Superior Court Judge Position 14,3,1,Total,NP,Times Counted,485
+Superior Court Judge Position 14,3,1,Total,NP,Times Over Voted,0
+Superior Court Judge Position 14,3,1,Total,NP,Write-In,0
+Superior Court Judge Position 26,3,1,Total,NP,David Keenan,310
+Superior Court Judge Position 26,3,1,Total,NP,John H. O'Rourke,91
+Superior Court Judge Position 26,3,1,Total,NP,Registered Voters,519
+Superior Court Judge Position 26,3,1,Total,NP,Times Blank Voted,84
+Superior Court Judge Position 26,3,1,Total,NP,Times Counted,485
+Superior Court Judge Position 26,3,1,Total,NP,Times Over Voted,0
+Superior Court Judge Position 26,3,1,Total,NP,Write-In,0
+Superior Court Judge Position 31,3,1,Total,NP,Helen Halpert,342
+Superior Court Judge Position 31,3,1,Total,NP,Marc S. Stern,45
+Superior Court Judge Position 31,3,1,Total,NP,Registered Voters,519
+Superior Court Judge Position 31,3,1,Total,NP,Times Blank Voted,98
+Superior Court Judge Position 31,3,1,Total,NP,Times Counted,485
+Superior Court Judge Position 31,3,1,Total,NP,Times Over Voted,0
+Superior Court Judge Position 31,3,1,Total,NP,Write-In,0
+Superior Court Judge Position 44,3,1,Total,NP,Cathy Moore,143
+Superior Court Judge Position 44,3,1,Total,NP,Eric Newman,257
+Superior Court Judge Position 44,3,1,Total,NP,Registered Voters,519
+Superior Court Judge Position 44,3,1,Total,NP,Times Blank Voted,85
+Superior Court Judge Position 44,3,1,Total,NP,Times Counted,485
+Superior Court Judge Position 44,3,1,Total,NP,Times Over Voted,0
+Superior Court Judge Position 44,3,1,Total,NP,Write-In,0
+Superior Court Judge Position 52,3,1,Total,NP,Anthony Gipe,134
+Superior Court Judge Position 52,3,1,Total,NP,Kristin Richardson,267
+Superior Court Judge Position 52,3,1,Total,NP,Registered Voters,519
+Superior Court Judge Position 52,3,1,Total,NP,Times Blank Voted,84
+Superior Court Judge Position 52,3,1,Total,NP,Times Counted,485
+Superior Court Judge Position 52,3,1,Total,NP,Times Over Voted,0
+Superior Court Judge Position 52,3,1,Total,NP,Write-In,0
+Superior Court Judge Position 53,3,1,Total,NP,Mariane Spearman,303
+Superior Court Judge Position 53,3,1,Total,NP,Registered Voters,519
+Superior Court Judge Position 53,3,1,Total,NP,Thomas Cline,94
+Superior Court Judge Position 53,3,1,Total,NP,Times Blank Voted,86
+Superior Court Judge Position 53,3,1,Total,NP,Times Counted,485
+Superior Court Judge Position 53,3,1,Total,NP,Times Over Voted,2
+Superior Court Judge Position 53,3,1,Total,NP,Write-In,0
+US President & Vice President,3,1,Total,CPN,Darrell L. Castle & Scott N. Bradley,0
+US President & Vice President,3,1,Total,DPN,Hillary Clinton & Tim Kaine,266
+US President & Vice President,3,1,Total,GPN,Jill Stein & Ajamu Baraka,1
+US President & Vice President,3,1,Total,LPN,Gary Johnson & Bill Weld,14
+US President & Vice President,3,1,Total,NP,Registered Voters,519
+US President & Vice President,3,1,Total,NP,Times Blank Voted,12
+US President & Vice President,3,1,Total,NP,Times Counted,485
+US President & Vice President,3,1,Total,NP,Times Over Voted,0
+US President & Vice President,3,1,Total,NP,Write-In,7
+US President & Vice President,3,1,Total,RPN,Donald J. Trump & Michael R. Pence,185
+US President & Vice President,3,1,Total,SPN,Gloria Estela La Riva & Eugene Puryear,0
+US President & Vice President,3,1,Total,SWN,Alyson Kennedy & Osborne Hart,0
+US Senator,3,1,Total,Dem,Patty Murray,285
+US Senator,3,1,Total,NP,Registered Voters,519
+US Senator,3,1,Total,NP,Times Blank Voted,8
+US Senator,3,1,Total,NP,Times Counted,485
+US Senator,3,1,Total,NP,Times Over Voted,0
+US Senator,3,1,Total,NP,Write-In,0
+US Senator,3,1,Total,Rep,Chris Vance,1923,1,Total,DPN,Hillary Clinton & Tim Kaine,266
+ADAIR,US President & Vice President,3,1,Total,GPN,Jill Stein & Ajamu Baraka,1
+ADAIR,US President & Vice President,3,1,Total,LPN,Gary Johnson & Bill Weld,14
+ADAIR,US President & Vice President,3,1,Total,NP,Registered Voters,519
+ADAIR,US President & Vice President,3,1,Total,NP,Times Blank Voted,12
+ADAIR,US President & Vice President,3,1,Total,NP,Times Counted,485
+ADAIR,US President & Vice President,3,1,Total,NP,Times Over Voted,0
+ADAIR,US President & Vice President,3,1,Total,NP,Write-In,7
 ADAIR,US President & Vice President,3,1,Total,RPN,Donald J. Trump & Michael R. Pence,185
 ADAIR,US President & Vice President,3,1,Total,SPN,Gloria Estela La Riva & Eugene Puryear,0
 ADAIR,US President & Vice President,3,1,Total,SWN,Alyson Kennedy & Osborne Hart,0
