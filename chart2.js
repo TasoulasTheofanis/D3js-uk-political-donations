@@ -449,6 +449,6 @@ $(document).ready(function() {
       var id = d3.select(this).attr("id");
       return transition(id);
     });
-    return d3.csv("data/2016_General_-_Election_Results_by_precinct__complete_eCanvass_dataset_.csv", display);
+    return d3.csv("data/7500up.csv", display);
 	
 });
