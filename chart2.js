@@ -17,12 +17,15 @@ var partyCentres = {
   };
 
 var entityCentres = { 
-    company: {x: w / 3.65, y: h / 2.3},
-		union: {x: w / 3.65, y: h / 1.8},
-		other: {x: w / 1.15, y: h / 1.9},
-		society: {x: w / 1.12, y: h  / 3.2 },
-		pub: {x: w / 1.8, y: h / 2.8},
-		individual: {x: w / 3.65, y: h / 3.3}                    /* i deleted a comma*/
+    color: {x: w / 3.65, y: h / 2.3},
+		NP: {x: w / 3.65, y: h / 1.8},
+		Dem: {x: w / 1.15, y: h / 1.9},
+		Lib: {x: w / 1.12, y: h  / 3.2 },
+		Rep: {x: w / 1.8, y: h / 2.8},
+		CPN: {x: w / 3.65, y: h / 3.3},    
+		DPN: {x: w / 3.85, y: h / 3.3},
+		GPN: {x: w / 2.85, y: h / 1.3},
+		LPN: {x: w / 1.85, y: h / 2.3}
 	};
 /*paradoteo 1: coloring the circles of Labour Party, Conservative Party and Liberal Democrats*/
 var fill = d3.scale.ordinal().range(["#145506", "#100345", "#ff2200"]);  
