@@ -11,18 +11,16 @@ var sound = new Audio("SoundButton.mp3");
 var GooglePls = "http://www.google.com/search?q=";     
 
 var partyCentres = { 
-    con: { x: w / 3, y: h / 3.3}, 
-    lab: {x: w / 3, y: h / 2.3}, 
-    lib: {x: w / 3, y: h / 1.8}
-  };
+    Whole_Blood: { x: w / 3, y: h / 3.3}, 
+    Apheresis: {x: w / 3, y: h / 2.3} 
+};
 
 var entityCentres = { 
-    company: {x: w / 3.65, y: h / 2.3},
-		union: {x: w / 3.65, y: h / 1.8},
-		other: {x: w / 1.15, y: h / 1.9},
-		society: {x: w / 1.12, y: h  / 3.2 },
-		pub: {x: w / 1.8, y: h / 2.8},
-		individual: {x: w / 3.65, y: h / 3.3}                    /* i deleted a comma*/
+    company: {  2014: {x: w / 3.65, y: h / 1.8},
+		2013: {x: w / 1.15, y: h / 1.9},
+		2012: {x: w / 1.12, y: h  / 3.2 },
+		2011: {x: w / 1.8, y: h / 2.8},
+		2010: {x: w / 3.65, y: h / 3.3}                    /* i deleted a comma*/
 	};
 /*paradoteo 1: coloring the circles of Labour Party, Conservative Party and Liberal Democrats*/
 var fill = d3.scale.ordinal().range(["#145506", "#100345", "#ff2200"]);  
