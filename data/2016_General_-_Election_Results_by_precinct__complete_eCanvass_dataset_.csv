@@ -1,4 +1,4 @@
-donor,amount,party,entity,color,partyname,entityname
+donor,entityname,party,entity,color,partyname,amount
 Advisory Vote 14,3,1,Total,NP,Maintained,183
 Advisory Vote 14,3,1,Total,NP,Registered Voters,519
 Advisory Vote 14,3,1,Total,NP,Repealed,251
