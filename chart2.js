@@ -355,9 +355,7 @@ function display(data) {
 				value: d.amount,
 				donor: d.donor,
 				party: d.party,
-				partyLabel: d.partyname,
 			        entity: d.entity,
-				entityLabel: d.entityname,
 				color: d.color,
 				x: Math.random() * w,
 				y: -y
