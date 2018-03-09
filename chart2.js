@@ -11,17 +11,18 @@ var sound = new Audio("SoundButton.mp3");
 var GooglePls = "http://www.google.com/search?q=";     
 
 var partyCentres = { 
-    Whole_Blood: { x: w / 3, y: h / 3.3}, 
-    Apheresis: {x: w / 3, y: h / 2.3} 
-};
+    con: { x: w / 3, y: h / 3.3}, 
+    lab: {x: w / 3, y: h / 2.3}, 
+    lib: {x: w / 3, y: h / 1.8}
+  };
 
 var entityCentres = { 
-    company: 	{x: w / 3.65, y: h / 2.3},
-		2014: {x: w / 3.65, y: h / 1.8},
-		2013: {x: w / 1.15, y: h / 1.9},
-		2012: {x: w / 1.12, y: h  / 3.2 },
-		2011: {x: w / 1.8, y: h / 2.8},
-		2010: {x: w / 3.65, y: h / 3.3}                    /* i deleted a comma*/
+    company: {x: w / 3.65, y: h / 2.3},
+		union: {x: w / 3.65, y: h / 1.8},
+		other: {x: w / 1.15, y: h / 1.9},
+		society: {x: w / 1.12, y: h  / 3.2 },
+		pub: {x: w / 1.8, y: h / 2.8},
+		individual: {x: w / 3.65, y: h / 3.3}                    /* i deleted a comma*/
 	};
 /*paradoteo 1: coloring the circles of Labour Party, Conservative Party and Liberal Democrats*/
 var fill = d3.scale.ordinal().range(["#145506", "#100345", "#ff2200"]);  
@@ -321,7 +322,8 @@ function collide(alpha) {
       if (quad.point && (quad.point !== d)) {
         var x = d.x - quad.point.x,
             y = d.y - quad.point.y,
-            l = Math.sqrt(x * x + y * y);
+            l = Math.sqrt(x * x + y * y),
+            r = d.radius + quad.point.radius + (d.color !== quad.point.color) * padding;
         if (l < r) {
           l = (l - r) / l * alpha;
           d.x -= x *= l;
@@ -353,7 +355,10 @@ function display(data) {
 				value: d.amount,
 				donor: d.donor,
 				party: d.party,
+				partyLabel: d.partyname,
 			        entity: d.entity,
+				entityLabel: d.entityname,
+				color: d.color,
 				x: Math.random() * w,
 				y: -y
       };
@@ -444,6 +449,6 @@ $(document).ready(function() {
       var id = d3.select(this).attr("id");
       return transition(id);
     });
-    return d3.csv("data/BloodDonation.csv", display);
+    return d3.csv("data/7500up.csv", display);
 	
 });
