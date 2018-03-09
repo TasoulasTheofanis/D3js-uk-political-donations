@@ -11,17 +11,14 @@ var sound = new Audio("SoundButton.mp3");
 var GooglePls = "http://www.google.com/search?q=";     
 
 var partyCentres = { 
-    con: { x: w / 3, y: h / 3.3}, 
-    lab: {x: w / 3, y: h / 2.3}, 
-    lib: {x: w / 3, y: h / 1.8}
+    Dem: { x: w / 3, y: h / 3.3}, 
+    Lib: {x: w / 3, y: h / 2.3}, 
+    Rep: {x: w / 3, y: h / 1.8}
   };
 
 var entityCentres = { 
     color: {x: w / 3.65, y: h / 2.3},
 		NP: {x: w / 3.65, y: h / 1.8},
-		Dem: {x: w / 1.15, y: h / 1.9},
-		Lib: {x: w / 1.12, y: h  / 3.2 },
-		Rep: {x: w / 1.8, y: h / 2.8},
 		CPN: {x: w / 3.65, y: h / 3.3},    
 		DPN: {x: w / 3.85, y: h / 3.3},
 		GPN: {x: w / 2.85, y: h / 1.3},
