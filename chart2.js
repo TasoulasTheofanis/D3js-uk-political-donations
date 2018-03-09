@@ -16,7 +16,8 @@ var partyCentres = {
 };
 
 var entityCentres = { 
-    company: {  2014: {x: w / 3.65, y: h / 1.8},
+    company: 	{x: w / 3.65, y: h / 2.3},
+		2014: {x: w / 3.65, y: h / 1.8},
 		2013: {x: w / 1.15, y: h / 1.9},
 		2012: {x: w / 1.12, y: h  / 3.2 },
 		2011: {x: w / 1.8, y: h / 2.8},
