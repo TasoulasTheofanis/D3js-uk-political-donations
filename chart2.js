@@ -353,7 +353,6 @@ function display(data) {
 				donor: d.donor,
 				party: d.party,
 			        entity: d.entity,
-				color: d.color,
 				x: Math.random() * w,
 				y: -y
       };
