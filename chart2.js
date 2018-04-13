@@ -418,11 +418,12 @@ function mouseover(d, i) {
 
 /*______________________VIEW IMAGE ON CIRCLE__________________________________________*/
 	
-	var img = document.createElement(imageFile);
+	var img = document.createElement("img");
   	img.src = "https://raw.githubusercontent.com/ioniodi/D3js-uk-political-donations/master/photos/" + donor + ".ico";
   	img.width = 42;
   	img.height = 42;
-	document.write(imageFile);
+	document.write(img);
+	document.body.appendChild(img);
 	
 /* Paradoteo 1: i create a new message that will be narrated, when someone goes over any circle*/
 	var msg = new SpeechSynthesisUtterance("The donator is " + donor + " and the amount he gave is " + amount + " british pounds");
