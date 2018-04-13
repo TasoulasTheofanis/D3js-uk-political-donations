@@ -417,8 +417,11 @@ function mouseover(d, i) {
 	
 
 /*______________________VIEW IMAGE ON CIRCLE__________________________________________*/
-	imageFile.src;
 	
+	var img = document.createElement("https://raw.githubusercontent.com/ioniodi/D3js-uk-political-donations/master/photos/" + donor + ".ico");
+  	img.src = src;
+  	img.width = 42;
+  	img.height = 42;
 	
 	
 /* Paradoteo 1: i create a new message that will be narrated, when someone goes over any circle*/
