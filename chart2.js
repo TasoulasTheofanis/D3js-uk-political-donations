@@ -417,7 +417,7 @@ function mouseover(d, i) {
 	
 
 /*______________________VIEW IMAGE ON CIRCLE__________________________________________*/
-	
+	imageFile.src;
 	
 	
 	
