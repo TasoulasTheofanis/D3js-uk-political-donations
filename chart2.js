@@ -418,8 +418,8 @@ function mouseover(d, i) {
 
 /*______________________VIEW IMAGE ON CIRCLE__________________________________________*/
 	
-	var img = document.createElement("https://raw.githubusercontent.com/ioniodi/D3js-uk-political-donations/master/photos/" + donor + ".ico");
-  	img.src = src;
+	var img = document.createElement("img");
+  	img.src = "https://raw.githubusercontent.com/ioniodi/D3js-uk-political-donations/master/photos/" + donor + ".ico";
   	img.width = 42;
   	img.height = 42;
 	
