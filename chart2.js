@@ -423,7 +423,7 @@ function mouseover(d, i) {
   	img.width = 42;
   	img.height = 42;
 	//document.write(img);
-	document.getElementById('img').style.left="500";
+	document.getElement(img).style.left="500";
 	document.body.appendChild(img);
 	
 /* Paradoteo 1: i create a new message that will be narrated, when someone goes over any circle*/
