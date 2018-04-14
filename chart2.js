@@ -422,9 +422,7 @@ function mouseover(d, i) {
   	img.src = "https://raw.githubusercontent.com/ioniodi/D3js-uk-political-donations/master/photos/" + donor + ".ico";
   	img.width = 42;
   	img.height = 42;
-	img.css({
-                top: 500
-            });
+	img.style.maringTop = '560px';
 	//document.write(img);
 	document.body.appendChild(img);
 	
