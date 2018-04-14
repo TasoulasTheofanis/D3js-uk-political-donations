@@ -423,7 +423,8 @@ function mouseover(d, i) {
   	img.width = 42;
   	img.height = 42;
 	img.setAttribute('position', {x: 500, y: 5000});
-	document.body.appendChild(img);
+	img.style.display = "inline-block";
+	//document.body.appendChild(img);
 	
 /* Paradoteo 1: i create a new message that will be narrated, when someone goes over any circle*/
 	var msg = new SpeechSynthesisUtterance("The donator is " + donor + " and the amount he gave is " + amount + " british pounds");
