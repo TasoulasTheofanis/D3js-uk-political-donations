@@ -422,9 +422,8 @@ function mouseover(d, i) {
   	img.src = "https://raw.githubusercontent.com/ioniodi/D3js-uk-political-donations/master/photos/" + donor + ".ico";
   	img.width = 42;
   	img.height = 42;
-	img.style.top = 700;
 	//document.write(img);
-	document.body.appendChild(img);
+	document.body.appendChild(img).style("top", 750);
 	
 /* Paradoteo 1: i create a new message that will be narrated, when someone goes over any circle*/
 	var msg = new SpeechSynthesisUtterance("The donator is " + donor + " and the amount he gave is " + amount + " british pounds");
