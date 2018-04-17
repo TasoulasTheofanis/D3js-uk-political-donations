@@ -1,61 +1,80 @@
-var svg = d3.select("svg"),
+var matrix = [
+  [11975,  5871, 8916, 2868],
+  [ 1951, 10048, 2060, 6171],
+  [ 8010, 16145, 8090, 8045],
+  [ 1013,   990,  940, 6907]
+];
+
+var svg = d3.csv("data/7500up.csv", display);,
     width = +svg.attr("width"),
-    height = +svg.attr("height");
+    height = +svg.attr("height"),
+    outerRadius = Math.min(width, height) * 0.5 - 40,
+    innerRadius = outerRadius - 30;
 
-var parseDate = d3.timeParse("%x");
+var formatValue = d3.formatPrefix(",.0", 1e3);
 
-var color = d3.scaleTime()
-    .domain([new Date(1962, 0, 1), new Date(2006, 0, 1)])
-    .range(["black", "steelblue"])
-    .interpolate(d3.interpolateLab);
+var chord = d3.chord()
+    .padAngle(0.05)
+    .sortSubgroups(d3.descending);
 
-var hexbin = d3.hexbin()
-    .extent([[0, 0], [width, height]])
-    .radius(10);
+var arc = d3.arc()
+    .innerRadius(innerRadius)
+    .outerRadius(outerRadius);
 
-var radius = d3.scaleSqrt()
-    .domain([0, 12])
-    .range([0, 10]);
+var ribbon = d3.ribbon()
+    .radius(innerRadius);
 
-// Per https://github.com/topojson/us-atlas
-var projection = d3.geoAlbersUsa()
-    .scale(1280)
-    .translate([480, 300]);
+var color = d3.scaleOrdinal()
+    .domain(d3.range(4))
+    .range(["#000000", "#FFDD89", "#957244", "#F26223"]);
 
-var path = d3.geoPath();
+var g = svg.append("g")
+    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
+    .datum(chord(matrix));
 
-d3.queue()
-    .defer(d3.json, "https://d3js.org/us-10m.v1.json")
-    .defer(d3.tsv, "walmart.tsv", typeWalmart)
-    .await(ready);
+var group = g.append("g")
+    .attr("class", "groups")
+  .selectAll("g")
+  .data(function(chords) { return chords.groups; })
+  .enter().append("g");
 
-function ready(error, us, walmarts) {
-  if (error) throw error;
+group.append("path")
+    .style("fill", function(d) { return color(d.index); })
+    .style("stroke", function(d) { return d3.rgb(color(d.index)).darker(); })
+    .attr("d", arc);
 
-  svg.append("path")
-      .datum(topojson.feature(us, us.objects.nation))
-      .attr("class", "nation")
-      .attr("d", path);
+var groupTick = group.selectAll(".group-tick")
+  .data(function(d) { return groupTicks(d, 1e3); })
+  .enter().append("g")
+    .attr("class", "group-tick")
+    .attr("transform", function(d) { return "rotate(" + (d.angle * 180 / Math.PI - 90) + ") translate(" + outerRadius + ",0)"; });
 
-  svg.append("path")
-      .datum(topojson.mesh(us, us.objects.states, function(a, b) { return a !== b; }))
-      .attr("class", "states")
-      .attr("d", path);
+groupTick.append("line")
+    .attr("x2", 6);
 
-  svg.append("g")
-      .attr("class", "hexagon")
-    .selectAll("path")
-    .data(hexbin(walmarts).sort(function(a, b) { return b.length - a.length; }))
-    .enter().append("path")
-      .attr("d", function(d) { return hexbin.hexagon(radius(d.length)); })
-      .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
-      .attr("fill", function(d) { return color(d3.median(d, function(d) {  return d3.csv("data/7500up.csv", display); })); });
-}
+groupTick
+  .filter(function(d) { return d.value % 5e3 === 0; })
+  .append("text")
+    .attr("x", 8)
+    .attr("dy", ".35em")
+    .attr("transform", function(d) { return d.angle > Math.PI ? "rotate(180) translate(-16)" : null; })
+    .style("text-anchor", function(d) { return d.angle > Math.PI ? "end" : null; })
+    .text(function(d) { return formatValue(d.value); });
 
-function typeWalmart(d) {
-  var p = projection(d);
-  d[0] = p[0], d[1] = p[1];
-  d.date = parseDate(d.date);
-  return d3.csv("data/7500up.csv", display);
+g.append("g")
+    .attr("class", "ribbons")
+  .selectAll("path")
+  .data(function(chords) { return chords; })
+  .enter().append("path")
+    .attr("d", ribbon)
+    .style("fill", function(d) { return color(d.target.index); })
+    .style("stroke", function(d) { return d3.rgb(color(d.target.index)).darker(); });
+
+// Returns an array of tick angles and values for a given group and step.
+function groupTicks(d, step) {
+  var k = (d.endAngle - d.startAngle) / d.value;
+  return d3.range(0, d.value, step).map(function(value) {
+    return {value: value, angle: value * k + d.startAngle};
+  });
 }
 
