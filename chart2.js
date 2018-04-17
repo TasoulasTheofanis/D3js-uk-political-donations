@@ -5,7 +5,7 @@ var matrix = [
   [ 1013,   990,  940, 6907]
 ];
 
-var svg = d3.csv("data/7500up.csv", display);,
+var svg = d3.csv("data/7500up.csv"),
     width = +svg.attr("width"),
     height = +svg.attr("height"),
     outerRadius = Math.min(width, height) * 0.5 - 40,
