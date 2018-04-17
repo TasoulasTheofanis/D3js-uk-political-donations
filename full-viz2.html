@@ -2,22 +2,31 @@
 <html>
 
 <head>
+   
     
-<meta charset="utf-8">
+    
 <style>
 
-.bar rect {
-  fill: steelblue;
+.nation {
+  fill: #ddd;
 }
 
-.bar text {
-  fill: #fff;
-  font: 10px sans-serif;
+.states {
+  fill: none;
+  stroke: #fff;
+  stroke-linejoin: round;
+}
+
+.hexagon {
+  stroke: #fff;
 }
 
 </style>
-<svg width="960" height="500"></svg>
+<svg width="960" height="600"></svg>
 <script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="https://d3js.org/d3-hexbin.v0.2.min.js"></script>
+<script src="https://d3js.org/topojson.v2.min.js"></script>
+<script>
     
     <meta charset="utf-8">
     <title>Who's funding the big three?</title>
