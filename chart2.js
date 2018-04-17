@@ -1,47 +1,64 @@
-var data = d3.range(1000).map(d3.randomBates(10));
-
-var formatCount = d3.format(",.0f");
-
 var svg = d3.select("svg"),
-    margin = {top: 10, right: 30, bottom: 30, left: 30},
-    width = +svg.attr("width") - margin.left - margin.right,
-    height = +svg.attr("height") - margin.top - margin.bottom,
-    g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    width = +svg.attr("width"),
+    height = +svg.attr("height");
 
-var x = d3.scaleLinear()
-    .rangeRound([0, width]);
+var parseDate = d3.timeParse("%x");
 
-var bins = d3.histogram()
-    .domain(x.domain())
-    .thresholds(x.ticks(20))
-    (data);
+var color = d3.scaleTime()
+    .domain([new Date(1962, 0, 1), new Date(2006, 0, 1)])
+    .range(["black", "steelblue"])
+    .interpolate(d3.interpolateLab);
 
-var y = d3.scaleLinear()
-    .domain([0, d3.max(bins, function(d) { return d.length; })])
-    .range([height, 0]);
+var hexbin = d3.hexbin()
+    .extent([[0, 0], [width, height]])
+    .radius(10);
 
-var bar = g.selectAll(".bar")
-  .data(bins)
-  .enter().append("g")
-    .attr("class", "bar")
-    .attr("transform", function(d) { return "translate(" + x(d.x0) + "," + y(d.length) + ")"; });
+var radius = d3.scaleSqrt()
+    .domain([0, 12])
+    .range([0, 10]);
 
-bar.append("rect")
-    .attr("x", 1)
-    .attr("width", x(bins[0].x1) - x(bins[0].x0) - 1)
-    .attr("height", function(d) { return height - y(d.length); });
+// Per https://github.com/topojson/us-atlas
+var projection = d3.geoAlbersUsa()
+    .scale(1280)
+    .translate([480, 300]);
 
-bar.append("text")
-    .attr("dy", ".75em")
-    .attr("y", 6)
-    .attr("x", (x(bins[0].x1) - x(bins[0].x0)) / 2)
-    .attr("text-anchor", "middle")
-    .text(function(d) { return formatCount(d.length); });
+var path = d3.geoPath();
 
-g.append("g")
-    .attr("class", "axis axis--x")
-    .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(x));
+d3.queue()
+    .defer(d3.json, "https://d3js.org/us-10m.v1.json")
+    .defer(d3.tsv, "walmart.tsv", typeWalmart)
+    .await(ready);
+
+function ready(error, us, walmarts) {
+  if (error) throw error;
+
+  svg.append("path")
+      .datum(topojson.feature(us, us.objects.nation))
+      .attr("class", "nation")
+      .attr("d", path);
+
+  svg.append("path")
+      .datum(topojson.mesh(us, us.objects.states, function(a, b) { return a !== b; }))
+      .attr("class", "states")
+      .attr("d", path);
+
+  svg.append("g")
+      .attr("class", "hexagon")
+    .selectAll("path")
+    .data(hexbin(walmarts).sort(function(a, b) { return b.length - a.length; }))
+    .enter().append("path")
+      .attr("d", function(d) { return hexbin.hexagon(radius(d.length)); })
+      .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
+      .attr("fill", function(d) { return color(d3.median(d, function(d) { return +d.date; })); });
+}
+
+function typeWalmart(d) {
+  var p = projection(d);
+  d[0] = p[0], d[1] = p[1];
+  d.date = parseDate(d.date);
+  return d;
+}
+
 
 
 // GLOBALS
