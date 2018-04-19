@@ -111,7 +111,7 @@ function start() {
 		.data(nodes)
 	.enter().append("circle")
 		.attr("class", function(d) { return "node " + d.party; })
-		.attr("amount", function(d) { return d.value; })
+		.attr("Νέες_οικοδομές", function(d) { return d.value; })
 		.attr("donor", function(d) { return d.donor; })
 		.attr("entity", function(d) { return d.entity; })
 		.attr("party", function(d) { return d.party; })
@@ -386,7 +386,7 @@ function mouseover(d, i) {
 	
 	// tooltip popup
 	var mosie = d3.select(this);
-	var amount = mosie.attr("amount");
+	var amount = mosie.attr("Νέες_οικοδομές");
 	var donor = d.donor;
 	var party = d.partyLabel;
 	var entity = d.entityLabel;
@@ -394,7 +394,7 @@ function mouseover(d, i) {
 	var infoBox = "<p> Source: <b>" + donor + "</b></p>"
 								+ "<p> Recipient: <b>" + party + "</b></p>"
 								+ "<p> Type of donor: <b>" + entity + "</b></p>"
-								+ "<p> Total value: <b>&#163;" + comma(amount) + "</b></p>";
+								+ "<p> Total value: <b>&#163;" + comma(Νέες_οικοδομές) + "</b></p>";
 	
 
 /*______________________VIEW IMAGE ON CIRCLE__________________________________________*/	
@@ -405,7 +405,7 @@ function mouseover(d, i) {
 	
 	 							+ "<p> Recipient: <b>" + party + "</b></p>"
 								+ "<p> Type of donor: <b>" + entity + "</b></p>"
-+ "<p> Total value: <b>&#163;" + comma(amount) + "</b></p>";
++ "<p> Total value: <b>&#163;" + comma(Νέες_οικοδομές) + "</b></p>";
 	
 	mosie.classed("active", true);
 	d3.select(".tooltip")
