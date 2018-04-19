@@ -11,19 +11,19 @@ var sound = new Audio("SoundButton.mp3");
 var GooglePls = "http://www.google.com/search?q=";     
 
 var partyCentres = { 
-    ΝΟΜΑΡΧΙΑ_ΑΝΑΤΟΛΙΚΗΣ_ΑΤΤΙΚΗΣ: { x: w / 3, y: h / 3.3}, 
-    ΝΟΜΑΡΧΙΑ_ΔΥΤΙΚΗΣ_ΑΤΤΙΚΗΣ: {x: w / 3, y: h / 2.3}, 
-    ΝΟΜΑΡΧΙΑ_ΠΕΙΡΑΙΩΣ: {x: w / 3, y: h / 1.8}
+    con: { x: w / 3, y: h / 3.3}, 
+    lab: {x: w / 3, y: h / 2.3}, 
+    lib: {x: w / 3, y: h / 1.8}
   };
 
-/*var entityCentres = { 
+var entityCentres = { 
     company: {x: w / 3.65, y: h / 2.3},
 		0: {x: w / 3.65, y: h / 1.8},
-		other: {x: w / 1.15, y: h / 1.9},
+		1: {x: w / 1.15, y: h / 1.9},
 		3434 : {x: w / 1.12, y: h  / 3.2 },
 		2276: {x: w / 1.8, y: h / 2.8},
-		39: {x: w / 3.65, y: h / 3.3}                     i deleted a comma
-	};*/
+		39: {x: w / 3.65, y: h / 3.3}                     /*i deleted a comma*/
+	};
 /*paradoteo 1: coloring the circles of Labour Party, Conservative Party and Liberal Democrats*/
 var fill = d3.scale.ordinal().range(["#145506", "#100345", "#ff2200"]);  
 
