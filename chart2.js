@@ -111,7 +111,7 @@ function start() {
 		.data(nodes)
 	.enter().append("circle")
 		.attr("class", function(d) { return "node " + d.party; })
-		.attr("Νέες_οικοδομές", function(d) { return d.value; })
+		.attr("Νέες_οικοδομές", function(d) { return d.Νέες_οικοδομές; })
 		.attr("donor", function(d) { return d.donor; })
 		.attr("entity", function(d) { return d.entity; })
 		.attr("party", function(d) { return d.party; })
@@ -225,13 +225,13 @@ function all(e) {
 function moveToAmount(alpha) {
 	return function(d) {
 		
-		if (d.value <= 50000) { 
+		if (d.Νέες_οικοδομές <= 50000) { 
 			centreX = svgCentre.x ;
 			centreY = svgCentre.y -50;
-		} else if (d.value <= 350000) { 
+		} else if (d.Νέες_οικοδομές <= 350000) { 
 			centreX = svgCentre.x + 150;
 			centreY = svgCentre.y ;
-		} else if (d.value <= 20000000){ 
+		} else if (d.Νέες_οικοδομές <= 20000000){ 
 			centreX = svgCentre.x + 300;
 			centreY = svgCentre.y + 50;
 		}
@@ -244,17 +244,17 @@ function moveToAmount(alpha) {
 function moveToCentre(alpha) {
 	return function(d) {
 		var centreX = svgCentre.x + 75;
-			if (d.value <= 25001) {
+			if (d.Νέες_οικοδομές <= 25001) {
 				centreY = svgCentre.y + 75;
-			} else if (d.value <= 50001) {
+			} else if (d.Νέες_οικοδομές <= 50001) {
 				centreY = svgCentre.y + 55;
-			} else if (d.value <= 100001) {
+			} else if (d.Νέες_οικοδομές <= 100001) {
 				centreY = svgCentre.y + 35;
-			} else  if (d.value <= 500001) {
+			} else  if (d.Νέες_οικοδομές <= 500001) {
 				centreY = svgCentre.y + 15;
-			} else  if (d.value <= 1000001) {
+			} else  if (d.Νέες_οικοδομές <= 1000001) {
 				centreY = svgCentre.y - 5;
-			} else  if (d.value <= maxVal) {
+			} else  if (d.Νέες_οικοδομές <= maxVal) {
 				centreY = svgCentre.y - 25;
 			} else {
 				centreY = svgCentre.y;
@@ -352,7 +352,7 @@ function display(data) {
 		var y = radiusScale(d.Νομός_Δήμος_Κοινότητα);
 		var node = {
 				radius: radiusScale(d.Νέες_οικοδομές) * 4 ,
-				value: d.Νέες_οικοδομές,
+				Νέες_οικοδομές: d.Νέες_οικοδομές,
 				donor: d.Νομός_Δήμος_Κοινότητα,
 				party: d.Επισκευές,
 				partyLabel: d.Κατεδαφίσεις,
