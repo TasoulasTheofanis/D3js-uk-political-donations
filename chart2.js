@@ -18,7 +18,7 @@ var partyCentres = {
 
 var entityCentres = { 
     company: {x: w / 3.65, y: h / 2.3},
-		union: {x: w / 3.65, y: h / 1.8},
+		0: {x: w / 3.65, y: h / 1.8},
 		other: {x: w / 1.15, y: h / 1.9},
 		society: {x: w / 1.12, y: h  / 3.2 },
 		pub: {x: w / 1.8, y: h / 2.8},
