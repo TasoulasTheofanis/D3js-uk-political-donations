@@ -342,23 +342,23 @@ function collide(alpha) {
 
 function display(data) {
 
-	maxVal = d3.max(data, function(d) { return d.amount; });
+	maxVal = d3.max(data, function(d) { return d.Νομός_Δήμος_Κοινότητα; });
 
 	var radiusScale = d3.scale.sqrt()
 		.domain([0, maxVal])
 			.range([10, 20]);
 
 	data.forEach(function(d, i) {
-		var y = radiusScale(d.amount);
+		var y = radiusScale(d.Νομός_Δήμος_Κοινότητα);
 		var node = {
-				radius: radiusScale(d.amount) *2 ,
-				value: d.amount,
-				donor: d.donor,
-				party: d.party,
-				partyLabel: d.partyname,
-			        entity: d.entity,
-				entityLabel: d.entityname,
-				color: d.color,
+				radius: radiusScale(d.Νέες_οικοδομές) * 4 ,
+				value: d.Νέες_οικοδομές,
+				donor: d.Νομός_Δήμος_Κοινότητα,
+				party: d.Επισκευές,
+				partyLabel: d.Κατεδαφίσεις,
+			        entity: d.Αναπαλαιώσεις,
+				entityLabel: d.Προσθήκες,
+				color: d.Προσθήκες,
 				x: Math.random() * w,
 				y: -y
       };
