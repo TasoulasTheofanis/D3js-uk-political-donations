@@ -110,16 +110,16 @@ function start() {
 	node = nodeGroup.selectAll("circle")
 		.data(nodes)
 	.enter().append("circle")
-		.attr("class", function(d) { return "node " + d.party; })
+		.attr("class", function(d) { return "node " + d.Επισκευές; })
 		.attr("donor", function(d) { return d.Νέες_οικοδομές; })
 		.attr("amount", function(d) { return d.Νομός_Δήμος_Κοινότητα; })
 		.attr("entity", function(d) { return d.Αναπαλαιώσεις; })
-		.attr("party", function(d) { return d.party; })
+		.attr("party", function(d) { return d.Επισκευές; })
 		// disabled because of slow Firefox SVG rendering
 		// though I admit I'm asking a lot of the browser and cpu with the number of nodes
 		//.style("opacity", 0.9)
 		.attr("r", 0)
-		.style("fill", function(d) { return fill(d.party); })
+		.style("fill", function(d) { return fill(d.Επισκευές); })
 		.on("mouseover", mouseover)
 		.on("mouseout", mouseout)
 	        .on("click", function(d) { window.open(GooglePls + d.Νομός_Δήμος_Κοινότητα)}); /*Paradoteo 1: When you click, a new windows will pop out at google, searching the donator result  */
@@ -267,11 +267,11 @@ function moveToCentre(alpha) {
 
 function moveToParties(alpha) {
 	return function(d) {
-		var centreX = partyCentres[d.party].x + 50;
+		var centreX = partyCentres[d.Επισκευές].x + 50;
 		if (d.Αναπαλαιώσεις === 'pub') {
 			centreX = 1200;
 		} else {
-			centreY = partyCentres[d.party].y;
+			centreY = partyCentres[d.Επισκευές].y;
 		}
 
 		d.x += (centreX - d.x) * (brake + 0.02) * alpha * 1.1;
