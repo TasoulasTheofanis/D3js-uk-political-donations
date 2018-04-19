@@ -111,9 +111,9 @@ function start() {
 		.data(nodes)
 	.enter().append("circle")
 		.attr("class", function(d) { return "node " + d.party; })
-		.attr("Νέες_οικοδομές", function(d) { return d.Νέες_οικοδομές; })
-		.attr("donor", function(d) { return d.donor; })
-		.attr("entity", function(d) { return d.entity; })
+		.attr("donor", function(d) { return d.Νέες_οικοδομές; })
+		.attr("amount", function(d) { return d.Νομός_Δήμος_Κοινότητα; })
+		.attr("entity", function(d) { return d.Αναπαλαιώσεις; })
 		.attr("party", function(d) { return d.party; })
 		// disabled because of slow Firefox SVG rendering
 		// though I admit I'm asking a lot of the browser and cpu with the number of nodes
@@ -122,7 +122,7 @@ function start() {
 		.style("fill", function(d) { return fill(d.party); })
 		.on("mouseover", mouseover)
 		.on("mouseout", mouseout)
-	        .on("click", function(d) { window.open(GooglePls + d.donor)}); /*Paradoteo 1: When you click, a new windows will pop out at google, searching the donator result  */
+	        .on("click", function(d) { window.open(GooglePls + d.Νομός_Δήμος_Κοινότητα)}); /*Paradoteo 1: When you click, a new windows will pop out at google, searching the donator result  */
 	
 		// Alternative title based 'tooltips'
 		// node.append("title")
@@ -268,7 +268,7 @@ function moveToCentre(alpha) {
 function moveToParties(alpha) {
 	return function(d) {
 		var centreX = partyCentres[d.party].x + 50;
-		if (d.entity === 'pub') {
+		if (d.Αναπαλαιώσεις === 'pub') {
 			centreX = 1200;
 		} else {
 			centreY = partyCentres[d.party].y;
@@ -281,11 +281,11 @@ function moveToParties(alpha) {
 
 function moveToEnts(alpha) {
 	return function(d) {
-		var centreY = entityCentres[d.entity].y;
-		if (d.entity === 'pub') {
+		var centreY = entityCentres[d.Αναπαλαιώσεις].y;
+		if (d.Αναπαλαιώσεις === 'pub') {
 			centreX = 1200;
 		} else {
-			centreX = entityCentres[d.entity].x;
+			centreX = entityCentres[d.Αναπαλαιώσεις].x;
 		}
 
 		d.x += (centreX - d.x) * (brake + 0.02) * alpha * 1.1;
@@ -295,13 +295,13 @@ function moveToEnts(alpha) {
 
 function moveToFunds(alpha) {
 	return function(d) {
-		var centreY = entityCentres[d.entity].y;
-		var centreX = entityCentres[d.entity].x;
-		if (d.entity !== 'pub') {
+		var centreY = entityCentres[d.Αναπαλαιώσεις].y;
+		var centreX = entityCentres[d.Αναπαλαιώσεις].x;
+		if (d.Αναπαλαιώσεις !== 'pub') {
 			centreY = 300;
 			centreX = 350;
 		} else {
-			centreX = entityCentres[d.entity].x + 60;
+			centreX = entityCentres[d.Αναπαλαιώσεις].x + 60;
 			centreY = 380;
 		}
 		d.x += (centreX - d.x) * (brake + 0.02) * alpha * 1.1;
@@ -323,7 +323,7 @@ function collide(alpha) {
         var x = d.x - quad.point.x,
             y = d.y - quad.point.y,
             l = Math.sqrt(x * x + y * y),
-            r = d.radius + quad.point.radius + (d.color !== quad.point.color) * padding;
+            r = d.radius + quad.point.radius + (d.Προσθήκες !== quad.point.Προσθήκες) * padding;
         if (l < r) {
           l = (l - r) / l * alpha;
           d.x -= x *= l;
@@ -387,9 +387,9 @@ function mouseover(d, i) {
 	// tooltip popup
 	var mosie = d3.select(this);
 	var amount = mosie.attr("Νέες_οικοδομές");
-	var donor = d.donor;
-	var party = d.partyLabel;
-	var entity = d.entityLabel;
+	var donor = d.Νομός_Δήμος_Κοινότητα;
+	var party = d.Κατεδαφίσεις;
+	var entity = d.Προσθήκες;
 	var offset = $("svg").offset();
 	var infoBox = "<p> Source: <b>" + donor + "</b></p>"
 								+ "<p> Recipient: <b>" + party + "</b></p>"
