@@ -22,8 +22,8 @@ var partyCentres = {
 		other: {x: w / 1.15, y: h / 1.9},
 		3434 : {x: w / 1.12, y: h  / 3.2 },
 		2276: {x: w / 1.8, y: h / 2.8},
-		39: {x: w / 3.65, y: h / 3.3}                    /* i deleted a comma*/
-	};
+		39: {x: w / 3.65, y: h / 3.3}                     i deleted a comma
+	};*/
 /*paradoteo 1: coloring the circles of Labour Party, Conservative Party and Liberal Democrats*/
 var fill = d3.scale.ordinal().range(["#145506", "#100345", "#ff2200"]);  
 
