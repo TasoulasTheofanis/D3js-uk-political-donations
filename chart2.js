@@ -352,7 +352,7 @@ function display(data) {
 		var y = radiusScale(d.Νομός_Δήμος_Κοινότητα);
 		var node = {
 				radius: radiusScale(d.Νέες_οικοδομές) * 4 ,
-				Νέες_οικοδομές: d.Νέες_οικοδομές,
+				value: d.Νέες_οικοδομές,
 				donor: d.Νομός_Δήμος_Κοινότητα,
 				party: d.Επισκευές,
 				partyLabel: d.Κατεδαφίσεις,
