@@ -110,11 +110,11 @@ function start() {
 	node = nodeGroup.selectAll("circle")
 		.data(nodes)
 	.enter().append("circle")
-		.attr("class", function(d) { return "node " + d.Επισκευές; })
-		.attr("donor", function(d) { return d.Νέες_οικοδομές; })
-		.attr("amount", function(d) { return d.Νομός_Δήμος_Κοινότητα; })
-		.attr("entity", function(d) { return d.Αναπαλαιώσεις; })
-		.attr("party", function(d) { return d.Επισκευές; })
+		.attr("Επισκευές", function(d) { return "node " + d.Επισκευές; })
+		.attr("Νέες_οικοδομές", function(d) { return d.Νέες_οικοδομές; })
+		.attr("Νομός_Δήμος_Κοινότητα", function(d) { return d.Νομός_Δήμος_Κοινότητα; })
+		.attr("Αναπαλαιώσεις", function(d) { return d.Αναπαλαιώσεις; })
+		.attr("Επισκευές", function(d) { return d.Επισκευές; })
 		// disabled because of slow Firefox SVG rendering
 		// though I admit I'm asking a lot of the browser and cpu with the number of nodes
 		//.style("opacity", 0.9)
