@@ -76,7 +76,7 @@ d3.csv("data/7500up.csv", function(error, data) {
     d.partyname = +d.partyname;
   });
   // Compute the extent of the data set in age and years.
-  var age1 = d3.max(data, function(d) { return d.amount; }),
+  var age1 = d3.max(data, function(d) { return d.donor; }),
       year0 = d3.min(data, function(d) { return d.amount / 2; }),
       year1 = d3.max(data, function(d) { return d.amount * 2; }),
       year = year1;
