@@ -123,7 +123,7 @@ d3.csv("data/7500up.csv", function(error, data) {
 
   // Add labeled rects for each birthyear (so that no enter or exit is required).
   var birthyear = birthyears.selectAll(".birthyear")
-       .data(d3.range(year0, year1 + 1, 5))
+       .data(d3.range(year0 - age1, year1 + 1, 5))
     .enter().append("g")
       .attr("class", "birthyear")
       .attr("transform", function(birthyear) { return "translate(" + x(birthyear) + ",0)"; });
@@ -143,7 +143,7 @@ d3.csv("data/7500up.csv", function(error, data) {
 
   // Add labels to show age (separate; not animated).
   svg.selectAll(".age")
-      .data(d3.range(0, age1 + 1, 5))
+      .data(d3.range(0, year0 + 1, 5))
     .enter().append("text")
       .attr("class", "age")
       .attr("x", function(age) { return x(year - age); })
