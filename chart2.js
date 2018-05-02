@@ -417,8 +417,8 @@ function mouseover(d, i) {
 
 	var img = document.createElement("img");
 	img.src = imageFile;
-	img.width = 42;
-	img.height = 42;
+	//img.width = 42;
+	//img.height = 42;
 	document.body.appendChild(img);
 	
 /*______________________VIEW IMAGE ON CIRCLE__________________________________________*/
