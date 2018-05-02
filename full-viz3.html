@@ -67,18 +67,18 @@ var title = svg.append("text")
     .text("paradoteo 2");
 d3.csv("data/7500up.csv", function(error, data) {
   // Convert strings to numbers.
-  /*data.forEach(function(d) {
+  data.forEach(function(d) {
     d.amount = +d.amount;
     d.party = +d.party;
     d.donor = +d.donor;    
     d.entity = +d.entity;
     d.entityname = +d.entityname;
     d.partyname = +d.partyname;
-  });*/
+  });
   // Compute the extent of the data set in age and years.
   var age1 = d3.max(data, function(d) { return d.donor; }),
-      year0 = d3.min(data, function(d) { return d.party; }),
-      year1 = d3.max(data, function(d) { return d.party; }),
+      year0 = d3.min(data, function(d) { return d.donor / 2; }),
+      year1 = d3.max(data, function(d) { return d.donor * 2; }),
       year = year1;
   // Update the scale domains.
   x.domain([year1 - age1, year1]);
