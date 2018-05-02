@@ -96,9 +96,9 @@ d3.csv("data/7500up.csv", function(error, data) {
   });
 
   // Compute the extent of the data set in age and years.
-  var age1 = d3.max(data, function(d) { return d.donor; }),
-      year0 = d3.min(data, function(d) { return d.party; }),
-      year1 = d3.max(data, function(d) { return d.party; }),
+  var age1 = d3.max(data, function(d) { return d.amount; }),
+      year0 = d3.min(data, function(d) { return d.amount; }),
+      year1 = d3.max(data, function(d) { return d.amount; }),
       year = year1;
 
   // Update the scale domains.
@@ -107,8 +107,8 @@ d3.csv("data/7500up.csv", function(error, data) {
 
   // Produce a map from year and birthyear to [male, female].
   data = d3.nest()
-      .key(function(d) { return d.party; })
-      .key(function(d) { return d.party - d.donor; })
+      .key(function(d) { return d.amount; })
+      .key(function(d) { return d.amount - d.amount; })
       .rollup(function(v) { return v.map(function(d) { return d.amount; }); })
       .map(data);
 
