@@ -143,7 +143,7 @@ d3.csv("data/7500up.csv", function(error, data) {
 
   // Add labels to show age (separate; not animated).
   svg.selectAll(".age")
-      .data(d3.range(0, year0 + 1, 5))
+      .data(d3.range(0, age1 + 1, 5))
     .enter().append("text")
       .attr("class", "age")
       .attr("x", function(age) { return x(year - age); })
