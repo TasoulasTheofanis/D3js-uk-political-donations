@@ -1,1035 +1,149 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
-<title>Parallel Sets</title>
 <style>
-@import url(d3.parsets.css);
-
-body {
-  font-family: sans-serif;
-  font-size: 16px;
-  width: 960px;
-  margin: 1em auto;
-  position: relative;
+svg {
+  font: 10px sans-serif;
 }
-h1, h2, .dimension text {
-  text-align: center;
-  font-family: "PT Sans", Helvetica;
-  font-weight: 300;
+.y.axis path {
+  display: none;
 }
-h1 {
-  font-size: 4em;
-  margin: .5em 0 0 0;
+.y.axis line {
+  stroke: #fff;
+  stroke-opacity: .2;
+  shape-rendering: crispEdges;
 }
-h2 {
-  font-size: 2em;
-  margin: 1em 0 0.5em;
-  border-bottom: solid #ccc 1px;
+.y.axis .zero line {
+  stroke: #000;
+  stroke-opacity: 1;
 }
-p.meta, p.footer {
-  font-size: 13px;
-  color: #333;
+.title {
+  font: 300 78px Helvetica Neue;
+  fill: #666;
 }
-p.meta {
-  text-align: center;
+.birthyear,
+.age {
+  text-anchor: middle;
 }
-
-text.icicle { pointer-events: none; }
-
-.options { font-size: 12px; text-align: center; padding: 5px 0; }
-.curves { float: left; }
-.source { float: right; }
-pre, code { font-family: "Menlo", monospace; }
-
-.html .value,
-.javascript .string,
-.javascript .regexp {
-  color: #756bb1;
+.birthyear {
+  fill: #fff;
 }
-
-.html .tag,
-.css .tag,
-.javascript .keyword {
-  color: #3182bd;
+rect {
+  fill-opacity: .6;
+  fill: #e377c2;
 }
-
-.comment {
-  color: #636363;
-}
-
-.html .doctype,
-.javascript .number {
-  color: #31a354;
-}
-
-.html .attribute,
-.css .attribute,
-.javascript .class,
-.javascript .special {
-  color: #e6550d;
+rect:first-child {
+  fill: #1f77b4;
 }
 </style>
-
 <body>
-<h1>Parallel Sets</h1>
-<p class="meta">A visualisation technique for multidimensional categorical data.
-
-<h2>Titanic Survivors</h2>
-<div id="vis"><noscript><img src="parsets.png"></noscript></div>
-<div class="options">
-  <span class="source">Data: <a href="http://www.amstat.org/publications/jse/v3n3/datasets.dawson.html">Robert J. MacG. Dawson</a>.</span>
-  <span class="curves"><label for="curved"><input type="checkbox" id="curved" onchange="curves.call(this)"> Curves?</label></span>
-</div>
-
-<h2>Explanation</h2>
-<p>For each dimension (Survived, Sex, Age and Class), a horizontal bar is shown for each of its possible categories.  The width of the bar denotes the absolute number of matches for that category.
-<p>Starting with the first dimension (Survived), each of its categories is connected to a number of categories in the next dimension, showing how that category is subdivided. This subdividing is repeated recursively, producing a tree of “ribbons”.
-<p>In fact, you can imagine Parallel Sets as being an icicle plot, with icicles of the same category being “bundled” together.
-<p style="text-align: center"><label for="icicle" style="font-style: italic"><input type="checkbox" id="icicle"> Show icicle plot!</label>
-<p>Drag the dimensions and categories to reorder them. You can also click the “alpha” or “size” links that appear next to the dimension name on mouseover, to order the categories by name or frequency.
-
-<h2>Women and Children First?</h2>
-
-<p>We can see at a glance that the relative proportion of surviving women is far greater than that of the men.
-<p>As for children, it becomes clearer when we drag the <em>Age</em> dimension up: around half the children survived.  This is proportionally less than the women but more than the men.  Can you spot anything else interesting?
-
-<h2>Do It Yourself</h2>
-<p>The code is available as a reusable <a href="http://d3js.org/">D3.js</a> chart: <a href="http://github.com/jasondavies/d3-parsets">d3.parsets</a>.  This is a configurable function, which can be called on a D3 selection to produce an interactive SVG visualisation.
-<p>The input data should be bound to the target selection.  For input, you can either use an array of aggregated objects (pivot table) along with a <a href="http://github.com/jasondavies/d3-parsets#parsets_value">value</a> accessor, or you can simply use the full dataset and the grouped frequencies will be calculated automatically by default.
-
-<pre><code>var chart = d3.parsets()
-      .dimensions(["Survived", "Sex", "Age", "Class"]);
-
-var vis = d3.select("#vis").append("svg")
-    .attr("width", chart.width())
-    .attr("height", chart.height());
-
-d3.csv("data/7500up.csv", function(error, csv) {
-  vis.datum(csv).call(chart);
-});</code></pre>
-
-
-<h2>Alternatives</h2>
-<p>For multivariate categorical data, the <a href="http://www.theusrus.de/blog/understanding-mosaic-plots/">mosaic plot</a> (or Marimekko chart) is a powerful alternative.  Personally, I think it’s easier to see the order in which the subsets were derived in a parallel sets visualisation.  On the other hand, it seems easier to spot small disparities in a mosaic plot because the subsets are laid out side-by-side.  Here is a <a href="http://bl.ocks.org/1005090">Marimekko chart</a> in D3.js by <a href="http://bost.ocks.org/mike/">Mike Bostock</a>.
-<p>For multivariate ordinal data (such as numeric data), <a href="http://en.wikipedia.org/wiki/Parallel_coordinates">parallel coordinates</a> are more appropriate, although you can often generate meaningful categories from such data for use with parallel sets.
-
-<h2>Implementation Notes</h2>
-
-<p>Probably the most interesting part of implementing this was supporting multiple concurrent transitions on the ribbons.  Strictly speaking this wasn’t necessary as it’s unlikely anyone would drag two things within the transition duration.  But who would pass up an opportunity to use a <a href="http://github.com/mbostock/d3/wiki/Transitions#wiki-tween">custom tween</a>?
-
-<p>This allows the <em>x-</em> and <em>y-</em> components of the ribbons to be animated independently, so that you can drag a dimension vertically even though a horizontal category animation is in progress.
-
-<p><label for="slow"><input type="checkbox" id="slow" onchange="vis.call(chart.duration(this.checked ? 5000 : 500))"> Go slow!</label>
-
-<p>In case you missed it, be sure to click on “icicle plots” in the Explanation section to see the animated transition.
-
-<p><a href="http://news.ycombinator.com/item?id=3878877">Discuss on HN!</a>
-
-<h2>Further Reading</h2>
-<ul>
-  <li>Functionality based on <a href="http://eagereyes.org/parallel-sets">Parallel Sets</a> by <a href="http://coitweb.uncc.edu/~rkosara/">Robert Kosara</a> and <a href="http://www.cs.brown.edu/people/cziemki/">Caroline Ziemkiewicz</a>.
-  <li><a href="http://kosara.net/publications/Kosara_BeautifulVis_2010.html">Turning a Table into a Tree: Growing Parallel Sets into a Purposeful Project</a> by Robert Kosara.
-  <li><a href="http://kosara.net/publications/Bendix_InfoVis_2005.html">Parallel Sets: Visual Analysis of Categorical Data</a> by Fabian Bendix, Robert Kosara, Helwig Hauser.
-</ul>
-
-<p class="footer">Made by <a href="http://www.jasondavies.com/">Jason Davies</a>.  Thanks to <a href="http://bost.ocks.org/mike">Mike Bostock</a> for his suggestions (and of course, <a href="http://d3js.org/">D3.js</a>!)
-
-<script src="../d3.min.js"></script>
+<script src="//d3js.org/d3.v3.min.js"></script>
 <script>
-var chart = d3.parsets()
-    .dimensions(["Survived", "Sex", "Age", "Class"]);
-
-var vis = d3.select("#vis").append("svg")
-    .attr("width", chart.width())
-    .attr("height", chart.height());
-
-var partition = d3.layout.partition()
-    .sort(null)
-    .size([chart.width(), chart.height() * 5 / 4])
-    .children(function(d) { return d.children ? d3.values(d.children) : null; })
-    .value(function(d) { return d.count; });
-
-var ice = false;
-
-function curves() {
-  var t = vis.transition().duration(500);
-  if (ice) {
-    t.delay(1000);
-    icicle();
+var margin = {top: 20, right: 40, bottom: 30, left: 20},
+    width = 960 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom,
+    barWidth = Math.floor(width / 19) - 1;
+var x = d3.scale.linear()
+    .range([barWidth / 2, width - barWidth / 2]);
+var y = d3.scale.linear()
+    .range([height, 0]);
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("right")
+    .tickSize(-width)
+    .tickFormat(function(d) { return Math.round(d / 1e6) + "M"; });
+// An SVG element with a bottom-right origin.
+var svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+// A sliding container to hold the bars by birthyear.
+var birthyears = svg.append("g")
+    .attr("class", "birthyears");
+// A label for the current year.
+var title = svg.append("text")
+    .attr("class", "title")
+    .attr("dy", ".71em")
+    .text(2000);
+d3.csv("data/7500up.csv", function(error, data) {
+  // Convert strings to numbers.
+  data.forEach(function(d) {
+    d.amount = +d.amount;
+    d.party = +d.party;
+    d.donor = +d.donor;    
+    d.entity = +d.entity;
+    d.entityname = +d.entityname;
+    d.partyname = +d.partyname;
+  });
+  // Compute the extent of the data set in age and years.
+  var age1 = d3.max(data, function(d) { return d.donor; }),
+      year0 = d3.min(data, function(d) { return d.party; }),
+      year1 = d3.max(data, function(d) { return d.party; }),
+      year = year1;
+  // Update the scale domains.
+  x.domain([year1 - age1, year1]);
+  y.domain([0, d3.max(data, function(d) { return d.amount; })]);
+  // Produce a map from year and birthyear to [male, female].
+  data = d3.nest()
+      .key(function(d) { return d.party; })
+      .key(function(d) { return d.party - d.donor; })
+      .rollup(function(v) { return v.map(function(d) { return d.amount; }); })
+      .map(data);
+  // Add an axis to show the population values.
+  svg.append("g")
+      .attr("class", "y axis")
+      .attr("transform", "translate(" + width + ",0)")
+      .call(yAxis)
+    .selectAll("g")
+    .filter(function(value) { return !value; })
+      .classed("zero", true);
+  // Add labeled rects for each birthyear (so that no enter or exit is required).
+  var birthyear = birthyears.selectAll(".birthyear")
+      .data(d3.range(year0 - age1, year1 + 1, 5))
+    .enter().append("g")
+      .attr("class", "birthyear")
+      .attr("transform", function(birthyear) { return "translate(" + x(birthyear) + ",0)"; });
+  birthyear.selectAll("rect")
+      .data(function(birthyear) { return data[year][birthyear] || [0, 0]; })
+    .enter().append("rect")
+      .attr("x", -barWidth / 2)
+      .attr("width", barWidth)
+      .attr("y", y)
+      .attr("height", function(value) { return height - y(value); });
+  // Add labels to show birthyear.
+  birthyear.append("text")
+      .attr("y", height - 4)
+      .text(function(birthyear) { return birthyear; });
+  // Add labels to show age (separate; not animated).
+  svg.selectAll(".age")
+      .data(d3.range(0, age1 + 1, 5))
+    .enter().append("text")
+      .attr("class", "age")
+      .attr("x", function(age) { return x(year - age); })
+      .attr("y", height + 4)
+      .attr("dy", ".71em")
+      .text(function(age) { return age; });
+  // Allow the arrow keys to change the displayed year.
+  window.focus();
+  d3.select(window).on("keydown", function() {
+    switch (d3.event.keyCode) {
+      case 37: year = Math.max(year0, year - 10); break;
+      case 39: year = Math.min(year1, year + 10); break;
+    }
+    update();
+  });
+  function update() {
+    if (!(year in data)) return;
+    title.text(year);
+    birthyears.transition()
+        .duration(750)
+        .attr("transform", "translate(" + (x(year1) - x(year)) + ",0)");
+    birthyear.selectAll("rect")
+        .data(function(birthyear) { return data[year][birthyear] || [0, 0]; })
+      .transition()
+        .duration(750)
+        .attr("y", y)
+        .attr("height", function(value) { return height - y(value); });
   }
-  t.call(chart.tension(this.checked ? .5 : 1));
-}
-
-d3.csv("data/7500up.csv", function(error, csv) {
-  vis.datum(csv).call(chart);
-
-  window.icicle = function() {
-    var newIce = this.checked,
-        tension = chart.tension();
-    if (newIce === ice) return;
-    if (ice = newIce) {
-      var dimensions = [];
-      vis.selectAll("g.dimension")
-         .each(function(d) { dimensions.push(d); });
-      dimensions.sort(function(a, b) { return a.y - b.y; });
-      var root = d3.parsets.tree({children: {}}, csv, dimensions.map(function(d) { return d.name; }), function() { return 1; }),
-          nodes = partition(root),
-          nodesByPath = {};
-      nodes.forEach(function(d) {
-        var path = d.data.name,
-            p = d;
-        while ((p = p.parent) && p.data.name) {
-          path = p.data.name + "\0" + path;
-        }
-        if (path) nodesByPath[path] = d;
-      });
-      var data = [];
-      vis.on("mousedown.icicle", stopClick, true)
-        .select(".ribbon").selectAll("path")
-          .each(function(d) {
-            var node = nodesByPath[d.path],
-                s = d.source,
-                t = d.target;
-            s.node.x0 = t.node.x0 = 0;
-            s.x0 = t.x0 = node.x;
-            s.dx0 = s.dx;
-            t.dx0 = t.dx;
-            s.dx = t.dx = node.dx;
-            data.push(d);
-          });
-      iceTransition(vis.selectAll("path"))
-          .attr("d", function(d) {
-            var s = d.source,
-                t = d.target;
-            return ribbonPath(s, t, tension);
-          })
-          .style("stroke-opacity", 1);
-      iceTransition(vis.selectAll("text.icicle")
-          .data(data)
-        .enter().append("text")
-          .attr("class", "icicle")
-          .attr("text-anchor", "middle")
-          .attr("dy", ".3em")
-          .attr("transform", function(d) {
-            return "translate(" + [d.source.x0 + d.source.dx / 2, d.source.dimension.y0 + d.target.dimension.y0 >> 1] + ")rotate(90)";
-          })
-          .text(function(d) { return d.source.dx > 15 ? d.node.name : null; })
-          .style("opacity", 1e-6))
-          .style("opacity", 1);
-      iceTransition(vis.selectAll("g.dimension rect, g.category")
-          .style("opacity", 1))
-          .style("opacity", 1e-6)
-          .each("end", function() { d3.select(this).attr("visibility", "hidden"); });
-      iceTransition(vis.selectAll("text.dimension"))
-          .attr("transform", "translate(0,-5)");
-      vis.selectAll("tspan.sort").style("visibility", "hidden");
-    } else {
-      vis.on("mousedown.icicle", null)
-        .select(".ribbon").selectAll("path")
-          .each(function(d) {
-            var s = d.source,
-                t = d.target;
-            s.node.x0 = s.node.x;
-            s.x0 = s.x;
-            s.dx = s.dx0;
-            t.node.x0 = t.node.x;
-            t.x0 = t.x;
-            t.dx = t.dx0;
-          });
-      iceTransition(vis.selectAll("path"))
-          .attr("d", function(d) {
-            var s = d.source,
-                t = d.target;
-            return ribbonPath(s, t, tension);
-          })
-          .style("stroke-opacity", null);
-      iceTransition(vis.selectAll("text.icicle"))
-          .style("opacity", 1e-6).remove();
-      iceTransition(vis.selectAll("g.dimension rect, g.category")
-          .attr("visibility", null)
-          .style("opacity", 1e-6))
-          .style("opacity", 1);
-      iceTransition(vis.selectAll("text.dimension"))
-          .attr("transform", "translate(0,-25)");
-      vis.selectAll("tspan.sort").style("visibility", null);
-    }
-  };
-  d3.select("#icicle")
-      .on("change", icicle)
-      .each(icicle);
-});
-
-function iceTransition(g) {
-  return g.transition().duration(1000);
-}
-
-function ribbonPath(s, t, tension) {
-  var sx = s.node.x0 + s.x0,
-      tx = t.node.x0 + t.x0,
-      sy = s.dimension.y0,
-      ty = t.dimension.y0;
-  return (tension === 1 ? [
-      "M", [sx, sy],
-      "L", [tx, ty],
-      "h", t.dx,
-      "L", [sx + s.dx, sy],
-      "Z"]
-   : ["M", [sx, sy],
-      "C", [sx, m0 = tension * sy + (1 - tension) * ty], " ",
-           [tx, m1 = tension * ty + (1 - tension) * sy], " ", [tx, ty],
-      "h", t.dx,
-      "C", [tx + t.dx, m1], " ", [sx + s.dx, m0], " ", [sx + s.dx, sy],
-      "Z"]).join("");
-}
-
-function stopClick() { d3.event.stopPropagation(); }
-
-// Given a text function and width function, truncates the text if necessary to
-// fit within the given width.
-function truncateText(text, width) {
-  return function(d, i) {
-    var t = this.textContent = text(d, i),
-        w = width(d, i);
-    if (this.getComputedTextLength() < w) return t;
-    this.textContent = "…" + t;
-    var lo = 0,
-        hi = t.length + 1,
-        x;
-    while (lo < hi) {
-      var mid = lo + hi >> 1;
-      if ((x = this.getSubStringLength(0, mid)) < w) lo = mid + 1;
-      else hi = mid;
-    }
-    return lo > 1 ? t.substr(0, lo - 2) + "…" : "";
-  };
-}
-
-d3.select("#file").on("change", function() {
-  var file = this.files[0],
-      reader = new FileReader;
-  reader.onloadend = function() {
-    var csv = d3.csv.parse(reader.result);
-    vis.datum(csv).call(chart
-        .value(csv[0].hasOwnProperty("Number") ? function(d) { return +d.Number; } : 1)
-        .dimensions(function(d) { return d3.keys(d[0]).filter(function(d) { return d !== "Number"; }).sort(); }));
-  };
-  reader.readAsText(file);
 });
 </script>
-  
-  
-  
-  
-  
-  <script>
-  // Parallel Sets by Jason Davies, http://www.jasondavies.com/
-// Functionality based on http://eagereyes.org/parallel-sets
-(function() {
-  d3.parsets = function() {
-    var event = d3.dispatch("sortDimensions", "sortCategories"),
-        dimensions_ = autoDimensions,
-        dimensionFormat = String,
-        tooltip_ = defaultTooltip,
-        categoryTooltip = defaultCategoryTooltip,
-        value_,
-        spacing = 20,
-        width,
-        height,
-        tension = 1,
-        tension0,
-        duration = 500;
-
-    function parsets(selection) {
-      selection.each(function(data, i) {
-        var g = d3.select(this),
-            ordinal = d3.scale.ordinal(),
-            dragging = false,
-            dimensionNames = dimensions_.call(this, data, i),
-            dimensions = [],
-            tree = {children: {}, count: 0},
-            nodes,
-            total,
-            ribbon;
-
-        d3.select(window).on("mousemove.parsets." + ++parsetsId, unhighlight);
-
-        if (tension0 == null) tension0 = tension;
-        g.selectAll(".ribbon, .ribbon-mouse")
-            .data(["ribbon", "ribbon-mouse"], String)
-          .enter().append("g")
-            .attr("class", String);
-        updateDimensions();
-        if (tension != tension0) {
-          var t = d3.transition(g);
-          if (t.tween) t.tween("ribbon", tensionTween);
-          else tensionTween()(1);
-        }
-
-        function tensionTween() {
-          var i = d3.interpolateNumber(tension0, tension);
-          return function(t) {
-            tension0 = i(t);
-            ribbon.attr("d", ribbonPath);
-          };
-        }
-
-        function updateDimensions() {
-          // Cache existing bound dimensions to preserve sort order.
-          var dimension = g.selectAll("g.dimension"),
-              cache = {};
-          dimension.each(function(d) { cache[d.name] = d; });
-          dimensionNames.forEach(function(d) {
-            if (!cache.hasOwnProperty(d)) {
-              cache[d] = {name: d, categories: []};
-            }
-            dimensions.push(cache[d]);
-          });
-          dimensions.sort(compareY);
-          // Populate tree with existing nodes.
-          g.select(".ribbon").selectAll("path")
-              .each(function(d) {
-                var path = d.path.split("\0"),
-                    node = tree,
-                    n = path.length - 1;
-                for (var i = 0; i < n; i++) {
-                  var p = path[i];
-                  node = node.children.hasOwnProperty(p) ? node.children[p]
-                      : node.children[p] = {children: {}, count: 0};
-                }
-                node.children[d.name] = d;
-              });
-          tree = buildTree(tree, data, dimensions.map(dimensionName), value_);
-          cache = dimensions.map(function(d) {
-            var t = {};
-            d.categories.forEach(function(c) {
-              t[c.name] = c;
-            });
-            return t;
-          });
-          (function categories(d, i) {
-            if (!d.children) return;
-            var dim = dimensions[i],
-                t = cache[i];
-            for (var k in d.children) {
-              if (!t.hasOwnProperty(k)) {
-                dim.categories.push(t[k] = {name: k});
-              }
-              categories(d.children[k], i + 1);
-            }
-          })(tree, 0);
-          ordinal.domain([]).range(d3.range(dimensions[0].categories.length));
-          nodes = layout(tree, dimensions, ordinal);
-          total = getTotal(dimensions);
-          dimensions.forEach(function(d) {
-            d.count = total;
-          });
-          dimension = dimension.data(dimensions, dimensionName);
-
-          var dEnter = dimension.enter().append("g")
-              .attr("class", "dimension")
-              .attr("transform", function(d) { return "translate(0," + d.y + ")"; })
-              .on("mousedown.parsets", cancelEvent);
-          dimension.each(function(d) {
-                d.y0 = d.y;
-                d.categories.forEach(function(d) { d.x0 = d.x; });
-              });
-          dEnter.append("rect")
-              .attr("width", width)
-              .attr("y", -45)
-              .attr("height", 45);
-          var textEnter = dEnter.append("text")
-              .attr("class", "dimension")
-              .attr("transform", "translate(0,-25)");
-          textEnter.append("tspan")
-              .attr("class", "name")
-              .text(dimensionFormatName);
-          textEnter.append("tspan")
-              .attr("class", "sort alpha")
-              .attr("dx", "2em")
-              .text("alpha »")
-              .on("mousedown.parsets", cancelEvent);
-          textEnter.append("tspan")
-              .attr("class", "sort size")
-              .attr("dx", "2em")
-              .text("size »")
-              .on("mousedown.parsets", cancelEvent);
-          dimension
-              .call(d3.behavior.drag()
-                .origin(identity)
-                .on("dragstart", function(d) {
-                  dragging = true;
-                  d.y0 = d.y;
-                })
-                .on("drag", function(d) {
-                  d.y0 = d.y = d3.event.y;
-                  for (var i = 1; i < dimensions.length; i++) {
-                    if (height * dimensions[i].y < height * dimensions[i - 1].y) {
-                      dimensions.sort(compareY);
-                      dimensionNames = dimensions.map(dimensionName);
-                      ordinal.domain([]).range(d3.range(dimensions[0].categories.length));
-                      nodes = layout(tree = buildTree({children: {}, count: 0}, data, dimensionNames, value_), dimensions, ordinal);
-                      total = getTotal(dimensions);
-                      g.selectAll(".ribbon, .ribbon-mouse").selectAll("path").remove();
-                      updateRibbons();
-                      updateCategories(dimension);
-                      dimension.transition().duration(duration)
-                          .attr("transform", translateY)
-                          .tween("ribbon", ribbonTweenY);
-                      event.sortDimensions();
-                      break;
-                    }
-                  }
-                  d3.select(this)
-                      .attr("transform", "translate(0," + d.y + ")")
-                      .transition();
-                  ribbon.filter(function(r) { return r.source.dimension === d || r.target.dimension === d; })
-                      .attr("d", ribbonPath);
-                })
-                .on("dragend", function(d) {
-                  dragging = false;
-                  unhighlight();
-                  var y0 = 45,
-                      dy = (height - y0 - 2) / (dimensions.length - 1);
-                  dimensions.forEach(function(d, i) {
-                    d.y = y0 + i * dy;
-                  });
-                  transition(d3.select(this))
-                      .attr("transform", "translate(0," + d.y + ")")
-                      .tween("ribbon", ribbonTweenY);
-                }));
-          dimension.select("text").select("tspan.sort.alpha")
-              .on("click.parsets", sortBy("alpha", function(a, b) { return a.name < b.name ? 1 : -1; }, dimension));
-          dimension.select("text").select("tspan.sort.size")
-              .on("click.parsets", sortBy("size", function(a, b) { return a.count - b.count; }, dimension));
-          dimension.transition().duration(duration)
-              .attr("transform", function(d) { return "translate(0," + d.y + ")"; })
-              .tween("ribbon", ribbonTweenY);
-          dimension.exit().remove();
-
-          updateCategories(dimension);
-          updateRibbons();
-        }
-
-        function sortBy(type, f, dimension) {
-          return function(d) {
-            var direction = this.__direction = -(this.__direction || 1);
-            d3.select(this).text(direction > 0 ? type + " »" : "« " + type);
-            d.categories.sort(function() { return direction * f.apply(this, arguments); });
-            nodes = layout(tree, dimensions, ordinal);
-            updateCategories(dimension);
-            updateRibbons();
-            event.sortCategories();
-          };
-        }
-
-        function updateRibbons() {
-          ribbon = g.select(".ribbon").selectAll("path")
-              .data(nodes, function(d) { return d.path; });
-          ribbon.enter().append("path")
-              .each(function(d) {
-                d.source.x0 = d.source.x;
-                d.target.x0 = d.target.x;
-              })
-              .attr("class", function(d) { return "category-" + d.major; })
-              .attr("d", ribbonPath);
-          ribbon.sort(function(a, b) { return b.count - a.count; });
-          ribbon.exit().remove();
-          var mouse = g.select(".ribbon-mouse").selectAll("path")
-              .data(nodes, function(d) { return d.path; });
-          mouse.enter().append("path")
-              .on("mousemove.parsets", function(d) {
-                ribbon.classed("active", false);
-                if (dragging) return;
-                highlight(d = d.node, true);
-                showTooltip(tooltip_.call(this, d));
-                d3.event.stopPropagation();
-              });
-          mouse
-              .sort(function(a, b) { return b.count - a.count; })
-              .attr("d", ribbonPathStatic);
-          mouse.exit().remove();
-        }
-
-        // Animates the x-coordinates only of the relevant ribbon paths.
-        function ribbonTweenX(d) {
-          var nodes = [d],
-              r = ribbon.filter(function(r) {
-                var s, t;
-                if (r.source.node === d) nodes.push(s = r.source);
-                if (r.target.node === d) nodes.push(t = r.target);
-                return s || t;
-              }),
-              i = nodes.map(function(d) { return d3.interpolateNumber(d.x0, d.x); }),
-              n = nodes.length;
-          return function(t) {
-            for (var j = 0; j < n; j++) nodes[j].x0 = i[j](t);
-            r.attr("d", ribbonPath);
-          };
-        }
-
-        // Animates the y-coordinates only of the relevant ribbon paths.
-        function ribbonTweenY(d) {
-          var r = ribbon.filter(function(r) { return r.source.dimension.name == d.name || r.target.dimension.name == d.name; }),
-              i = d3.interpolateNumber(d.y0, d.y);
-          return function(t) {
-            d.y0 = i(t);
-            r.attr("d", ribbonPath);
-          };
-        }
-
-        // Highlight a node and its descendants, and optionally its ancestors.
-        function highlight(d, ancestors) {
-          if (dragging) return;
-          var highlight = [];
-          (function recurse(d) {
-            highlight.push(d);
-            for (var k in d.children) recurse(d.children[k]);
-          })(d);
-          highlight.shift();
-          if (ancestors) while (d) highlight.push(d), d = d.parent;
-          ribbon.filter(function(d) {
-            var active = highlight.indexOf(d.node) >= 0;
-            if (active) this.parentNode.appendChild(this);
-            return active;
-          }).classed("active", true);
-        }
-
-        // Unhighlight all nodes.
-        function unhighlight() {
-          if (dragging) return;
-          ribbon.classed("active", false);
-          hideTooltip();
-        }
-
-        function updateCategories(g) {
-          var category = g.selectAll("g.category")
-              .data(function(d) { return d.categories; }, function(d) { return d.name; });
-          var categoryEnter = category.enter().append("g")
-              .attr("class", "category")
-              .attr("transform", function(d) { return "translate(" + d.x + ")"; });
-          category.exit().remove();
-          category
-              .on("mousemove.parsets", function(d) {
-                ribbon.classed("active", false);
-                if (dragging) return;
-                d.nodes.forEach(function(d) { highlight(d); });
-                showTooltip(categoryTooltip.call(this, d));
-                d3.event.stopPropagation();
-              })
-              .on("mouseout.parsets", unhighlight)
-              .on("mousedown.parsets", cancelEvent)
-              .call(d3.behavior.drag()
-                .origin(identity)
-                .on("dragstart", function(d) {
-                  dragging = true;
-                  d.x0 = d.x;
-                })
-                .on("drag", function(d) {
-                  d.x = d3.event.x;
-                  var categories = d.dimension.categories;
-                  for (var i = 0, c = categories[0]; ++i < categories.length;) {
-                    if (c.x + c.dx / 2 > (c = categories[i]).x + c.dx / 2) {
-                      categories.sort(function(a, b) { return a.x + a.dx / 2 - b.x - b.dx / 2; });
-                      nodes = layout(tree, dimensions, ordinal);
-                      updateRibbons();
-                      updateCategories(g);
-                      highlight(d.node);
-                      event.sortCategories();
-                      break;
-                    }
-                  }
-                  var x = 0,
-                      p = spacing / (categories.length - 1);
-                  categories.forEach(function(e) {
-                    if (d === e) e.x0 = d3.event.x;
-                    e.x = x;
-                    x += e.count / total * (width - spacing) + p;
-                  });
-                  d3.select(this)
-                      .attr("transform", function(d) { return "translate(" + d.x0 + ")"; })
-                      .transition();
-                  ribbon.filter(function(r) { return r.source.node === d || r.target.node === d; })
-                      .attr("d", ribbonPath);
-                })
-                .on("dragend", function(d) {
-                  dragging = false;
-                  unhighlight();
-                  updateRibbons();
-                  transition(d3.select(this))
-                      .attr("transform", "translate(" + d.x + ")")
-                      .tween("ribbon", ribbonTweenX);
-                }));
-          category.transition().duration(duration)
-              .attr("transform", function(d) { return "translate(" + d.x + ")"; })
-              .tween("ribbon", ribbonTweenX);
-
-          categoryEnter.append("rect")
-              .attr("width", function(d) { return d.dx; })
-              .attr("y", -20)
-              .attr("height", 20);
-          categoryEnter.append("line")
-              .style("stroke-width", 2);
-          categoryEnter.append("text")
-              .attr("dy", "-.3em");
-          category.select("rect")
-              .attr("width", function(d) { return d.dx; })
-              .attr("class", function(d) {
-                return "category-" + (d.dimension === dimensions[0] ? ordinal(d.name) : "background");
-              });
-          category.select("line")
-              .attr("x2", function(d) { return d.dx; });
-          category.select("text")
-              .text(truncateText(function(d) { return d.name; }, function(d) { return d.dx; }));
-        }
-      });
-    }
-
-    parsets.dimensionFormat = function(_) {
-      if (!arguments.length) return dimensionFormat;
-      dimensionFormat = _;
-      return parsets;
-    };
-
-    parsets.dimensions = function(_) {
-      if (!arguments.length) return dimensions_;
-      dimensions_ = d3.functor(_);
-      return parsets;
-    };
-
-    parsets.value = function(_) {
-      if (!arguments.length) return value_;
-      value_ = d3.functor(_);
-      return parsets;
-    };
-
-    parsets.width = function(_) {
-      if (!arguments.length) return width;
-      width = +_;
-      return parsets;
-    };
-
-    parsets.height = function(_) {
-      if (!arguments.length) return height;
-      height = +_;
-      return parsets;
-    };
-
-    parsets.spacing = function(_) {
-      if (!arguments.length) return spacing;
-      spacing = +_;
-      return parsets;
-    };
-
-    parsets.tension = function(_) {
-      if (!arguments.length) return tension;
-      tension = +_;
-      return parsets;
-    };
-
-    parsets.duration = function(_) {
-      if (!arguments.length) return duration;
-      duration = +_;
-      return parsets;
-    };
-
-    parsets.tooltip = function(_) {
-      if (!arguments.length) return tooltip;
-      tooltip = _ == null ? defaultTooltip : _;
-      return parsets;
-    };
-
-    parsets.categoryTooltip = function(_) {
-      if (!arguments.length) return categoryTooltip;
-      categoryTooltip = _ == null ? defaultCategoryTooltip : _;
-      return parsets;
-    };
-
-    var body = d3.select("body");
-    var tooltip = body.append("div")
-        .style("display", "none")
-        .attr("class", "parsets tooltip");
-
-    return d3.rebind(parsets, event, "on").value(1).width(960).height(600);
-
-    function dimensionFormatName(d, i) {
-      return dimensionFormat.call(this, d.name, i);
-    }
-
-    function showTooltip(html) {
-      var m = d3.mouse(body.node());
-      tooltip
-          .style("display", null)
-          .style("left", m[0] + 30 + "px")
-          .style("top", m[1] - 20 + "px")
-          .html(html);
-    }
-
-    function hideTooltip() {
-      tooltip.style("display", "none");
-    }
-
-    function transition(g) {
-      return duration ? g.transition().duration(duration).ease(parsetsEase) : g;
-    }
-
-    function layout(tree, dimensions, ordinal) {
-      var nodes = [],
-          nd = dimensions.length,
-          y0 = 45,
-          dy = (height - y0 - 2) / (nd - 1);
-      dimensions.forEach(function(d, i) {
-        d.categories.forEach(function(c) {
-          c.dimension = d;
-          c.count = 0;
-          c.nodes = [];
-        });
-        d.y = y0 + i * dy;
-      });
-
-      // Compute per-category counts.
-      var total = (function rollup(d, i) {
-        if (!d.children) return d.count;
-        var dim = dimensions[i],
-            total = 0;
-        dim.categories.forEach(function(c) {
-          var child = d.children[c.name];
-          if (!child) return;
-          c.nodes.push(child);
-          var count = rollup(child, i + 1);
-          c.count += count;
-          total += count;
-        });
-        return total;
-      })(tree, 0);
-
-      // Stack the counts.
-      dimensions.forEach(function(d) {
-        d.categories = d.categories.filter(function(d) { return d.count; });
-        var x = 0,
-            p = spacing / (d.categories.length - 1);
-        d.categories.forEach(function(c) {
-          c.x = x;
-          c.dx = c.count / total * (width - spacing);
-          c.in = {dx: 0};
-          c.out = {dx: 0};
-          x += c.dx + p;
-        });
-      });
-
-      var dim = dimensions[0];
-      dim.categories.forEach(function(c) {
-        var k = c.name;
-        if (tree.children.hasOwnProperty(k)) {
-          recurse(c, {node: tree.children[k], path: k}, 1, ordinal(k));
-        }
-      });
-
-      function recurse(p, d, depth, major) {
-        var node = d.node,
-            dimension = dimensions[depth];
-        dimension.categories.forEach(function(c) {
-          var k = c.name;
-          if (!node.children.hasOwnProperty(k)) return;
-          var child = node.children[k];
-          child.path = d.path + "\0" + k;
-          var target = child.target || {node: c, dimension: dimension};
-          target.x = c.in.dx;
-          target.dx = child.count / total * (width - spacing);
-          c.in.dx += target.dx;
-          var source = child.source || {node: p, dimension: dimensions[depth - 1]};
-          source.x = p.out.dx;
-          source.dx = target.dx;
-          p.out.dx += source.dx;
-
-          child.node = child;
-          child.source = source;
-          child.target = target;
-          child.major = major;
-          nodes.push(child);
-          if (depth + 1 < dimensions.length) recurse(c, child, depth + 1, major);
-        });
-      }
-      return nodes;
-    }
-
-    // Dynamic path string for transitions.
-    function ribbonPath(d) {
-      var s = d.source,
-          t = d.target;
-      return ribbonPathString(s.node.x0 + s.x0, s.dimension.y0, s.dx, t.node.x0 + t.x0, t.dimension.y0, t.dx, tension0);
-    }
-
-    // Static path string for mouse handlers.
-    function ribbonPathStatic(d) {
-      var s = d.source,
-          t = d.target;
-      return ribbonPathString(s.node.x + s.x, s.dimension.y, s.dx, t.node.x + t.x, t.dimension.y, t.dx, tension);
-    }
-
-    function ribbonPathString(sx, sy, sdx, tx, ty, tdx, tension) {
-      var m0, m1;
-      return (tension === 1 ? [
-          "M", [sx, sy],
-          "L", [tx, ty],
-          "h", tdx,
-          "L", [sx + sdx, sy],
-          "Z"]
-       : ["M", [sx, sy],
-          "C", [sx, m0 = tension * sy + (1 - tension) * ty], " ",
-               [tx, m1 = tension * ty + (1 - tension) * sy], " ", [tx, ty],
-          "h", tdx,
-          "C", [tx + tdx, m1], " ", [sx + sdx, m0], " ", [sx + sdx, sy],
-          "Z"]).join("");
-    }
-
-    function compareY(a, b) {
-      a = height * a.y, b = height * b.y;
-      return a < b ? -1 : a > b ? 1 : a >= b ? 0 : a <= a ? -1 : b <= b ? 1 : NaN;
-    }
-  };
-  d3.parsets.tree = buildTree;
-
-  function autoDimensions(d) {
-    return d.length ? d3.keys(d[0]).sort() : [];
-  }
-
-  function cancelEvent() {
-    d3.event.stopPropagation();
-    d3.event.preventDefault();
-  }
-
-  function dimensionName(d) { return d.name; }
-
-  function getTotal(dimensions) {
-    return dimensions[0].categories.reduce(function(a, d) {
-      return a + d.count;
-    }, 0);
-  }
-
-  // Given a text function and width function, truncates the text if necessary to
-  // fit within the given width.
-  function truncateText(text, width) {
-    return function(d, i) {
-      var t = this.textContent = text(d, i),
-          w = width(d, i);
-      if (this.getComputedTextLength() < w) return t;
-      this.textContent = "…" + t;
-      var lo = 0,
-          hi = t.length + 1,
-          x;
-      while (lo < hi) {
-        var mid = lo + hi >> 1;
-        if ((x = this.getSubStringLength(0, mid)) < w) lo = mid + 1;
-        else hi = mid;
-      }
-      return lo > 1 ? t.substr(0, lo - 2) + "…" : "";
-    };
-  }
-
-  var percent = d3.format("%"),
-      comma = d3.format(",f"),
-      parsetsEase = "elastic",
-      parsetsId = 0;
-
-  // Construct tree of all category counts for a given ordered list of
-  // dimensions.  Similar to d3.nest, except we also set the parent.
-  function buildTree(root, data, dimensions, value) {
-    zeroCounts(root);
-    var n = data.length,
-        nd = dimensions.length;
-    for (var i = 0; i < n; i++) {
-      var d = data[i],
-          v = value(d, i),
-          node = root;
-      for (var j = 0; j < nd; j++) {
-        var dimension = dimensions[j],
-            category = d[dimension],
-            children = node.children;
-        node.count += v;
-        node = children.hasOwnProperty(category) ? children[category]
-            : children[category] = {
-              children: j === nd - 1 ? null : {},
-              count: 0,
-              parent: node,
-              dimension: dimension,
-              name: category
-            };
-      }
-      node.count += v;
-    }
-    return root;
-  }
-
-  function zeroCounts(d) {
-    d.count = 0;
-    if (d.children) {
-      for (var k in d.children) zeroCounts(d.children[k]);
-    }
-  }
-
-  function identity(d) { return d; }
-
-  function translateY(d) { return "translate(0," + d.y + ")"; }
-
-  function defaultTooltip(d) {
-    var count = d.count,
-        path = [];
-    while (d.parent) {
-      if (d.name) path.unshift(d.name);
-      d = d.parent;
-    }
-    return path.join(" → ") + "<br>" + comma(count) + " (" + percent(count / d.count) + ")";
-  }
-
-  function defaultCategoryTooltip(d) {
-    return d.name + "<br>" + comma(d.count) + " (" + percent(d.count / d.dimension.count) + ")";
-  }
-})();
-  </script>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <script>
-    /*
-
-Copyright 2006, Ivan Sagalaev.
-All rights reserved.
-
-Redistribution and use in source and binary forms, with or without modification,
-are permitted provided that the following conditions are met:
-
-* Redistributions of source code must retain the above copyright notice, this
-  list of conditions and the following disclaimer.
-
-* Redistributions in binary form must reproduce the above copyright notice, this
-  list of conditions and the following disclaimer in the documentation and/or
-  other materials provided with the distribution.
-
-* Neither the name of highlight.js nor the names of its contributors may be used
-  to endorse or promote products derived from this software without specific
-  prior written permission.
-
-THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS "AS IS" AND ANY
-EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-DISCLAIMED. IN NO EVENT SHALL THE REGENTS AND CONTRIBUTORS BE LIABLE FOR ANY
-DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
-(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
-ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-*/
-var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function c(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function j(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function g(t,s){var r="";for(var q=0;q<t.childNodes.length;q++){if(t.childNodes[q].nodeType==3){var p=t.childNodes[q].nodeValue;if(s){p=p.replace(/\n/g,"")}r+=p}else{if(t.childNodes[q].nodeName=="BR"){r+="\n"}else{r+=g(t.childNodes[q])}}}if(/MSIE [678]/.test(navigator.userAgent)){r=r.replace(/\r/g,"\n")}return r}function a(s){var q=s.className.split(/\s+/);q=q.concat(s.parentNode.className.split(/\s+/));for(var p=0;p<q.length;p++){var r=q[p].replace(/^language-/,"");if(d[r]||r=="no-highlight"){return r}}}function b(p){var q=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{q.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);q.push({event:"stop",offset:t,node:s.childNodes[r]})}}}return t})(p,0);return q}function l(y,z,x){var r=0;var w="";var t=[];function u(){if(y.length&&z.length){if(y[0].offset!=z[0].offset){return(y[0].offset<z[0].offset)?y:z}else{return z[0].event=="start"?y:z}}else{return y.length?y:z}}function s(C){var D="<"+C.nodeName.toLowerCase();for(var A=0;A<C.attributes.length;A++){var B=C.attributes[A];D+=" "+B.nodeName.toLowerCase();if(B.nodeValue!=undefined&&B.nodeValue!=false&&B.nodeValue!=null){D+='="'+m(B.nodeValue)+'"'}}return D+">"}while(y.length||z.length){var v=u().splice(0,1)[0];w+=m(x.substr(r,v.offset-r));r=v.offset;if(v.event=="start"){w+=s(v.node);t.push(v.node)}else{if(v.event=="stop"){var q=t.length;do{q--;var p=t[q];w+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);t.splice(q,1);while(q<t.length){w+=s(t[q]);q++}}}}w+=x.substr(r);return w}function i(){function p(u,t,v){if(u.compiled){return}if(!v){u.bR=c(t,u.b?u.b:"\\B|\\b");if(!u.e&&!u.eW){u.e="\\B|\\b"}if(u.e){u.eR=c(t,u.e)}}if(u.i){u.iR=c(t,u.i)}if(u.r==undefined){u.r=1}if(u.k){u.lR=c(t,u.l||hljs.IR,true)}for(var s in u.k){if(!u.k.hasOwnProperty(s)){continue}if(u.k[s] instanceof Object){u.kG=u.k}else{u.kG={keyword:u.k}}break}if(!u.c){u.c=[]}u.compiled=true;for(var r=0;r<u.c.length;r++){p(u.c[r],t,false)}if(u.starts){p(u.starts,t,false)}}for(var q in d){if(!d.hasOwnProperty(q)){continue}p(d[q].dM,d[q],true)}}function e(J,D){if(!i.called){i();i.called=true}function z(r,M){for(var L=0;L<M.c.length;L++){if(M.c[L].bR.test(r)){return M.c[L]}}}function w(L,r){if(C[L].e&&C[L].eR.test(r)){return 1}if(C[L].eW){var M=w(L-1,r);return M?M+1:0}return 0}function x(r,L){return L.iR&&L.iR.test(r)}function A(O,N){var M=[];for(var L=0;L<O.c.length;L++){M.push(O.c[L].b)}var r=C.length-1;do{if(C[r].e){M.push(C[r].e)}r--}while(C[r+1].eW);if(O.i){M.push(O.i)}return c(N,"("+M.join("|")+")",true)}function s(M,L){var N=C[C.length-1];if(!N.t){N.t=A(N,H)}N.t.lastIndex=L;var r=N.t.exec(M);if(r){return[M.substr(L,r.index-L),r[0],false]}else{return[M.substr(L),"",true]}}function p(O,r){var L=H.cI?r[0].toLowerCase():r[0];for(var N in O.kG){if(!O.kG.hasOwnProperty(N)){continue}var M=O.kG[N].hasOwnProperty(L);if(M){return[N,M]}}return false}function F(M,O){if(!O.k){return m(M)}var N="";var P=0;O.lR.lastIndex=0;var L=O.lR.exec(M);while(L){N+=m(M.substr(P,L.index-P));var r=p(O,L);if(r){t+=r[1];N+='<span class="'+r[0]+'">'+m(L[0])+"</span>"}else{N+=m(L[0])}P=O.lR.lastIndex;L=O.lR.exec(M)}N+=m(M.substr(P,M.length-P));return N}function K(r,M){if(M.sL&&d[M.sL]){var L=e(M.sL,r);t+=L.keyword_count;return L.value}else{return F(r,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){q+=L;M.buffer=""}else{if(M.eB){q+=m(r)+L;M.buffer=""}else{q+=L;M.buffer=r}}C.push(M);B+=M.r}function E(O,L,Q){var R=C[C.length-1];if(Q){q+=K(R.buffer+O,R);return false}var M=z(L,R);if(M){q+=K(R.buffer+O,R);I(M,L);return M.rB}var r=w(C.length-1,L);if(r){var N=R.cN?"</span>":"";if(R.rE){q+=K(R.buffer+O,R)+N}else{if(R.eE){q+=K(R.buffer+O,R)+N+m(L)}else{q+=K(R.buffer+O+L,R)+N}}while(r>1){N=C[C.length-2].cN?"</span>":"";q+=N;r--;C.length--}var P=C[C.length-1];C.length--;C[C.length-1].buffer="";if(P.starts){I(P.starts,"")}return R.rE}if(x(L,R)){throw"Illegal"}}var H=d[J];var C=[H.dM];var B=0;var t=0;var q="";try{var v=0;H.dM.buffer="";do{var y=s(D,v);var u=E(y[0],y[1],y[2]);v+=y[0].length;if(!u){v+=y[1].length}}while(!y[2]);if(C.length>1){throw"Illegal"}return{r:B,keyword_count:t,value:q}}catch(G){if(G=="Illegal"){return{r:0,keyword_count:0,value:m(D)}}else{throw G}}}function f(t){var r={keyword_count:0,r:0,value:m(t)};var q=r;for(var p in d){if(!d.hasOwnProperty(p)){continue}var s=e(p,t);s.language=p;if(s.keyword_count+s.r>q.keyword_count+q.r){q=s}if(s.keyword_count+s.r>r.keyword_count+r.r){q=r;r=s}}if(q.language){r.second_best=q}return r}function h(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function o(u,x,q){var y=g(u,q);var s=a(u);if(s=="no-highlight"){return}if(s){var w=e(s,y)}else{var w=f(y);s=w.language}var p=b(u);if(p.length){var r=document.createElement("pre");r.innerHTML=w.value;w.value=l(p,b(r),y)}w.value=h(w.value,x,q);var t=u.className;if(!t.match("(\\s|^)(language-)?"+s+"(\\s|$)")){t=t?(t+" "+s):s}if(/MSIE [678]/.test(navigator.userAgent)&&u.tagName=="CODE"&&u.parentNode.tagName=="PRE"){var r=u.parentNode;var v=document.createElement("div");v.innerHTML="<pre><code>"+w.value+"</code></pre>";u=v.firstChild.firstChild;v.firstChild.cN=r.cN;r.parentNode.replaceChild(v.firstChild,r)}else{u.innerHTML=w.value}u.className=t;u.result={language:s,kw:w.keyword_count,re:w.r};if(w.second_best){u.second_best={language:w.second_best.language,kw:w.second_best.keyword_count,re:w.second_best.r}}}function k(){if(k.called){return}k.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=j(r[p]);if(q){o(q,hljs.tabReplace)}}}function n(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",k,false);window.addEventListener("load",k,false)}else{if(window.attachEvent){window.attachEvent("onload",k)}else{window.onload=k}}}var d={};this.LANGUAGES=d;this.highlight=e;this.highlightAuto=f;this.fixMarkup=h;this.highlightBlock=o;this.initHighlighting=k;this.initHighlightingOnLoad=n;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0x[A-Za-z0-9]+|\\d+(\\.\\d+)?)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.inherit=function(p,s){var r={};for(var q in p){r[q]=p[q]}if(s){for(var q in s){r[q]=s[q]}}return r}}();hljs.LANGUAGES.javascript={dM:{k:{keyword:{"in":1,"if":1,"for":1,"while":1,"finally":1,"var":1,"new":1,"function":1,"do":1,"return":1,"void":1,"else":1,"break":1,"catch":1,"instanceof":1,"with":1,"throw":1,"case":1,"default":1,"try":1,"this":1,"switch":1,"continue":1,"typeof":1,"delete":1},literal:{"true":1,"false":1,"null":1}},c:[hljs.ASM,hljs.QSM,hljs.CLCM,hljs.CBLCLM,hljs.CNM,{b:"("+hljs.RSR+"|case|return|throw)\\s*",k:{"return":1,"throw":1,"case":1},c:[hljs.CLCM,hljs.CBLCLM,{cN:"regexp",b:"/",e:"/[gim]*",c:[{b:"\\\\/"}]}],r:0},{cN:"function",b:"\\bfunction\\b",e:"{",k:{"function":1},c:[{cN:"title",b:"[A-Za-z$_][0-9A-Za-z$_]*"},{cN:"params",b:"\\(",e:"\\)",c:[hljs.ASM,hljs.QSM,hljs.CLCM,hljs.CBLCLM]}]}]}};hljs.LANGUAGES.css=function(){var a={cN:"function",b:hljs.IR+"\\(",e:"\\)",c:[{eW:true,eE:true,c:[hljs.NM,hljs.ASM,hljs.QSM]}]};return{cI:true,dM:{i:"[=/|']",c:[hljs.CBLCLM,{cN:"id",b:"\\#[A-Za-z0-9_-]+"},{cN:"class",b:"\\.[A-Za-z0-9_-]+",r:0},{cN:"attr_selector",b:"\\[",e:"\\]",i:"$"},{cN:"pseudo",b:":(:)?[a-zA-Z0-9\\_\\-\\+\\(\\)\\\"\\']+"},{cN:"at_rule",b:"@(font-face|page)",l:"[a-z-]+",k:{"font-face":1,page:1}},{cN:"at_rule",b:"@",e:"[{;]",eE:true,k:{"import":1,page:1,media:1,charset:1},c:[a,hljs.ASM,hljs.QSM,hljs.NM]},{cN:"tag",b:hljs.IR,r:0},{cN:"rules",b:"{",e:"}",i:"[^\\s]",r:0,c:[hljs.CBLCLM,{cN:"rule",b:"[^\\s]",rB:true,e:";",eW:true,c:[{cN:"attribute",b:"[A-Z\\_\\.\\-]+",e:":",eE:true,i:"[^\\s]",starts:{cN:"value",eW:true,eE:true,c:[a,hljs.NM,hljs.QSM,hljs.ASM,hljs.CBLCLM,{cN:"hexcolor",b:"\\#[0-9A-F]+"},{cN:"important",b:"!important"}]}}]}]}]}}}();hljs.LANGUAGES.xml=function(){var b="[A-Za-z0-9\\._:-]+";var a={eW:true,c:[{cN:"attribute",b:b,r:0},{b:'="',rB:true,e:'"',c:[{cN:"value",b:'"',eW:true}]},{b:"='",rB:true,e:"'",c:[{cN:"value",b:"'",eW:true}]},{b:"=",c:[{cN:"value",b:"[^\\s/>]+"}]}]};return{cI:true,dM:{c:[{cN:"pi",b:"<\\?",e:"\\?>",r:10},{cN:"doctype",b:"<!DOCTYPE",e:">",r:10,c:[{b:"\\[",e:"\\]"}]},{cN:"comment",b:"<!--",e:"-->",r:10},{cN:"cdata",b:"<\\!\\[CDATA\\[",e:"\\]\\]>",r:10},{cN:"tag",b:"<style",e:">",k:{title:{style:1}},c:[a],starts:{cN:"css",e:"</style>",rE:true,sL:"css"}},{cN:"tag",b:"<script",e:">",k:{title:{script:1}},c:[a],starts:{cN:"javascript",e:"<\/script>",rE:true,sL:"javascript"}},{cN:"vbscript",b:"<%",e:"%>",sL:"vbscript"},{cN:"tag",b:"</?",e:"/?>",c:[{cN:"title",b:"[^ />]+"},a]}]}}}();
-d3.selectAll("code:not([class])").classed("javascript", 1);
-d3.selectAll("code").each(function() { hljs.highlightBlock(this); });
-
-    </script>
