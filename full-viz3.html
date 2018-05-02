@@ -21,9 +21,9 @@
   shape-rendering: crispEdges;
 }
 
-/*.x.axis path {
+.x.axis path {
   display: none;
-}*/
+}
 
 .d3-tip {
   line-height: 1;
@@ -132,7 +132,7 @@ d3.csv("data/7500up.csv", function(error, data) {
     });
 
 function type(d) {
-  d.amount = +d.amount;
+  //d.amount = +d.amount;
   return d;
 }
 
