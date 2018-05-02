@@ -86,11 +86,11 @@ var title = svg.append("text")
 d3.csv("data/7500up.csv", function(error, data) {
 
   // Convert strings to numbers.
-  /*data.forEach(function(d) {
+  data.forEach(function(d) {
     d.amount = +d.amount;
     d.party = +d.party;
     d.donor = +d.donor;
-  });*/
+  });
 
   // Compute the extent of the data set in age and years.
   var age1 = d3.max(data, function(d) { return d.donor; }),
