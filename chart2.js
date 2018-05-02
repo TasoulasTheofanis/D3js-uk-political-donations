@@ -381,7 +381,9 @@ function mouseover(d, i) {
 	//paradoteo 2 doesn't work yet
 	var img = document.createElement("img");
 	img.src = "https://raw.githubusercontent.com/ioniodi/D3js-uk-political-donations/master/photos/" + donor + ".ico";
+	img.style("display","block");
 	document.body.appendChild(img);
+	
 	
 	
 	// tooltip popup
