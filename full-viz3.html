@@ -64,7 +64,7 @@ d3.csv("data/7500up.csv", function(error, data) {
 
   // format the data
   data.forEach(function(d) {
-      d.date = parseTime(d.donor);
+      d.date = d.donor;
       d.close = +d.amount;
   });
 
