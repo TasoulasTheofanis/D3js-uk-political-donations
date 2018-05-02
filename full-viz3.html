@@ -39,14 +39,14 @@ var y = d3.scaleLinear().range([height, 0]);
 
 // define the area
 var area = d3.area()
-    .x(function(d) { return x(d.donor); })
+    .x(function(d) { return x(d.amount); })
     .y0(height)
-    .y1(function(d) { return y(d.amount); });
+    .y1(function(d) { return y(d.date); });
 
 // define the line
 var valueline = d3.line()
-    .x(function(d) { return x(d.donor); })
-    .y(function(d) { return y(d.amount); });
+    .x(function(d) { return x(d.amount); })
+    .y(function(d) { return y(d.date); });
 
 // append the svg obgect to the body of the page
 // appends a 'group' element to 'svg'
@@ -64,13 +64,13 @@ d3.csv("data/7500up.csv", function(error, data) {
 
   // format the data
   data.forEach(function(d) {
-      d.donor = d.donor;
       d.amount = d.amount;
+      d.date = d.date;
   });
 
   // scale the range of the data
-  x.domain(d3.extent(data, function(d) { return d.donor; }));
-  y.domain([0, d3.max(data, function(d) { return d.amount; })]);
+  x.domain(d3.extent(data, function(d) { return d.amount; }));
+  y.domain([0, d3.max(data, function(d) { return d.date; })]);
 
   // add the area
     svg.append("path")
