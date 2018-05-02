@@ -87,7 +87,7 @@ d3.csv("data/7500up.csv", function(error, data) {
 
   // Convert strings to numbers.
   data.forEach(function(d) {
-    d.amount = +d.amount;
+    //d.amount = +d.amount;
     d.party = +d.party;
     d.donor = +d.donor;    
     d.entity = +d.entity;
@@ -102,7 +102,7 @@ d3.csv("data/7500up.csv", function(error, data) {
       year = year1 + year1;
 
   // Update the scale domains.
-  x.domain([year1 - age1, year1]);
+  x.domain([year0, year1]);
   y.domain([0, d3.max(data, function(d) { return d.amount; })]);
 
   // Produce a map from year and birthyear to [male, female].
@@ -123,7 +123,7 @@ d3.csv("data/7500up.csv", function(error, data) {
 
   // Add labeled rects for each birthyear (so that no enter or exit is required).
   var birthyear = birthyears.selectAll(".birthyear")
-      .data(d3.range(year0 - age1, year1 + 1, 5))
+      .data(d3.range(year0, year1 + 1, 5))
     .enter().append("g")
       .attr("class", "birthyear")
       .attr("transform", function(birthyear) { return "translate(" + x(birthyear) + ",0)"; });
@@ -143,7 +143,7 @@ d3.csv("data/7500up.csv", function(error, data) {
 
   // Add labels to show age (separate; not animated).
   svg.selectAll(".age")
-      .data(d3.range(0, age1 + 1, 5))
+      .data(d3.range(0, year0 + 1, 5))
     .enter().append("text")
       .attr("class", "age")
       .attr("x", function(age) { return x(year - age); })
