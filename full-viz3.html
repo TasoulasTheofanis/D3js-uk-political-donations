@@ -87,7 +87,7 @@ d3.csv("data/7500up.csv", function(error, data) {
 
   // Convert strings to numbers.
   data.forEach(function(d) {
-    d.amount = +d.amount;
+   // d.amount = +d.amount;
     d.party = +d.party;
     d.donor = +d.donor;
   });
