@@ -99,7 +99,7 @@ d3.csv("data/7500up.csv", function(error, data) {
   var age1 = d3.max(data, function(d) { return d.amount; }),
       year0 = d3.min(data, function(d) { return d.amount; }),
       year1 = d3.max(data, function(d) { return d.amount; }),
-      year = year1;
+      year = year1 + year1;
 
   // Update the scale domains.
   x.domain([year1 - age1, year1]);
@@ -108,7 +108,7 @@ d3.csv("data/7500up.csv", function(error, data) {
   // Produce a map from year and birthyear to [male, female].
   data = d3.nest()
       .key(function(d) { return d.amount; })
-      .key(function(d) { return d.amount - d.amount; })
+      //.key(function(d) { return d.amount - d.amount; })
       .rollup(function(v) { return v.map(function(d) { return d.amount; }); })
       .map(data);
 
