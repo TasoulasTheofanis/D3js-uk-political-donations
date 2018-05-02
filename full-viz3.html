@@ -65,12 +65,12 @@ d3.csv("data/7500up.csv", function(error, data) {
   // format the data
   data.forEach(function(d) {
       d.date = d.donor;
-      d.close = +d.amount;
+      d.close = d.amount;
   });
 
   // scale the range of the data
-  x.domain(d3.extent(data, function(d) { return d.date; }));
-  y.domain([0, d3.max(data, function(d) { return d.close; })]);
+  x.domain(d3.extent(data, function(d) { return d.donor; }));
+  y.domain([0, d3.max(data, function(d) { return d.amount; })]);
 
   // add the area
     svg.append("path")
