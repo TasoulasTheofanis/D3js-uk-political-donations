@@ -378,11 +378,7 @@ function display(data) {
 
 
 function mouseover(d, i) {
-	//paradoteo 2 doesn't work yet
-
-
-	
-	
+		
 	// tooltip popup
 	var mosie = d3.select(this);
 	var amount = mosie.attr("amount");
@@ -414,7 +410,7 @@ function mouseover(d, i) {
 			.style("display","block");
 	
 	
-
+//paradoteo 2: i create an emelemt which contains the url from the photo folder from ionioodi repository. Then those images appear down on the screen.
 	var img = document.createElement("img");
 	img.src = imageFile;
 	img.width = 42;
