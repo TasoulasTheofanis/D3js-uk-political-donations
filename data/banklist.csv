@@ -1,4 +1,4 @@
-Bank Name,City,ST,CERT,Acquiring Institution,Closing Date,Updated Date
+Bank_Name,City,ST,CERT,Acquiring_Institution,Closing_Date,Updated_Date
 Washington Federal Bank for Savings,Chicago,IL,30570,Royal Savings Bank,15-Dec-17,21-Feb-18
 The Farmers and Merchants State Bank of Argonia,Argonia,KS,17719,Conway Bank,13-Oct-17,21-Feb-18
 Fayette County Bank,Saint Elmo,IL,1802,"United Fidelity Bank, fsb",26-May-17,26-Jul-17
