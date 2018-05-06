@@ -392,18 +392,18 @@ function mouseover(d, i) {
 	var entity = d.entity;
 	var color = d.color;
 	var offset = $("svg").offset();
-	var infoBox = "<p> Bank_Name: <b>" + donor + "</b></p>" + "<p> Acquiring_Institution: <b>" + color + "</b></p>"
+	var infoBox = "<p> Bank_Name: <b>" + donor + "</b></p>" + "<p> City: <b>" + entity + "</b></p>"
 								+ "<p> Closing_Date: <b>" + party + "</b></p>"
-								+ "<p> City: <b>&#163;" + entity + "</b></p>";
+								+ "<p> Acquiring_Institution: <b>" + color + "</b></p>";
 	
 
 /*______________________VIEW IMAGE ON CIRCLE__________________________________________*/	
 	// image url that want to check
 	var imageFile = "https://raw.githubusercontent.com/ioniodi/D3js-uk-political-donations/master/photos/" + donor + ".ico";
 	
-	var infoBox = "<p> Bank_Name: <b>" + donor + "</b></p>" + "<p> Acquiring_Institution: <b>" + color + "</b></p>"
+	var infoBox = "<p> Bank_Name: <b>" + donor + "</b></p>" + "<p> City: <b>" + entity + "</b></p>"
 								+ "<p> Closing_Date: <b>" + party + "</b></p>"
-								+ "<p> City: <b>&#163;" + entity + "</b></p>";
+								+ "<p> Acquiring_Institution: <b>" + color + "</b></p>";
 	
 	mosie.classed("active", true);
 	d3.select(".tooltip")
