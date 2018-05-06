@@ -225,13 +225,13 @@ function all(e) {
 function moveToAmount(alpha) {
 	return function(d) {
 		
-		if (d.value <= 20000) { 
+		if (d.CERT <= 20000) { 
 			centreX = svgCentre.x ;
 			centreY = svgCentre.y -50;
-		} else if (d.value <= 40000) { 
+		} else if (d.CERT <= 40000) { 
 			centreX = svgCentre.x + 150;
 			centreY = svgCentre.y ;
-		} else if (d.value <= 9000000){ 
+		} else if (d.CERT <= 9000000){ 
 			centreX = svgCentre.x + 300;
 			centreY = svgCentre.y + 50;
 		}
@@ -244,17 +244,17 @@ function moveToAmount(alpha) {
 function moveToCentre(alpha) {
 	return function(d) {
 		var centreX = svgCentre.x + 75;
-			if (d.value <= 5001) {
+			if (d.CERT <= 5001) {
 				centreY = svgCentre.y + 75;
-			} else if (d.value <= 10001) {
+			} else if (d.CERT <= 10001) {
 				centreY = svgCentre.y + 55;
-			} else if (d.value <= 20001) {
+			} else if (d.CERT <= 20001) {
 				centreY = svgCentre.y + 35;
-			} else  if (d.value <= 30001) {
+			} else  if (d.CERT <= 30001) {
 				centreY = svgCentre.y + 15;
-			} else  if (d.value <= 40001) {
+			} else  if (d.CERT <= 40001) {
 				centreY = svgCentre.y - 5;
-			} else  if (d.value <= maxVal) {
+			} else  if (d.CERT <= maxVal) {
 				centreY = svgCentre.y - 25;
 			} else {
 				centreY = svgCentre.y;
