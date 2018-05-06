@@ -112,7 +112,7 @@ function start() {
 	.enter().append("circle")
 		.attr("class", function(d) { return "node " + d.party; })
 		.attr("amount", function(d) { return d.value; })
-		.attr("donor", function(d) { return d.donor; })
+		.attr("donor", function(d) { return d.Bank_Name; })
 		.attr("entity", function(d) { return d.entity; })
 		.attr("party", function(d) { return d.party; })
 		// disabled because of slow Firefox SVG rendering
@@ -122,7 +122,7 @@ function start() {
 		.style("fill", function(d) { return fill(d.party); })
 		.on("mouseover", mouseover)
 		.on("mouseout", mouseout)
-	        .on("click", function(d) { window.open(GooglePls + d.donor)}); /*Paradoteo 1: When you click, a new windows will pop out at google, searching the donator result  */
+	        .on("click", function(d) { window.open(GooglePls + d.Bank_Name)}); /*Paradoteo 1: When you click, a new windows will pop out at google, searching the donator result  */
 	
 		// Alternative title based 'tooltips'
 		// node.append("title")
@@ -234,8 +234,7 @@ function moveToAmount(alpha) {
 		} else if (d.value <= 20000000){ 
 			centreX = svgCentre.x + 300;
 			centreY = svgCentre.y + 50;
-		}
-
+//d.CERT			
 		d.x += (centreX - d.x) * (brake + 0.02) * alpha * 1.1;
 		d.y += (centreY - d.y) * (brake + 0.02) * alpha * 1.1;
 	};
@@ -342,18 +341,18 @@ function collide(alpha) {
 
 function display(data) {
 
-	maxVal = d3.max(data, function(d) { return d.amount; });
+	maxVal = d3.max(data, function(d) { return d.CERT; });
 
 	var radiusScale = d3.scale.sqrt()
 		.domain([0, maxVal])
 			.range([10, 20]);
 
 	data.forEach(function(d, i) {
-		var y = radiusScale(d.amount);
+		var y = radiusScale(d.CERT);
 		var node = {
-				radius: radiusScale(d.amount) / 5,
-				value: d.amount,
-				donor: d.donor,
+				radius: radiusScale(d.CERT) / 5,
+				value: d.CERT,
+				donor: d.Bank_Name,
 				party: d.party,
 				partyLabel: d.partyname,
 			        entity: d.entity,
@@ -382,7 +381,7 @@ function mouseover(d, i) {
 	// tooltip popup
 	var mosie = d3.select(this);
 	var amount = mosie.attr("amount");
-	var donor = d.donor;
+	var donor = d.Bank_Name;
 	var party = d.partyLabel;
 	var entity = d.entityLabel;
 	var offset = $("svg").offset();
