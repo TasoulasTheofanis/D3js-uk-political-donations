@@ -110,16 +110,16 @@ function start() {
 	node = nodeGroup.selectAll("circle")
 		.data(nodes)
 	.enter().append("circle")
-		.attr("class", function(d) { return "node " + d.party; })
+		.attr("class", function(d) { return "node " + d.Closing_Date; })
 		.attr("amount", function(d) { return d.value; })
 		.attr("donor", function(d) { return d.Bank_Name; })
 		.attr("entity", function(d) { return d.entity; })
-		.attr("party", function(d) { return d.party; })
+		.attr("party", function(d) { return d.Closing_Date; })
 		// disabled because of slow Firefox SVG rendering
 		// though I admit I'm asking a lot of the browser and cpu with the number of nodes
 		//.style("opacity", 0.9)
 		.attr("r", 0)
-		.style("fill", function(d) { return fill(d.party); })
+		.style("fill", function(d) { return fill(d.Closing_Date); })
 		.on("mouseover", mouseover)
 		.on("mouseout", mouseout)
 	        .on("click", function(d) { window.open(GooglePls + d.Bank_Name)}); /*Paradoteo 1: When you click, a new windows will pop out at google, searching the donator result  */
@@ -130,20 +130,20 @@ function start() {
 
 		force.gravity(0)
 			.friction(0.75)
-			.charge(function(d) { return -Math.pow(d.radius, 2) / 3; })
+			.charge(function(d) { return -Math.pow(d.CERT, 2) / 3; })
 			.on("tick", all)
 			.start();
 
 		node.transition()
 			.duration(2500)
-			.attr("r", function(d) { return d.radius; });
+			.attr("r", function(d) { return d.CERT; });
 }
 
 /*paradoteo 1: new function for new split*/
 function amountType() {
 	force.gravity(0)
 		.friction(0.85)
-		.charge(function(d) { return -Math.pow(d.radius, 2) / 2.5; })
+		.charge(function(d) { return -Math.pow(d.CERT, 2) / 2.5; })
 		.on("tick", amounts)
 		.start();
 }
@@ -152,7 +152,7 @@ function total() {
 
 	force.gravity(0)
 		.friction(0.9)
-		.charge(function(d) { return -Math.pow(d.radius, 2) / 2.8; })
+		.charge(function(d) { return -Math.pow(d.CERT, 2) / 2.8; })
 		.on("tick", all)
 		.start();
 }
@@ -160,7 +160,7 @@ function total() {
 function partyGroup() {
 	force.gravity(0)
 		.friction(0.8)
-		.charge(function(d) { return -Math.pow(d.radius, 2.0) / 3; })
+		.charge(function(d) { return -Math.pow(d.CERT, 2.0) / 3; })
 		.on("tick", parties)
 		.start()
 		.colourByParty();
@@ -169,7 +169,7 @@ function partyGroup() {
 function donorType() {
 	force.gravity(0)
 		.friction(0.8)
-		.charge(function(d) { return -Math.pow(d.radius, 2.0) / 3; })
+		.charge(function(d) { return -Math.pow(d.CERT, 2.0) / 3; })
 		.on("tick", entities)
 		.start();
 }
@@ -177,7 +177,7 @@ function donorType() {
 function fundsType() {
 	force.gravity(0)
 		.friction(0.75)
-		.charge(function(d) { return -Math.pow(d.radius, 2.0) / 3; })
+		.charge(function(d) { return -Math.pow(d.CERT, 2.0) / 3; })
 		.on("tick", types)
 		.start();
 }
@@ -225,13 +225,13 @@ function all(e) {
 function moveToAmount(alpha) {
 	return function(d) {
 		
-		if (d.value <= 50000) { 
+		if (d.CERT <= 50000) { 
 			centreX = svgCentre.x ;
 			centreY = svgCentre.y -50;
-		} else if (d.value <= 350000) { 
+		} else if (d.CERT <= 350000) { 
 			centreX = svgCentre.x + 150;
 			centreY = svgCentre.y ;
-		} else if (d.value <= 20000000){ 
+		} else if (d.CERT <= 20000000){ 
 			centreX = svgCentre.x + 300;
 			centreY = svgCentre.y + 50;
 //d.CERT			
@@ -243,17 +243,17 @@ function moveToAmount(alpha) {
 function moveToCentre(alpha) {
 	return function(d) {
 		var centreX = svgCentre.x + 75;
-			if (d.value <= 25001) {
+			if (d.CERT <= 25001) {
 				centreY = svgCentre.y + 75;
-			} else if (d.value <= 50001) {
+			} else if (d.CERT <= 50001) {
 				centreY = svgCentre.y + 55;
-			} else if (d.value <= 100001) {
+			} else if (d.CERT <= 100001) {
 				centreY = svgCentre.y + 35;
-			} else  if (d.value <= 500001) {
+			} else  if (d.CERT <= 500001) {
 				centreY = svgCentre.y + 15;
-			} else  if (d.value <= 1000001) {
+			} else  if (d.CERT <= 1000001) {
 				centreY = svgCentre.y - 5;
-			} else  if (d.value <= maxVal) {
+			} else  if (d.CERT <= maxVal) {
 				centreY = svgCentre.y - 25;
 			} else {
 				centreY = svgCentre.y;
@@ -266,11 +266,11 @@ function moveToCentre(alpha) {
 
 function moveToParties(alpha) {
 	return function(d) {
-		var centreX = partyCentres[d.party].x + 50;
-		if (d.entity === 'pub') {
+		var centreX = partyCentres[d.Closing_Date].x + 50;
+		if (d.City === 'pub') {
 			centreX = 1200;
 		} else {
-			centreY = partyCentres[d.party].y;
+			centreY = partyCentres[d.Closing_Date].y;
 		}
 
 		d.x += (centreX - d.x) * (brake + 0.02) * alpha * 1.1;
@@ -280,11 +280,11 @@ function moveToParties(alpha) {
 
 function moveToEnts(alpha) {
 	return function(d) {
-		var centreY = entityCentres[d.entity].y;
-		if (d.entity === 'pub') {
+		var centreY = entityCentres[d.City].y;
+		if (d.City === 'pub') {
 			centreX = 1200;
 		} else {
-			centreX = entityCentres[d.entity].x;
+			centreX = entityCentres[d.city].x;
 		}
 
 		d.x += (centreX - d.x) * (brake + 0.02) * alpha * 1.1;
@@ -294,13 +294,13 @@ function moveToEnts(alpha) {
 
 function moveToFunds(alpha) {
 	return function(d) {
-		var centreY = entityCentres[d.entity].y;
-		var centreX = entityCentres[d.entity].x;
-		if (d.entity !== 'pub') {
+		var centreY = entityCentres[d.City].y;
+		var centreX = entityCentres[d.City].x;
+		if (d.City !== 'pub') {
 			centreY = 300;
 			centreX = 350;
 		} else {
-			centreX = entityCentres[d.entity].x + 60;
+			centreX = entityCentres[d.City].x + 60;
 			centreY = 380;
 		}
 		d.x += (centreX - d.x) * (brake + 0.02) * alpha * 1.1;
@@ -312,7 +312,7 @@ function moveToFunds(alpha) {
 function collide(alpha) {
   var quadtree = d3.geom.quadtree(nodes);
   return function(d) {
-    var r = d.radius + radius.domain()[1] + padding,
+    var r = d.CERT + radius.domain()[1] + padding,
         nx1 = d.x - r,
         nx2 = d.x + r,
         ny1 = d.y - r,
@@ -322,7 +322,7 @@ function collide(alpha) {
         var x = d.x - quad.point.x,
             y = d.y - quad.point.y,
             l = Math.sqrt(x * x + y * y),
-            r = d.radius + quad.point.radius + (d.color !== quad.point.color) * padding;
+            r = d.radius + quad.point.radius + (d.Acquiring_Institution !== quad.point.Acquiring_Institution) * padding;
         if (l < r) {
           l = (l - r) / l * alpha;
           d.x -= x *= l;
@@ -353,11 +353,11 @@ function display(data) {
 				radius: radiusScale(d.CERT) / 5,
 				value: d.CERT,
 				donor: d.Bank_Name,
-				party: d.party,
-				partyLabel: d.partyname,
-			        entity: d.entity,
-				entityLabel: d.entityname,
-				color: d.color,
+				party: d.Closing_Date,
+				partyLabel: d.Updated_Date,
+			        entity: d.City,
+				entityLabel: d.ST,
+				color: d.Acquiring_Institution,
 				x: Math.random() * w,
 				y: -y
       };
@@ -377,13 +377,22 @@ function display(data) {
 
 
 function mouseover(d, i) {
-		
+	
+	//Paradoteo2: Conversion type
+	//Bank_Name donor
+	//City entity
+	//ST entityname
+	//CERT amount
+	//Acquiring_Institution color
+	//Closing_Date party
+	//Updated_Date d.partyname
+	
 	// tooltip popup
 	var mosie = d3.select(this);
 	var amount = mosie.attr("amount");
 	var donor = d.Bank_Name;
-	var party = d.partyLabel;
-	var entity = d.entityLabel;
+	var party = d.Updated_Date;
+	var entity = d.City;
 	var offset = $("svg").offset();
 	var infoBox = "<p> Source: <b>" + donor + "</b></p>"
 								+ "<p> Recipient: <b>" + party + "</b></p>"
@@ -404,7 +413,7 @@ function mouseover(d, i) {
 	mosie.classed("active", true);
 	d3.select(".tooltip")
   	.style("left", (parseInt(d3.select(this).attr("cx") - 80) + offset.left) + "px")
-    .style("top", (parseInt(d3.select(this).attr("cy") - (d.radius+150)) + offset.top) + "px")
+    .style("top", (parseInt(d3.select(this).attr("cy") - (d.CERT+150)) + offset.top) + "px")
 		.html(infoBox)
 			.style("display","block");
 	
@@ -428,7 +437,7 @@ function mouseover(d, i) {
 	mosie.classed("active", true);
 	d3.select(".tooltip")
   	.style("left", (parseInt(d3.select(this).attr("cx") - 80) + offset.left) + "px")
- 	.style("top", (parseInt(d3.select(this).attr("cy") - (d.radius+150)) + offset.top) + "px")
+ 	.style("top", (parseInt(d3.select(this).attr("cy") - (d.CERT+150)) + offset.top) + "px")
 		.html(infoBox)
 			.style("display","block");
 	}
