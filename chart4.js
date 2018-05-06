@@ -18,11 +18,11 @@ var partyCentres = {
 
 var entityCentres = { 
     company: {x: w / 3.65, y: h / 2.3},
-		union: {x: w / 3.65, y: h / 1.8},
-		other: {x: w / 1.15, y: h / 1.9},
-		society: {x: w / 1.12, y: h  / 3.2 },
-		pub: {x: w / 1.8, y: h / 2.8},
-		individual: {x: w / 3.65, y: h / 3.3}                    /* i deleted a comma*/
+		Chicago: {x: w / 3.65, y: h / 1.8},
+		Atlanta: {x: w / 1.15, y: h / 1.9},
+		Scottsdale: {x: w / 1.12, y: h  / 3.2 },
+		Princeton: {x: w / 1.8, y: h / 2.8},
+		Whiteville: {x: w / 3.65, y: h / 3.3}                    /* i deleted a comma*/
 	};
 /*paradoteo 1: coloring the circles of Labour Party, Conservative Party and Liberal Democrats*/
 var fill = d3.scale.ordinal().range(["#145506", "#100345", "#ff2200"]);  
