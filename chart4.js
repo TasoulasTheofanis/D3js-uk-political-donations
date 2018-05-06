@@ -420,7 +420,7 @@ function mouseover(d, i) {
 	
 	
 /* Paradoteo 1: i create a new message that will be narrated, when someone goes over any circle*/
-	var msg = new SpeechSynthesisUtterance("The bank " + donor + " from " + entity + " was closed on " + party + " . The Acquiring Institution was " + color);
+	var msg = new SpeechSynthesisUtterance("The bank " + donor + " from " + entity + " was closed on " + party + " . The Acquiring Institution was " + d.AcquiringInstitution);
 	window.speechSynthesis.speak(msg);
 	
 	mosie.classed("active", true);
