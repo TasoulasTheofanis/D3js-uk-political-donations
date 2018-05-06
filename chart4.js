@@ -351,7 +351,7 @@ function display(data) {
 	data.forEach(function(d, i) {
 		var y = radiusScale(d.CERT);
 		var node = {
-				radius: radiusScale(d.CERT),
+				radius: radiusScale(d.CERT) / 3,
 				value: d.CERT,
 				donor: d.Bank_Name,
 				party: d.Closing_Date,
