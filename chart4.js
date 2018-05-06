@@ -267,11 +267,11 @@ function moveToCentre(alpha) {
 
 function moveToParties(alpha) {
 	return function(d) {
-		var centreX = partyCentres[d.ClosingDate].x + 50;
-		if (d.City === 'pub') {
+		var centreX = partyCentres[d.party].x + 50;
+		if (d.entity > 'm' || d.entity > 'M') {
 			centreX = 1200;
 		} else {
-			centreY = partyCentres[d.ClosingDate].y;
+			centreY = partyCentres[d.entity].y;
 		}
 
 		d.x += (centreX - d.x) * (brake + 0.02) * alpha * 1.1;
@@ -401,9 +401,9 @@ function mouseover(d, i) {
 	// image url that want to check
 	var imageFile = "https://raw.githubusercontent.com/ioniodi/D3js-uk-political-donations/master/photos/" + donor + ".ico";
 	
-	var infoBox = "<p> Source: <b>" + donor + "</b></p><p> Recipient: <b>" + party + "</b></p>"
-								+ "<p> Type of donor: <b>" + entity + "</b></p>"
-+ "<p> Total value: <b>&#163;" + comma(amount) + "</b></p>";
+	var infoBox = "<p> Bank_Name: <b>" + donor + "</b></p>" + "<p> Acquiring_Institution: <b>" + color + "</b></p>"
+								+ "<p> Closing_Date: <b>" + party + "</b></p>"
+								+ "<p> City: <b>&#163;" + entity + "</b></p>";
 	
 	mosie.classed("active", true);
 	d3.select(".tooltip")
