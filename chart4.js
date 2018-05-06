@@ -364,10 +364,10 @@ function display(data) {
       };
 
 		
-      nodes.push(node)            /*i put a semicolon*/
+      nodes.push(node);            /*i put a semicolon*/
 	});
 
-	console.log(nodes);
+	//console.log(nodes);
 
 	force = d3.layout.force()
 		.nodes(nodes)
