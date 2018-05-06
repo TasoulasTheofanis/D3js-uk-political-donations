@@ -407,8 +407,8 @@ function mouseover(d, i) {
 	
 	mosie.classed("active", true);
 	d3.select(".tooltip")
-  	.style("left", (parseInt(d3.select(this).attr("cx") - 80) + offset.left) + "px")
-    .style("top", (parseInt(d3.select(this).attr("cy") - (d.radius+150)) + offset.top) + "px")
+  	.style("left", (parseInt(d3.select(this).attr("cx") - 120) + offset.left) + "px")
+    .style("top", (parseInt(d3.select(this).attr("cy") - (d.radius+190)) + offset.top) + "px")
 		.html(infoBox)
 			.style("display","block");
 	
@@ -420,7 +420,7 @@ function mouseover(d, i) {
 	
 	
 /* Paradoteo 1: i create a new message that will be narrated, when someone goes over any circle*/
-	var msg = new SpeechSynthesisUtterance("The bank " + donor + " from " + entity + " was closed on " + party + " . The Acquiring Institution was " + d.AcquiringInstitution);
+	var msg = new SpeechSynthesisUtterance("The bank " + donor + " from " + entity + " was closed on " + party + " . The Acquiring Institution was " + d.color);
 	window.speechSynthesis.speak(msg);
 	
 	mosie.classed("active", true);
