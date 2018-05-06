@@ -110,11 +110,11 @@ function start() {
 	node = nodeGroup.selectAll("circle")
 		.data(nodes)
 	.enter().append("circle")
-		.attr("class", function(d) { return "node " + d.party; })
-		.attr("amount", function(d) { return d.amount; })
-		.attr("donor", function(d) { return d.donor; })
-		.attr("entity", function(d) { return d.entity; })
-		.attr("party", function(d) { return d.party; })
+		.attr("class", function(d) { return "node " + d.Closing_Date; })
+		.attr("amount", function(d) { return d.value; })
+		.attr("donor", function(d) { return d.Bank_Name; })
+		.attr("entity", function(d) { return d.City; })
+		.attr("party", function(d) { return d.Closing_Date; })
 		// disabled because of slow Firefox SVG rendering
 		// though I admit I'm asking a lot of the browser and cpu with the number of nodes
 		//.style("opacity", 0.9)
@@ -225,13 +225,13 @@ function all(e) {
 function moveToAmount(alpha) {
 	return function(d) {
 		
-		if (d.value <= 50000) { 
+		if (d.value <= 10000) { 
 			centreX = svgCentre.x ;
 			centreY = svgCentre.y -50;
-		} else if (d.value <= 350000) { 
+		} else if (d.value <= 20000) { 
 			centreX = svgCentre.x + 150;
 			centreY = svgCentre.y ;
-		} else if (d.value <= 20000000){ 
+		} else if (d.value <= 9000000){ 
 			centreX = svgCentre.x + 300;
 			centreY = svgCentre.y + 50;
 		}
@@ -244,15 +244,15 @@ function moveToAmount(alpha) {
 function moveToCentre(alpha) {
 	return function(d) {
 		var centreX = svgCentre.x + 75;
-			if (d.value <= 25001) {
+			if (d.value <= 5001) {
 				centreY = svgCentre.y + 75;
-			} else if (d.value <= 50001) {
+			} else if (d.value <= 10001) {
 				centreY = svgCentre.y + 55;
-			} else if (d.value <= 100001) {
+			} else if (d.value <= 20001) {
 				centreY = svgCentre.y + 35;
-			} else  if (d.value <= 500001) {
+			} else  if (d.value <= 30001) {
 				centreY = svgCentre.y + 15;
-			} else  if (d.value <= 1000001) {
+			} else  if (d.value <= 40001) {
 				centreY = svgCentre.y - 5;
 			} else  if (d.value <= maxVal) {
 				centreY = svgCentre.y - 25;
