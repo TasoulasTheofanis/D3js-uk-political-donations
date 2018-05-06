@@ -388,8 +388,8 @@ function mouseover(d, i) {
 	var mosie = d3.select(this);
 	var amount = mosie.attr("amount");
 	var donor = d.donor;
-	var party = d.ClosingDate;
-	var entity = d.City;
+	var party = d.party;
+	var entity = d.entity;
 	var offset = $("svg").offset();
 	var infoBox = "<p> Source: <b>" + donor + "</b></p>"
 								+ "<p> Recipient: <b>" + party + "</b></p>"
@@ -422,7 +422,7 @@ function mouseover(d, i) {
 	
 	
 /* Paradoteo 1: i create a new message that will be narrated, when someone goes over any circle*/
-	var msg = new SpeechSynthesisUtterance("The bank " + d.BankName + " from " + d.City + " was closed on " + d.ClosingDate + " . The Acquiring Institution was " + d.AcquiringInstitution);
+	var msg = new SpeechSynthesisUtterance("The bank " + donor + " from " + entity + " was closed on " + party + " . The Acquiring Institution was " + color);
 	window.speechSynthesis.speak(msg);
 	
 	mosie.classed("active", true);
