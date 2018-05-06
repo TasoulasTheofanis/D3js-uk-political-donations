@@ -122,7 +122,7 @@ function start() {
 		.style("fill", function(d) { return fill(d.ClosingDate); })
 		.on("mouseover", mouseover)
 		.on("mouseout", mouseout)
-	        .on("click", function(d) { window.open(GooglePls + d.BankName)}); /*Paradoteo 1: When you click, a new windows will pop out at google, searching the donator result  */
+	        .on("click", function(d) { window.open(GooglePls + d.donor)}); /*Paradoteo 1: When you click, a new windows will pop out at google, searching the donator result  */
 	
 		// Alternative title based 'tooltips'
 		// node.append("title")
