@@ -111,7 +111,7 @@ function start() {
 		.data(nodes)
 	.enter().append("circle")
 		.attr("class", function(d) { return "node " + d.ClosingDate; })
-		.attr("amount", function(d) { return d.CERT; })
+		.attr("amount", function(d) { return d.value; })
 		.attr("donor", function(d) { return d.BankName; })
 		.attr("entity", function(d) { return d.City; })
 		.attr("party", function(d) { return d.ClosingDate; })
@@ -225,13 +225,13 @@ function all(e) {
 function moveToAmount(alpha) {
 	return function(d) {
 		
-		if (d.CERT <= 20000) { 
+		if (d.value <= 20000) { 
 			centreX = svgCentre.x ;
 			centreY = svgCentre.y -50;
-		} else if (d.CERT <= 40000) { 
+		} else if (d.value <= 40000) { 
 			centreX = svgCentre.x + 150;
 			centreY = svgCentre.y ;
-		} else if (d.CERT <= 9000000){ 
+		} else if (d.value <= 9000000){ 
 			centreX = svgCentre.x + 300;
 			centreY = svgCentre.y + 50;
 		}
@@ -244,17 +244,17 @@ function moveToAmount(alpha) {
 function moveToCentre(alpha) {
 	return function(d) {
 		var centreX = svgCentre.x + 75;
-			if (d.CERT <= 5001) {
+			if (d.value <= 5001) {
 				centreY = svgCentre.y + 75;
-			} else if (d.CERT <= 10001) {
+			} else if (d.value <= 10001) {
 				centreY = svgCentre.y + 55;
-			} else if (d.CERT <= 20001) {
+			} else if (d.value <= 20001) {
 				centreY = svgCentre.y + 35;
-			} else  if (d.CERT <= 30001) {
+			} else  if (d.value <= 30001) {
 				centreY = svgCentre.y + 15;
-			} else  if (d.CERT <= 40001) {
+			} else  if (d.value <= 40001) {
 				centreY = svgCentre.y - 5;
-			} else  if (d.CERT <= maxVal) {
+			} else  if (d.value <= maxVal) {
 				centreY = svgCentre.y - 25;
 			} else {
 				centreY = svgCentre.y;
@@ -342,14 +342,14 @@ function collide(alpha) {
 
 function display(data) {
 
-	maxVal = d3.max(data, function(d) { return d.CERT; });
+	maxVal = d3.max(data, function(d) { return d.value; });
 
 	var radiusScale = d3.scale.sqrt()
 		.domain([0, maxVal])
 			.range([10, 20]);
 
 	data.forEach(function(d, i) {
-		var y = radiusScale(d.CERT);
+		var y = radiusScale(d.value);
 		var node = {
 				radius: radiusScale(d.CERT) / 3,
 				value: d.CERT,
