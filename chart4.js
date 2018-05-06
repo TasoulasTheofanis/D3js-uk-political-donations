@@ -110,23 +110,23 @@ function start() {
 	node = nodeGroup.selectAll("circle")
 		.data(nodes)
 	.enter().append("circle")
-		.attr("class", function(d) { return "node " + d.Closing_Date; })
+		.attr("class", function(d) { return "node " + d.ClosingDate; })
 		.attr("amount", function(d) { return d.value; })
-		.attr("donor", function(d) { return d.Bank_Name; })
+		.attr("donor", function(d) { return d.BankName; })
 		.attr("entity", function(d) { return d.City; })
-		.attr("party", function(d) { return d.Closing_Date; })
+		.attr("party", function(d) { return d.ClosingDate; })
 		// disabled because of slow Firefox SVG rendering
 		// though I admit I'm asking a lot of the browser and cpu with the number of nodes
 		//.style("opacity", 0.9)
 		.attr("r", 0)
-		.style("fill", function(d) { return fill(d.Closing_Date); })
+		.style("fill", function(d) { return fill(d.ClosingDate); })
 		.on("mouseover", mouseover)
 		.on("mouseout", mouseout)
-	        .on("click", function(d) { window.open(GooglePls + d.Bank_Name)}); /*Paradoteo 1: When you click, a new windows will pop out at google, searching the donator result  */
+	        .on("click", function(d) { window.open(GooglePls + d.BankName)}); /*Paradoteo 1: When you click, a new windows will pop out at google, searching the donator result  */
 	
 		// Alternative title based 'tooltips'
 		// node.append("title")
-		//	.text({ return d.Bank_Name; });
+		//	.text({ return d.BankName; });
 
 		force.gravity(0)
 			.friction(0.75)
@@ -267,11 +267,11 @@ function moveToCentre(alpha) {
 
 function moveToParties(alpha) {
 	return function(d) {
-		var centreX = partyCentres[d.Closing_Date].x + 50;
+		var centreX = partyCentres[d.ClosingDate].x + 50;
 		if (d.City === 'pub') {
 			centreX = 1200;
 		} else {
-			centreY = partyCentres[d.Closing_Date].y;
+			centreY = partyCentres[d.ClosingDate].y;
 		}
 
 		d.x += (centreX - d.x) * (brake + 0.02) * alpha * 1.1;
@@ -323,7 +323,7 @@ function collide(alpha) {
         var x = d.x - quad.point.x,
             y = d.y - quad.point.y,
             l = Math.sqrt(x * x + y * y),
-            r = d.radius + quad.point.radius // + (d.Acquiring_Institution !== quad.point.color) * padding;
+            r = d.radius + quad.point.radius // + (d.AcquiringInstitution !== quad.point.color) * padding;
         if (l < r) {
           l = (l - r) / l * alpha;
           d.x -= x *= l;
@@ -353,12 +353,12 @@ function display(data) {
 		var node = {
 				radius: radiusScale(d.CERT) / 3,
 				value: d.CERT,
-				donor: d.Bank_Name,
-				party: d.Closing_Date,
-				partyLabel: d.Closing_Date,
+				donor: d.BankName,
+				party: d.ClosingDate,
+				partyLabel: d.ClosingDate,
 			        entity: d.City,
 				entityLabel: d.City,
-				color: d.Acquiring_Institution,
+				color: d.AcquiringInstitution,
 				x: Math.random() * w,
 				y: -y
       };
@@ -387,8 +387,8 @@ function mouseover(d, i) {
 	// tooltip popup
 	var mosie = d3.select(this);
 	var amount = mosie.attr("amount");
-	var donor = d.Bank_Name;
-	var party = d.Closing_Date;
+	var donor = d.BankName;
+	var party = d.ClosingDate;
 	var entity = d.City;
 	var offset = $("svg").offset();
 	var infoBox = "<p> Source: <b>" + donor + "</b></p>"
@@ -422,7 +422,7 @@ function mouseover(d, i) {
 	
 	
 /* Paradoteo 1: i create a new message that will be narrated, when someone goes over any circle*/
-	var msg = new SpeechSynthesisUtterance("The bank " + d.Bank_Name + " from " + d.City + " was closed on " + d.Closing_Date + " . The Acquiring Institution was " + d.Acquiring_Institution);
+	var msg = new SpeechSynthesisUtterance("The bank " + d.BankName + " from " + d.City + " was closed on " + d.ClosingDate + " . The Acquiring Institution was " + d.AcquiringInstitution);
 	window.speechSynthesis.speak(msg);
 	
 	mosie.classed("active", true);
