@@ -353,7 +353,7 @@ function display(data) {
 		var node = {
 				radius: radiusScale(d.CERT) ,
 				value: d.CERT,
-				donor: d.donor,
+				donor: d.BankName,
 				party: d.ClosingDate,
 				partyLabel: d.UpdatedDate,
 			        entity: d.City,
@@ -387,7 +387,7 @@ function mouseover(d, i) {
 	// tooltip popup
 	var mosie = d3.select(this);
 	var amount = mosie.attr("amount");
-	var donor = d.BankName;
+	var donor = d.donor;
 	var party = d.ClosingDate;
 	var entity = d.City;
 	var offset = $("svg").offset();
