@@ -295,13 +295,13 @@ function moveToEnts(alpha) {
 
 function moveToFunds(alpha) {
 	return function(d) {
-		var centreY = entityCentres[d.City].y;
-		var centreX = entityCentres[d.City].x;
+		var centreY = entityCentres[d.entity].y;
+		var centreX = entityCentres[d.entity].x;
 		if (d.City !== 'pub') {
 			centreY = 300;
 			centreX = 350;
 		} else {
-			centreX = entityCentres[d.City].x + 60;
+			centreX = entityCentres[d.entity].x + 60;
 			centreY = 380;
 		}
 		d.x += (centreX - d.x) * (brake + 0.02) * alpha * 1.1;
