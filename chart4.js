@@ -390,11 +390,11 @@ function mouseover(d, i) {
 	var donor = d.donor;
 	var party = d.party;
 	var entity = d.entity;
+	var color = d.color;
 	var offset = $("svg").offset();
-	var infoBox = "<p> Source: <b>" + donor + "</b></p>"
-								+ "<p> Recipient: <b>" + party + "</b></p>"
-								+ "<p> Type of donor: <b>" + entity + "</b></p>"
-								+ "<p> Total value: <b>&#163;" + comma(amount) + "</b></p>";
+	var infoBox = "<p> Bank_Name: <b>" + donor + "</b></p>" + "<p> Acquiring_Institution: <b>" + color + "</b></p>"
+								+ "<p> Closing_Date: <b>" + party + "</b></p>"
+								+ "<p> City: <b>&#163;" + entity + "</b></p>";
 	
 
 /*______________________VIEW IMAGE ON CIRCLE__________________________________________*/	
