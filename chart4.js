@@ -110,11 +110,11 @@ function start() {
 	node = nodeGroup.selectAll("circle")
 		.data(nodes)
 	.enter().append("circle")
-		.attr("class", function(d) { return "node " + d.Closing_Date; })
-		.attr("amount", function(d) { return d.value; })
-		.attr("donor", function(d) { return d.Bank_Name; })
-		.attr("entity", function(d) { return d.City; })
-		.attr("party", function(d) { return d.Closing_Date; })
+		.attr("class", function(d) { return "node " + d.party; })
+		.attr("amount", function(d) { return d.amount; })
+		.attr("donor", function(d) { return d.donor; })
+		.attr("entity", function(d) { return d.entity; })
+		.attr("party", function(d) { return d.party; })
 		// disabled because of slow Firefox SVG rendering
 		// though I admit I'm asking a lot of the browser and cpu with the number of nodes
 		//.style("opacity", 0.9)
@@ -323,7 +323,7 @@ function collide(alpha) {
         var x = d.x - quad.point.x,
             y = d.y - quad.point.y,
             l = Math.sqrt(x * x + y * y),
-            //r = d.radius + quad.point.radius + (d.Acquiring_Institution !== quad.point.color) * padding;
+            r = d.radius + quad.point.radius // + (d.Acquiring_Institution !== quad.point.color) * padding;
         if (l < r) {
           l = (l - r) / l * alpha;
           d.x -= x *= l;
