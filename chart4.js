@@ -407,8 +407,8 @@ function mouseover(d, i) {
 	
 	mosie.classed("active", true);
 	d3.select(".tooltip")
-  	.style("left", (parseInt(d3.select(this).attr("cx") - 120) + offset.left) + "px")
-    .style("top", (parseInt(d3.select(this).attr("cy") - (d.radius+190)) + offset.top) + "px")
+  	.style("left", (parseInt(d3.select(this).attr("cx") - 200) + offset.left) + "px")
+    .style("top", (parseInt(d3.select(this).attr("cy") - (d.radius+250)) + offset.top) + "px")
 		.html(infoBox)
 			.style("display","block");
 	
