@@ -460,4 +460,4 @@ $(document).ready(function() {
     });
     return d3.csv("banklist.csv", display);
 	
-});
+});}
