@@ -110,16 +110,16 @@ function start() {
 	node = nodeGroup.selectAll("circle")
 		.data(nodes)
 	.enter().append("circle")
-		.attr("class", function(d) { return "node " + d.ClosingDate; })
+		.attr("class", function(d) { return "node " + d.party; })
 		.attr("amount", function(d) { return d.value; })
-		.attr("donor", function(d) { return d.BankName; })
-		.attr("entity", function(d) { return d.City; })
-		.attr("party", function(d) { return d.ClosingDate; })
+		.attr("donor", function(d) { return d.donor; })
+		.attr("entity", function(d) { return d.entity; })
+		.attr("party", function(d) { return d.party; })
 		// disabled because of slow Firefox SVG rendering
 		// though I admit I'm asking a lot of the browser and cpu with the number of nodes
 		//.style("opacity", 0.9)
 		.attr("r", 0)
-		.style("fill", function(d) { return fill(d.ClosingDate); })
+		.style("fill", function(d) { return fill(d.party); })
 		.on("mouseover", mouseover)
 		.on("mouseout", mouseout)
 	        .on("click", function(d) { window.open(GooglePls + d.donor)}); /*Paradoteo 1: When you click, a new windows will pop out at google, searching the donator result  */
