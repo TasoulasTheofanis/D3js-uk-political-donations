@@ -113,7 +113,7 @@ function start() {
 		.attr("class", function(d) { return "node " + d.Closing_Date; })
 		.attr("amount", function(d) { return d.value; })
 		.attr("donor", function(d) { return d.Bank_Name; })
-		.attr("entity", function(d) { return d.entity; })
+		.attr("entity", function(d) { return d.City; })
 		.attr("party", function(d) { return d.Closing_Date; })
 		// disabled because of slow Firefox SVG rendering
 		// though I admit I'm asking a lot of the browser and cpu with the number of nodes
@@ -126,7 +126,7 @@ function start() {
 	
 		// Alternative title based 'tooltips'
 		// node.append("title")
-		//	.text({ return d.donor; });
+		//	.text({ return d.Bank_Name; });
 
 		force.gravity(0)
 			.friction(0.75)
@@ -225,16 +225,17 @@ function all(e) {
 function moveToAmount(alpha) {
 	return function(d) {
 		
-		if (d.CERT <= 50000) { 
+		if (d.value <= 50000) { 
 			centreX = svgCentre.x ;
 			centreY = svgCentre.y -50;
-		} else if (d.CERT <= 350000) { 
+		} else if (d.value <= 350000) { 
 			centreX = svgCentre.x + 150;
 			centreY = svgCentre.y ;
-		} else if (d.CERT <= 20000000){ 
+		} else if (d.value <= 20000000){ 
 			centreX = svgCentre.x + 300;
 			centreY = svgCentre.y + 50;
-//d.CERT			
+		}
+
 		d.x += (centreX - d.x) * (brake + 0.02) * alpha * 1.1;
 		d.y += (centreY - d.y) * (brake + 0.02) * alpha * 1.1;
 	};
@@ -243,17 +244,17 @@ function moveToAmount(alpha) {
 function moveToCentre(alpha) {
 	return function(d) {
 		var centreX = svgCentre.x + 75;
-			if (d.CERT <= 25001) {
+			if (d.value <= 25001) {
 				centreY = svgCentre.y + 75;
-			} else if (d.CERT <= 50001) {
+			} else if (d.value <= 50001) {
 				centreY = svgCentre.y + 55;
-			} else if (d.CERT <= 100001) {
+			} else if (d.value <= 100001) {
 				centreY = svgCentre.y + 35;
-			} else  if (d.CERT <= 500001) {
+			} else  if (d.value <= 500001) {
 				centreY = svgCentre.y + 15;
-			} else  if (d.CERT <= 1000001) {
+			} else  if (d.value <= 1000001) {
 				centreY = svgCentre.y - 5;
-			} else  if (d.CERT <= maxVal) {
+			} else  if (d.value <= maxVal) {
 				centreY = svgCentre.y - 25;
 			} else {
 				centreY = svgCentre.y;
@@ -284,7 +285,7 @@ function moveToEnts(alpha) {
 		if (d.City === 'pub') {
 			centreX = 1200;
 		} else {
-			centreX = entityCentres[d.city].x;
+			centreX = entityCentres[d.City].x;
 		}
 
 		d.x += (centreX - d.x) * (brake + 0.02) * alpha * 1.1;
@@ -322,7 +323,7 @@ function collide(alpha) {
         var x = d.x - quad.point.x,
             y = d.y - quad.point.y,
             l = Math.sqrt(x * x + y * y),
-            r = d.radius + quad.point.radius + (d.Acquiring_Institution !== quad.point.Acquiring_Institution) * padding;
+            r = d.radius + quad.point.radius + (d.Acquiring_Institution !== quad.point.color) * padding;
         if (l < r) {
           l = (l - r) / l * alpha;
           d.x -= x *= l;
@@ -354,9 +355,9 @@ function display(data) {
 				value: d.CERT,
 				donor: d.Bank_Name,
 				party: d.Closing_Date,
-				partyLabel: d.Updated_Date,
+				partyLabel: d.Closing_Date,
 			        entity: d.City,
-				entityLabel: d.ST,
+				entityLabel: d.City,
 				color: d.Acquiring_Institution,
 				x: Math.random() * w,
 				y: -y
@@ -377,21 +378,17 @@ function display(data) {
 
 
 function mouseover(d, i) {
+	//paradoteo 2 doesn't work yet
+	//var img = document.createElement("img");
+	//img.src = "photos/CWU.ico";
+	//document.body.appendChild(img);
 	
-	//Paradoteo2: Conversion type
-	//Bank_Name donor
-	//City entity
-	//ST entityname
-	//CERT amount
-	//Acquiring_Institution color
-	//Closing_Date party
-	//Updated_Date d.partyname
 	
 	// tooltip popup
 	var mosie = d3.select(this);
 	var amount = mosie.attr("amount");
 	var donor = d.Bank_Name;
-	var party = d.Updated_Date;
+	var party = d.Closing_Date;
 	var entity = d.City;
 	var offset = $("svg").offset();
 	var infoBox = "<p> Source: <b>" + donor + "</b></p>"
@@ -418,13 +415,7 @@ function mouseover(d, i) {
 			.style("display","block");
 	
 	
-//paradoteo 2: i create an emelemt which contains the url from the photo folder from ionioodi repository. Then those images appear down on the screen.
-	var img = document.createElement("img");
-	img.src = imageFile;
-	img.width = 42;
-	img.height = 42;
-	document.body.appendChild(img);
-	
+
 /*______________________VIEW IMAGE ON CIRCLE__________________________________________*/
 	
 	
@@ -458,6 +449,6 @@ $(document).ready(function() {
       var id = d3.select(this).attr("id");
       return transition(id);
     });
-    return d3.csv("data/7500up.csv", display);
+    return d3.csv("data/banklist.csv", display);
 	
 });
