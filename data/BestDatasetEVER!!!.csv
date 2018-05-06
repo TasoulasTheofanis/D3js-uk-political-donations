@@ -1,4 +1,4 @@
-Bank_Name,CERT,Closing_Date,City,Acquiring_Institution,partyname,entityname
+BankName,CERT,ClosingDate,City,AcquiringInstitution,UpdatedDate,ST
 Unite,12426848,lab,union,#F02233,Labour,Trade Union
 UNISON,5846082,lab,union,#F02233,Labour,Trade Union
 GMB,5154811,lab,union,#F02233,Labour,Trade Union
