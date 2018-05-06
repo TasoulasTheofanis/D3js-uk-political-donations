@@ -323,7 +323,7 @@ function collide(alpha) {
         var x = d.x - quad.point.x,
             y = d.y - quad.point.y,
             l = Math.sqrt(x * x + y * y),
-            r = d.radius + quad.point.radius + (d.Acquiring_Institution !== quad.point.color) * padding;
+            //r = d.radius + quad.point.radius + (d.Acquiring_Institution !== quad.point.color) * padding;
         if (l < r) {
           l = (l - r) / l * alpha;
           d.x -= x *= l;
