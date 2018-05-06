@@ -111,7 +111,7 @@ function start() {
 		.data(nodes)
 	.enter().append("circle")
 		.attr("class", function(d) { return "node " + d.ClosingDate; })
-		.attr("amount", function(d) { return d.value; })
+		.attr("amount", function(d) { return d.CERT; })
 		.attr("donor", function(d) { return d.BankName; })
 		.attr("entity", function(d) { return d.City; })
 		.attr("party", function(d) { return d.ClosingDate; })
@@ -354,8 +354,8 @@ function display(data) {
 				radius: radiusScale(d.CERT) / 3,
 				value: d.CERT,
 				donor: d.BankName,
-				party: d.ST,
-				partyLabel: d.ST,
+				party: d.ClosingDate,
+				partyLabel: d.UpdatedDate,
 			        entity: d.City,
 				entityLabel: d.City,
 				color: d.AcquiringInstitution,
