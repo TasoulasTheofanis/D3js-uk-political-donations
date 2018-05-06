@@ -130,20 +130,20 @@ function start() {
 
 		force.gravity(0)
 			.friction(0.75)
-			.charge(function(d) { return -Math.pow(d.CERT, 2) / 3; })
+			.charge(function(d) { return -Math.pow(d.radius, 2) / 3; })
 			.on("tick", all)
 			.start();
 
 		node.transition()
 			.duration(2500)
-			.attr("r", function(d) { return d.CERT; });
+			.attr("r", function(d) { return d.radius; });
 }
 
 /*paradoteo 1: new function for new split*/
 function amountType() {
 	force.gravity(0)
 		.friction(0.85)
-		.charge(function(d) { return -Math.pow(d.CERT, 2) / 2.5; })
+		.charge(function(d) { return -Math.pow(d.radius, 2) / 2.5; })
 		.on("tick", amounts)
 		.start();
 }
@@ -152,7 +152,7 @@ function total() {
 
 	force.gravity(0)
 		.friction(0.9)
-		.charge(function(d) { return -Math.pow(d.CERT, 2) / 2.8; })
+		.charge(function(d) { return -Math.pow(d.radius, 2) / 2.8; })
 		.on("tick", all)
 		.start();
 }
@@ -160,7 +160,7 @@ function total() {
 function partyGroup() {
 	force.gravity(0)
 		.friction(0.8)
-		.charge(function(d) { return -Math.pow(d.CERT, 2.0) / 3; })
+		.charge(function(d) { return -Math.pow(d.radius, 2.0) / 3; })
 		.on("tick", parties)
 		.start()
 		.colourByParty();
@@ -169,7 +169,7 @@ function partyGroup() {
 function donorType() {
 	force.gravity(0)
 		.friction(0.8)
-		.charge(function(d) { return -Math.pow(d.CERT, 2.0) / 3; })
+		.charge(function(d) { return -Math.pow(d.radius, 2.0) / 3; })
 		.on("tick", entities)
 		.start();
 }
@@ -177,7 +177,7 @@ function donorType() {
 function fundsType() {
 	force.gravity(0)
 		.friction(0.75)
-		.charge(function(d) { return -Math.pow(d.CERT, 2.0) / 3; })
+		.charge(function(d) { return -Math.pow(d.radius, 2.0) / 3; })
 		.on("tick", types)
 		.start();
 }
@@ -312,7 +312,7 @@ function moveToFunds(alpha) {
 function collide(alpha) {
   var quadtree = d3.geom.quadtree(nodes);
   return function(d) {
-    var r = d.CERT + radius.domain()[1] + padding,
+    var r = d.radius + radius.domain()[1] + padding,
         nx1 = d.x - r,
         nx2 = d.x + r,
         ny1 = d.y - r,
@@ -413,7 +413,7 @@ function mouseover(d, i) {
 	mosie.classed("active", true);
 	d3.select(".tooltip")
   	.style("left", (parseInt(d3.select(this).attr("cx") - 80) + offset.left) + "px")
-    .style("top", (parseInt(d3.select(this).attr("cy") - (d.CERT+150)) + offset.top) + "px")
+    .style("top", (parseInt(d3.select(this).attr("cy") - (d.radius+150)) + offset.top) + "px")
 		.html(infoBox)
 			.style("display","block");
 	
@@ -437,7 +437,7 @@ function mouseover(d, i) {
 	mosie.classed("active", true);
 	d3.select(".tooltip")
   	.style("left", (parseInt(d3.select(this).attr("cx") - 80) + offset.left) + "px")
- 	.style("top", (parseInt(d3.select(this).attr("cy") - (d.CERT+150)) + offset.top) + "px")
+ 	.style("top", (parseInt(d3.select(this).attr("cy") - (d.radius+150)) + offset.top) + "px")
 		.html(infoBox)
 			.style("display","block");
 	}
