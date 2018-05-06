@@ -267,7 +267,7 @@ function moveToCentre(alpha) {
 
 function moveToParties(alpha) {
 	return function(d) {
-		var centreX = partyCentres[d.party].x + 50;
+		var centreX = partyCentres[d.CERT].x + 50;
 		if (d.entity > 'm' || d.entity > 'M') {
 			centreX = 1200;
 		} else {
@@ -282,7 +282,7 @@ function moveToParties(alpha) {
 function moveToEnts(alpha) {
 	return function(d) {
 		var centreY = entityCentres[d.City].y;
-		if (d.City === 'pub') {
+		if (d.City === 'Chicago') {
 			centreX = 1200;
 		} else {
 			centreX = entityCentres[d.City].x;
@@ -297,7 +297,7 @@ function moveToFunds(alpha) {
 	return function(d) {
 		var centreY = entityCentres[d.City].y;
 		var centreX = entityCentres[d.City].x;
-		if (d.City !== 'pub') {
+		if (d.City !== 'Chicago') {
 			centreY = 300;
 			centreX = 350;
 		} else {
