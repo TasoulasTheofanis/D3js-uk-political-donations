@@ -267,7 +267,7 @@ function moveToCentre(alpha) {
 
 function moveToParties(alpha) {
 	return function(d) {
-		var centreX = partyCentres[d.CERT].x + 50;
+		var centreX = partyCentres[d.entity].x + 50;
 		if (d.entity === 'Chicago') {
 			centreX = 1200;
 		} else {
