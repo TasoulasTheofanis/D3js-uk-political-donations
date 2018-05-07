@@ -120,9 +120,8 @@
             var participanPar = document.createElement("P");
             participanPar.className = "partParagraph";
             var participantFollowers = document.getElementById("participants");
-            participantFollowers.innerHTML = participation.follwers_url;
             participantFollowers.className = "partParagraph";    
-            participanPar.innerHTML = "<b>Username:</b> " + participation.login + " <hr> <b>contributions:</b> " + participation.contributions + " <hr> <b>followers:</b> " + participantFollowers;
+            participanPar.innerHTML = "<b>Username:</b> " + participation.login + " <hr> <b>contributions:</b> " + participation.contributions;
             
             participant.appendChild(participantImage);
             participant.appendChild(participanPar);
