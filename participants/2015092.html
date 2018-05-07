@@ -54,7 +54,6 @@
            -ms-transform: scale(1.3);
         filter: progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand',
            M11=2, M12=-0, M21=0, M22=2);
-
         }        
         .partImage:hover{
             -moz-transform: scale(1.3);
@@ -119,8 +118,6 @@
             
             var participanPar = document.createElement("P");
             participanPar.className = "partParagraph";
-            var participantFollowers = document.getElementById("participants");
-            participantFollowers.className = "partParagraph";    
             participanPar.innerHTML = "<b>Username:</b> " + participation.login + " <hr> <b>contributions:</b> " + participation.contributions;
             
             participant.appendChild(participantImage);
