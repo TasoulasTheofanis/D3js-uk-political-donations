@@ -10,7 +10,7 @@ var sound = new Audio("SoundButton.mp3");
 /*paradoteo 1: new variable that gets a url for google search*/
 var GooglePls = "http://www.google.com/search?q=";     
 
-var partyCentres = { 
+/*var partyCentres = { 
     con: { x: w / 3, y: h / 3.3}, 
     lab: {x: w / 3, y: h / 2.3}, 
     lib: {x: w / 3, y: h / 1.8}
@@ -23,7 +23,7 @@ var entityCentres = {
 		Scottsdale: {x: w / 1.12, y: h  / 3.2 },
 		Princeton: {x: w / 1.8, y: h / 2.8},
 		Whiteville: {x: w / 3.65, y: h / 3.3}                    /* i deleted a comma*/
-	};
+	}; */
 /*paradoteo 1: coloring the circles of Labour Party, Conservative Party and Liberal Democrats*/
 var fill = d3.scale.ordinal().range(["#145506", "#100345", "#ff2200"]);  
 
@@ -269,9 +269,9 @@ function moveToParties(alpha) {
 	return function(d) {
 		var centreX = svgCentre.x + 50;
 		if (d.entity === 'Chicago') {
-			centreX = 1200;
+			centreX = 500;
 		} else {
-			centreX = 400;
+			centreX = 300;
 		}
 
 		d.x += (centreX - d.x) * (brake + 0.02) * alpha * 1.1;
@@ -283,11 +283,11 @@ function moveToEnts(alpha) {
 	return function(d) {
 		var centreY = svgCentre.y;
 		if (d.entity < 'Chicago') {
-			centreX = 1200;
-			centreY = 1200;
+			centreX = 550;
+			centreY = 550;
 		} else {
-			centreX = 400;
-			centreY = 400;
+			centreX = 350;
+			centreY = 350;
 		}
 
 		d.x += (centreX - d.x) * (brake + 0.02) * alpha * 1.1;
@@ -303,7 +303,7 @@ function moveToFunds(alpha) {
 			centreY = 300;
 			centreX = 350;
 		} else {
-			centreX = entityCentres[d.entity].x + 60;
+			centreX = svgCentre.x + 60;
 			centreY = 380;
 		}
 		d.x += (centreX - d.x) * (brake + 0.02) * alpha * 1.1;
