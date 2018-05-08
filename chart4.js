@@ -274,6 +274,9 @@ function moveToParties(alpha) {
 			centreX = 450;
 			centreY = 600;
 		}
+		d.x += (centreX - d.x) * (brake + 0.02) * alpha * 1.1;
+		d.y += (centreY - d.y) * (brake + 0.02) * alpha * 1.1;
+	};
 }
 
 function moveToEnts(alpha) {
