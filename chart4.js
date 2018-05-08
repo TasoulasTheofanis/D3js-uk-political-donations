@@ -314,59 +314,41 @@ function moveToFunds(alpha) {
 		var centreY = svgCentre.y;
 		var centreX = svgCentre.x;
 		if ( d.party.includes("-17") ) {
-			centreY = 700;
+			centreY = 300;
 			centreX = 200;
 		}  else if ( d.party.includes("-16") ) {
-			centreY = 700;
-			centreX = 280;
+			centreY = 300;
+			centreX = 300;
 		} else if ( d.party.includes("-15") ) {
-			centreY = 700;
-			centreX = 360;
+			centreY = 300;
+			centreX = 400;
 		} else if ( d.party.includes("-14") ) {
-			centreY = 700;
-			centreX = 440;
+			centreY = 300;
+			centreX = 500;
 		} else if ( d.party.includes("-13") ) {
-			centreY = 700;
-			centreX = 520;
+			centreY = 500;
+			centreX = 200;
 		} else if ( d.party.includes("-12") ) {
-			centreY = 550;
-			centreX = 200;
+			centreY = 500;
+			centreX = 300;
 		} else if ( d.party.includes("-11") ) {
-			centreY = 550;
-			centreX = 280;
+			centreY = 500;
+			centreX = 400;
 		} else if ( d.party.includes("-10") ) {
-			centreY = 550;
-			centreX = 360;
+			centreY = 500;
+			centreX = 500;
 		} else if ( d.party.includes("-09") ) {
-			centreY = 550;
-			centreX = 440;
+			centreY = 700;
+			centreX = 200;
 		} else if ( d.party.includes("-08") ) {
-			centreY = 550;
-			centreX = 520;
-		} else if ( d.party.includes("-07") ) {
-			centreY = 400;
-			centreX = 200;
-		} else if ( d.party.includes("-06") ) {
-			centreY = 400;
-			centreX = 280;
-		} else if ( d.party.includes("-05") ) {
-			centreY = 400;
-			centreX = 360;
-		} else if ( d.party.includes("-04") ) {
-			centreY = 400;
-			centreX = 440;
-		} else if ( d.party.includes("-03") ) {
-			centreY = 400;
-			centreX = 520;
-		} else if ( d.party.includes("-02") ) {
-			centreY = 300;
-			centreX = 200;
-		} else if ( d.party.includes("-01") ) {
-			centreY = 300;
-			centreX = 280;
-		} else {
-			centreY = 300;
-			centreX = 360;
+			centreY = 700;
+			centreX = 300;
+		} else if ( d.party.includes("-03") || d.party.includes("-04") || d.party.includes("-07") ) {
+			centreY = 700;
+			centreX = 400;
+		} else 
+			centreY = 700;
+			centreX = 500;
 		}
 		d.x += (centreX - d.x) * (brake + 0.02) * alpha * 1.1;
 		d.y += (centreY - d.y) * (brake + 0.02) * alpha * 1.1;
