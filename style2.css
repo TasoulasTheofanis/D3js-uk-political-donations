@@ -115,6 +115,7 @@ li {
 #STUPIDTITLE{
     height: 100%;
     left: 500px;
+    osition: absolute;
 }
 #view-party-type {
     height: 100%;
@@ -122,31 +123,26 @@ li {
 #alphabet1 {
     left: 250px;
     top: 50px;
-    position: absolute;
     display: inline;
 }
 #alphabet2 {
     left: 500px;
     top: 50px;
-    position: absolute;
     display: inline;
 }
 #alphabet3 {
     left: 150px;
     top: 460px;
-    position: absolute;
     display: inline;
 }
 #alphabet4 {
     left: 290px;
     top: 460px;
-    position: absolute;
     display: inline;
 }
 #alphabet5 {
     left: 500px;
     top: 460px;
-    position: absolute;
     display: inline;
 }
 
