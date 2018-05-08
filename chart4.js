@@ -346,7 +346,7 @@ function moveToFunds(alpha) {
 		} else if ( d.party.includes("-03") || d.party.includes("-04") || d.party.includes("-07") ) {
 			centreY = 700;
 			centreX = 400;
-		} else 
+		} else {
 			centreY = 700;
 			centreX = 500;
 		}
