@@ -113,8 +113,9 @@ li {
 /* Paradoteo 2: new positions for new split by*/
 
 #STUPIDTITLE{
-    left: 500px;
+    left: 425px;
     position: absolute;
+    display: inline;
 }
 #view-party-type {
     height: 100%;
