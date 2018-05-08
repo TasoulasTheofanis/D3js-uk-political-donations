@@ -17,7 +17,7 @@ var partyCentres = {
   };
 
 var entityCentres = { 
-    company: {x: w / 3.65, y: h / 2.3},
+    City: {x: w / 3.65, y: h / 2.3},
 		Chicago: {x: w / 3.65, y: h / 1.8},
 		Atlanta: {x: w / 1.15, y: h / 1.9},
 		Scottsdale: {x: w / 1.12, y: h  / 3.2 },
