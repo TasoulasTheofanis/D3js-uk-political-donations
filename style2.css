@@ -34,10 +34,23 @@ li {
 }
 
 /* View containers */
+/*paradoteo2: Edited positions for new split by*/
 #initial-content, #view-source-type {
-    left: 650px;
-    width: 400px;
+    height: 100%;
 }
+#2017 {
+    left: 150px;
+    top: 230px;
+    position: absolute;
+}
+
+#2016 {
+    left: 150px;
+    top: 230px;
+    position: absolute;
+}
+
+
 #view-party-type {
     left: 650px;
     width: 272px;
