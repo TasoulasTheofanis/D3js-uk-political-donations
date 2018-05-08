@@ -269,11 +269,17 @@ function moveToParties(alpha) {
 function moveToEnts(alpha) {
 	return function(d) {
 		var centreY = svgCentre.y;
-		if (d.entity <= 'A') {
+		if (d.entity >= 'A') {
+			centreX = 350;
+			centreY = 550;
+		} else if (d.entity >= 'G') {
 			centreX = 550;
 			centreY = 550;
-		} else if (d.entity <= 'D') {
+		} else if (d.entity >= 'M') {
 			centreX = 350;
+			centreY = 350;
+		} else if (d.entity >= 'S') {
+			centreX = 550;
 			centreY = 350;
 		}
 
