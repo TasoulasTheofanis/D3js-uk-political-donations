@@ -29,7 +29,7 @@ li {
 
 /* Paradoteo 1 - Important reference of #view-amount-type, so that it wont appear when the page is loaded*/
 /* Initial appearance on load */
-#view-party-type, #view-donor-type, #view-source-type, #view-amount-type, #initial-content {
+#view-party-type, #view-donor-type, #view-source-type, #view-amount-type {
     display: none;
 }
 
