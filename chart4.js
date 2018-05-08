@@ -267,11 +267,11 @@ function moveToCentre(alpha) {
 
 function moveToParties(alpha) {
 	return function(d) {
-		var centreX = partyCentres[d.entity].x + 50;
+		var centreX = partyCentres[d.City].x + 50;
 		if (d.entity === 'Chicago') {
 			centreX = 1200;
 		} else {
-			centreY = partyCentres[d.entity].y;
+			centreY = partyCentres[d.City].y;
 		}
 
 		d.x += (centreX - d.x) * (brake + 0.02) * alpha * 1.1;
@@ -281,11 +281,11 @@ function moveToParties(alpha) {
 
 function moveToEnts(alpha) {
 	return function(d) {
-		var centreY = entityCentres[d.entity].y;
+		var centreY = entityCentres[d.City].y;
 		if (d.entity === 'Chicago') {
 			centreX = 1200;
 		} else {
-			centreX = entityCentres[d.entity].x;
+			centreX = entityCentres[d.City].x;
 		}
 
 		d.x += (centreX - d.x) * (brake + 0.02) * alpha * 1.1;
