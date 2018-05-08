@@ -36,8 +36,7 @@ li {
 /* View containers */
 /*paradoteo2: splited #view-source-type and #initial-content*/
 #initial-content {
-    left: 650px;
-    width: 400px;
+    height: 100%;
 }
 
 /*paradoteo2: New positions for new split by*/
