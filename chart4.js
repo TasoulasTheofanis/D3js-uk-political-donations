@@ -10,20 +10,6 @@ var sound = new Audio("SoundButton.mp3");
 /*paradoteo 1: new variable that gets a url for google search*/
 var GooglePls = "http://www.google.com/search?q=";     
 
-/*var partyCentres = { 
-    con: { x: w / 3, y: h / 3.3}, 
-    lab: {x: w / 3, y: h / 2.3}, 
-    lib: {x: w / 3, y: h / 1.8}
-  };
-
-var entityCentres = { 
-    City: {x: w / 3.65, y: h / 2.3},
-		Chicago: {x: w / 3.65, y: h / 1.8},
-		Atlanta: {x: w / 1.15, y: h / 1.9},
-		Scottsdale: {x: w / 1.12, y: h  / 3.2 },
-		Princeton: {x: w / 1.8, y: h / 2.8},
-		Whiteville: {x: w / 3.65, y: h / 3.3}                    // i deleted a comma
-	}; */
 
 /*paradoteo 1: coloring the circles of Labour Party, Conservative Party and Liberal Democrats*/
 var fill = d3.scale.ordinal().range(["#145506", "#100345", "#ff2200"]);  
@@ -283,10 +269,10 @@ function moveToParties(alpha) {
 function moveToEnts(alpha) {
 	return function(d) {
 		var centreY = svgCentre.y;
-		if (d.entity < 'Chicago') {
+		if (d.entity <== 'A') {
 			centreX = 550;
 			centreY = 550;
-		} else {
+		} else if (d.entity <== 'D') {
 			centreX = 350;
 			centreY = 350;
 		}
