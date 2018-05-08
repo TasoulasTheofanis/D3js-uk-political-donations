@@ -254,39 +254,49 @@ function moveToCentre(alpha) {
 
 function moveToParties(alpha) {
 	return function(d) {
-		var centreX = svgCentre.x + 50;
-		if (d.entity === 'Chicago') {
-			centreX = 500;
+		var centreY = svgCentre.y;
+		if (d.donor <= 'A') {
+			centreX = 250;
+			centreY = 300;
+		} else if (d.donor <= 'E') {
+			centreX = 350;
+			centreY = 300;
+		} else if (d.donor <= 'I') {
+			centreX = 450;
+			centreY = 300;
+		} else if (d.donor <= 'M') {
+			centreX = 250;
+			centreY = 600;
+		} else if (d.donor <= 'Q') {
+			centreX = 350;
+			centreY = 600;
 		} else {
-			centreX = 300;
+			centreX = 450;
+			centreY = 600;
 		}
-
-		d.x += (centreX - d.x) * (brake + 0.02) * alpha * 1.1;
-		d.y += (centreY - d.y) * (brake + 0.02) * alpha * 1.1;
-	};
 }
 
 function moveToEnts(alpha) {
 	return function(d) {
 		var centreY = svgCentre.y;
 		if (d.entity <= 'A') {
-			centreX = 150;
-			centreY = 600;
+			centreX = 250;
+			centreY = 300;
 		} else if (d.entity <= 'E') {
-			centreX = 300;
-			centreY = 600;
+			centreX = 350;
+			centreY = 300;
 		} else if (d.entity <= 'I') {
 			centreX = 450;
-			centreY = 600;
+			centreY = 300;
 		} else if (d.entity <= 'M') {
-			centreX = 150;
-			centreY = 300;
+			centreX = 250;
+			centreY = 600;
 		} else if (d.entity <= 'Q') {
-			centreX = 300;
-			centreY = 300;
+			centreX = 350;
+			centreY = 600;
 		} else {
 			centreX = 450;
-			centreY = 300;
+			centreY = 600;
 		}
 
 		d.x += (centreX - d.x) * (brake + 0.02) * alpha * 1.1;
