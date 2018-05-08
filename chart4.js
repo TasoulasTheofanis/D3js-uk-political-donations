@@ -314,16 +314,16 @@ function moveToFunds(alpha) {
 		var centreY = svgCentre.y;
 		var centreX = svgCentre.x;
 		if ( d.party.includes("-17") ) {
-			centreY = 300;
+			centreY = 350;
 			centreX = 200;
 		}  else if ( d.party.includes("-16") ) {
-			centreY = 300;
+			centreY = 350;
 			centreX = 300;
 		} else if ( d.party.includes("-15") ) {
-			centreY = 300;
+			centreY = 350;
 			centreX = 400;
 		} else if ( d.party.includes("-14") ) {
-			centreY = 300;
+			centreY = 350;
 			centreX = 500;
 		} else if ( d.party.includes("-13") ) {
 			centreY = 500;
