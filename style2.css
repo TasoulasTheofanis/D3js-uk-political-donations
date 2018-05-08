@@ -94,19 +94,19 @@ li {
     left: 290px;
     top: 620px;
     position: absolute;
-    display: inline;
+    display: inline-block;;
 }
 #ClosedOn2007 {
     left: 420px;
     top: 620px;
     position: absolute;
-    display: inline;
+    display: inline-block;;
 }
 #ClosedOn2000 {
     left: 540px;
     top: 620px;
     position: absolute;
-    display: inline;
+    display: inline-block;;
 }
 
 
@@ -114,7 +114,8 @@ li {
 
 #STUPIDTITLE{
     left: 425px;
-    display: inline;
+    display: inline-block;
+    position: absolute;
 }
 #view-party-type {
     height: 100%;
@@ -122,31 +123,31 @@ li {
 #alphabet1 {
     left: 250px;
     top: 50px;
-    display: inline;
+    display: inline-block;;
     position: absolute;
 }
 #alphabet2 {
     left: 500px;
     top: 50px;
-    display: inline;
+    display: inline-block;;
     position: absolute;
 }
 #alphabet3 {
     left: 150px;
     top: 460px;
-    display: inline;
+    display: inline-block;;
     position: absolute;
 }
 #alphabet4 {
     left: 290px;
     top: 460px;
-    display: inline;
+    display: inline-block;;
     position: absolute;
 }
 #alphabet5 {
     left: 500px;
     top: 460px;
-    display: inline;
+    display: inline-block;;
     position: absolute;
 }
 
