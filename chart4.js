@@ -12,7 +12,7 @@ var GooglePls = "http://www.google.com/search?q=";
 
 
 /*paradoteo 1: coloring the circles of Labour Party, Conservative Party and Liberal Democrats*/
-var fill = d3.scale.ordinal().range(["#145506", "#100345", "#ff2200"]);  
+var fill = d3.scale.ordinal().range(["#000000", "#000000", "#000000"]);  
 
 var svgCentre = { 
     x: w / 3.6, y: h / 2
