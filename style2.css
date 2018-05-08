@@ -44,7 +44,6 @@ li {
 #view-source-type {
     height: 100%;
     position: absolute;
-    display: inline;
 }
 #ClosedOn2017 {
     left: 80px;
@@ -95,16 +94,19 @@ li {
     left: 290px;
     top: 620px;
     position: absolute;
+    display: inline;
 }
 #ClosedOn2007 {
     left: 420px;
     top: 620px;
     position: absolute;
+    display: inline;
 }
 #ClosedOn2000 {
     left: 540px;
     top: 620px;
     position: absolute;
+    display: inline;
 }
 
 
@@ -112,36 +114,40 @@ li {
 
 #STUPIDTITLE{
     height: 100%;
-    display: inline;
+    left: 500px;
 }
 #view-party-type {
     height: 100%;
-    display: inline;
 }
 #alphabet1 {
     left: 250px;
     top: 50px;
     position: absolute;
+    display: inline;
 }
 #alphabet2 {
     left: 500px;
     top: 50px;
     position: absolute;
+    display: inline;
 }
 #alphabet3 {
     left: 150px;
     top: 460px;
     position: absolute;
+    display: inline;
 }
 #alphabet4 {
     left: 290px;
     top: 460px;
     position: absolute;
+    display: inline;
 }
 #alphabet5 {
     left: 500px;
     top: 460px;
     position: absolute;
+    display: inline;
 }
 
 
