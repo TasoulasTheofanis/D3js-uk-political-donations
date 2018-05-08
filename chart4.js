@@ -338,7 +338,7 @@ function moveToFunds(alpha) {
 			centreY = 500;
 			centreX = 500;
 		} else if ( d.party.includes("-09") ) {
-			centreY = 700;
+			centreY = 730;
 			centreX = 200;
 		} else if ( d.party.includes("-08") ) {
 			centreY = 700;
