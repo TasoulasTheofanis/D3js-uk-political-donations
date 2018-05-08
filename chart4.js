@@ -270,17 +270,23 @@ function moveToEnts(alpha) {
 	return function(d) {
 		var centreY = svgCentre.y;
 		if (d.entity <= 'A') {
-			centreX = 350;
-			centreY = 550;
-		} else if (d.entity <= 'G') {
-			centreX = 550;
-			centreY = 550;
+			centreX = 150;
+			centreY = 600;
+		} else if (d.entity <= 'E') {
+			centreX = 300;
+			centreY = 600;
+		} else if (d.entity <= 'I') {
+			centreX = 450;
+			centreY = 600;
 		} else if (d.entity <= 'M') {
-			centreX = 350;
-			centreY = 350;
-		} else if (d.entity <= 'S') {
-			centreX = 550;
-			centreY = 350;
+			centreX = 150;
+			centreY = 300;
+		} else if (d.entity <= 'Q') {
+			centreX = 300;
+			centreY = 300;
+		} else {
+			centreX = 450;
+			centreY = 300;
 		}
 
 		d.x += (centreX - d.x) * (brake + 0.02) * alpha * 1.1;
