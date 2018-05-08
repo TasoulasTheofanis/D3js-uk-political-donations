@@ -34,10 +34,17 @@ li {
 }
 
 /* View containers */
+/*paradoteo2: splited #view-source-type and #initial-content*/
+#initial-content {
+    left: 650px;
+    width: 400px;
+}
+
 /*paradoteo2: Edited positions for new split by*/
-#initial-content, #view-source-type {
+#view-source-type {
     height: 100%;
 }
+
 #2017 {
     left: 200px;
     top: 320px;
