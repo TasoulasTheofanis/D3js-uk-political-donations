@@ -284,8 +284,10 @@ function moveToEnts(alpha) {
 		var centreY = svgCentre.y;
 		if (d.entity < 'Chicago') {
 			centreX = 1200;
+			centreY = 1200;
 		} else {
 			centreX = 400;
+			centreY = 400;
 		}
 
 		d.x += (centreX - d.x) * (brake + 0.02) * alpha * 1.1;
@@ -295,8 +297,8 @@ function moveToEnts(alpha) {
 
 function moveToFunds(alpha) {
 	return function(d) {
-		var centreY = entityCentres[d.entity].y;
-		var centreX = entityCentres[d.entity].x;
+		var centreY = svgCentre.y;
+		var centreX = svgCentre.x;
 		if (d.value < 35000) {
 			centreY = 300;
 			centreX = 350;
@@ -378,11 +380,6 @@ function display(data) {
 
 
 function mouseover(d, i) {
-	//paradoteo 2 doesn't work yet
-	//var img = document.createElement("img");
-	//img.src = "photos/CWU.ico";
-	//document.body.appendChild(img);
-	
 	
 	// tooltip popup
 	var mosie = d3.select(this);
