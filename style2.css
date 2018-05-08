@@ -94,19 +94,28 @@ li {
     left: 290px;
     top: 620px;
     position: absolute;
-    display: inline-block;;
+    clear: both;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
 }
 #ClosedOn2007 {
     left: 420px;
     top: 620px;
     position: absolute;
-    display: inline-block;;
+    clear: both;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
 }
 #ClosedOn2000 {
     left: 540px;
     top: 620px;
     position: absolute;
-    display: inline-block;;
+    clear: both;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 
