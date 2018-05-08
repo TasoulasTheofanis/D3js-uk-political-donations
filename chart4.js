@@ -252,10 +252,11 @@ function moveToCentre(alpha) {
 	};
 }
 
+//paradoteo2: Edited split by functions for new dataset. Alphabetical spit by Bank Name
 function moveToParties(alpha) {
 	return function(d) {
 		var centreY = svgCentre.y;
-		if (d.donor <= 'A') {
+		if (d.donor <= '0') {
 			centreX = 250;
 			centreY = 300;
 		} else if (d.donor <= 'E') {
@@ -279,10 +280,11 @@ function moveToParties(alpha) {
 	};
 }
 
+//paradoteo2: Edited split by functions for new dataset. Alphabetical spit by City Name
 function moveToEnts(alpha) {
 	return function(d) {
 		var centreY = svgCentre.y;
-		if (d.entity <= 'A') {
+		if (d.entity <= '0') {
 			centreX = 250;
 			centreY = 300;
 		} else if (d.entity <= 'E') {
@@ -311,12 +313,60 @@ function moveToFunds(alpha) {
 	return function(d) {
 		var centreY = svgCentre.y;
 		var centreX = svgCentre.x;
-		if (d.value < 35000) {
+		if ( d.party.includes("-17") ) {
+			centreY = 300;
+			centreX = 350;
+		}  else if ( d.party.includes("-16") ) {
+			centreY = 300;
+			centreX = 350;
+		} else if ( d.party.includes("-15") ) {
+			centreY = 300;
+			centreX = 350;
+		} else if ( d.party.includes("-14") ) {
+			centreY = 300;
+			centreX = 350;
+		} else if ( d.party.includes("-13") ) {
+			centreY = 300;
+			centreX = 350;
+		} else if ( d.party.includes("-12") ) {
+			centreY = 300;
+			centreX = 350;
+		} else if ( d.party.includes("-11") ) {
+			centreY = 300;
+			centreX = 350;
+		} else if ( d.party.includes("-10") ) {
+			centreY = 300;
+			centreX = 350;
+		} else if ( d.party.includes("-09") ) {
+			centreY = 300;
+			centreX = 350;
+		} else if ( d.party.includes("-08") ) {
+			centreY = 300;
+			centreX = 350;
+		} else if ( d.party.includes("-07") ) {
+			centreY = 300;
+			centreX = 350;
+		} else if ( d.party.includes("-06") ) {
+			centreY = 300;
+			centreX = 350;
+		} else if ( d.party.includes("-05") ) {
+			centreY = 300;
+			centreX = 350;
+		} else if ( d.party.includes("-04") ) {
+			centreY = 300;
+			centreX = 350;
+		} else if ( d.party.includes("-03") ) {
+			centreY = 300;
+			centreX = 350;
+		} else if ( d.party.includes("-02") ) {
+			centreY = 300;
+			centreX = 350;
+		} else if ( d.party.includes("-01") ) {
 			centreY = 300;
 			centreX = 350;
 		} else {
-			centreX = svgCentre.x + 60;
-			centreY = 380;
+			centreY = 300;
+			centreX = 350;
 		}
 		d.x += (centreX - d.x) * (brake + 0.02) * alpha * 1.1;
 		d.y += (centreY - d.y) * (brake + 0.02) * alpha * 1.1;
