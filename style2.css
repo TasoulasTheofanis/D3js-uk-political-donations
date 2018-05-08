@@ -43,6 +43,7 @@ li {
 /*paradoteo2: New positions for new split by*/
 #view-source-type {
     height: 100%;
+    position: absolute;
 }
 #ClosedOn2017 {
     left: 80px;
@@ -96,10 +97,12 @@ li {
 #ClosedOn2007 {
     left: 380px;
     top: 620px;
+    
 }
 #ClosedOn2000 {
     left: 540px;
     top: 620px;
+    position: absolute;
 }
 
 
