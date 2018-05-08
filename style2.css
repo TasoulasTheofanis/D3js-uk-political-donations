@@ -47,42 +47,42 @@ li {
 }
 #ClosedOn2017 {
     left: 80px;
-    top: 170px;
+    top: 140px;
     position: absolute;
 }
 #ClosedOn2016 {
     left: 250px;
-    top: 170px;
+    top: 140px;
     position: absolute;
 }
 #ClosedOn2015 {
     left: 380px;
-    top: 170px;
+    top: 140px;
     position: absolute;
 }
 #ClosedOn2014 {
     left: 540px;
-    top: 170px;
+    top: 140px;
     position: absolute;
 }
 #ClosedOn2013 {
     left: 80px;
-    top: 310px;
+    top: 280px;
     position: absolute;
 }
 #ClosedOn2012 {
     left: 250px;
-    top: 310px;
+    top: 280px;
     position: absolute;
 }
 #ClosedOn2011 {
     left: 380px;
-    top: 310px;
+    top: 280px;
     position: absolute;
 }
 #ClosedOn2010 {
     left: 540px;
-    top: 310px;
+    top: 280px;
     position: absolute;
 }
 #ClosedOn2009 {
@@ -114,27 +114,27 @@ li {
 }
 #alphabet1 {
     left: 250px;
-    top: 100px;
+    top: 50px;
     position: absolute;
 }
 #alphabet2 {
-    left: 400px;
-    top: 100px;
+    left: 500px;
+    top: 50px;
     position: absolute;
 }
 #alphabet3 {
     left: 150px;
-    top: 660px;
+    top: 460px;
     position: absolute;
 }
 #alphabet4 {
     left: 250px;
-    top: 660px;
+    top: 460px;
     position: absolute;
 }
 #alphabet5 {
     left: 250px;
-    top: 660px;
+    top: 460px;
     position: absolute;
 }
 
