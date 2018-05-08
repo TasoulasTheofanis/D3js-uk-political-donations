@@ -113,9 +113,8 @@ li {
 /* Paradoteo 2: new positions for new split by*/
 
 #STUPIDTITLE{
-    height: 100%;
     left: 500px;
-    osition: absolute;
+    position: absolute;
 }
 #view-party-type {
     height: 100%;
@@ -124,26 +123,31 @@ li {
     left: 250px;
     top: 50px;
     display: inline;
+    position: absolute;
 }
 #alphabet2 {
     left: 500px;
     top: 50px;
     display: inline;
+    position: absolute;
 }
 #alphabet3 {
     left: 150px;
     top: 460px;
     display: inline;
+    position: absolute;
 }
 #alphabet4 {
     left: 290px;
     top: 460px;
     display: inline;
+    position: absolute;
 }
 #alphabet5 {
     left: 500px;
     top: 460px;
     display: inline;
+    position: absolute;
 }
 
 
