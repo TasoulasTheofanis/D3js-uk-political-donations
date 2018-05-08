@@ -23,7 +23,7 @@ li {
 /* 	Information boxes for different chart layouts */
 /* Positioning */
 
-#initial-content, #a, #b, #c, #d, #e, #f, #view-party-type, #view-donor-type, #partyInfo, #conservative, #labour, #libdem, #individual, #company, #union, #society, #other, #public-or-private-money, #public-or-private-money-split, #private-money, #public-money { 
+#initial-content, #a, #b, #c, #d, #e, #f, #view-party-type, #view-donor-type, #view-source-type, #partyInfo, #conservative, #labour, #libdem, #individual, #company, #union, #society, #other, #public-or-private-money, #public-or-private-money-split, #private-money, #public-money { 
     position: absolute; 
 }
 
@@ -43,67 +43,68 @@ li {
 /*paradoteo2: Edited positions for new split by*/
 #view-source-type {
     height: 100%;
+    left: 200px;
+    top: 320px;
 }
-
 #2017 {
     left: 200px;
     top: 320px;
-
+    position: absolute;
 }
-
 #2016 {
     left: 300px;
     top: 320px;
-
+    position: absolute;
 }
 #2015 {
     left: 400px;
     top: 320px;
-
+    position: absolute;
 }
 #2014 {
     left: 500px;
     top: 320px;
-
+    position: absolute;
 }
 #2013 {
     left: 200px;
     top: 480px;
-
+    position: absolute;
 }
 #2012 {
     left: 300px;
     top: 480px;
+    position: absolute;
 }
 #2011 {
     left: 400px;
     top: 480px;
-
+    position: absolute;
 }
 #2010 {
     left: 500px;
     top: 480px;
-
+    position: absolute;
 }
 #2009 {
     left: 200px;
     top: 680px;
-    
+    position: absolute;
 }
 #2008 {
     left: 300px;
     top: 680px;
-
+    position: absolute;
 }
 #2007 {
     left: 400px;
     top: 680px;
-
+    position: absolute;
 }
 #2000 {
     left: 400px;
     top: 680px;
-
+    position: absolute;
 }
 
 
