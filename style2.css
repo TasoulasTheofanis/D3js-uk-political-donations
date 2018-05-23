@@ -42,8 +42,8 @@ li {
 
 /*paradoteo2: New positions for new split by*/
 #view-source-type {
+    height: 100%;
     
-    position: absolute;
 }
 #ClosedOn2017 {
     left: 80px;
