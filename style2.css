@@ -46,7 +46,6 @@ li {
     position: absolute;
     clear: both;
     display: inline-block;
-    overflow: hidden;
     white-space: nowrap;
 }
 #ClosedOn2017 {
