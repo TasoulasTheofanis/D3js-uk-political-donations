@@ -44,7 +44,10 @@ li {
 #view-source-type {
     height: 100%;
     position: absolute;
+    clear: both;
+    display: inline-block;
     overflow: hidden;
+    white-space: nowrap;
 }
 #ClosedOn2017 {
     left: 80px;
