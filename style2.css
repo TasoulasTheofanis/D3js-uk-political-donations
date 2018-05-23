@@ -38,15 +38,13 @@ li {
 #initial-content {
     left: 650px;
     width: 400px;
+    height: 100%;
 }
 
 /*paradoteo2: New positions for new split by*/
 #view-source-type {
-    height: 100%;
+    
     position: absolute;
-    clear: both;
-    display: inline-block;
-    white-space: nowrap;
 }
 #ClosedOn2017 {
     left: 80px;
