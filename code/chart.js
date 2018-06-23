@@ -414,7 +414,6 @@ function mouseover(d, i) {
 	var imgContainer = document.getElementById("imageHolder");
 	var img = document.createElement("img");
 	img.src = imageFile;
-	img.setAttribute("src",imageFile);
 	img.setAttribute("width","42px");
 	img.setAttribute("height","42px");
 	document.getElementById("imageHolder").appendChild(img);
