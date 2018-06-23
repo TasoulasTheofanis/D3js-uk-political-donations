@@ -461,8 +461,7 @@ function mouseover(d, i) {
 	
 	
 /* Paradoteo 1: i create a new message that will be narrated, when someone goes over any circle*/
-	var msg = new SpeechSynthesisUtterance("The bank " + donor + " from " + entity + " was closed on " + party + " . The Acquiring Institution was " + d.color);
-	window.speechSynthesis.speak(msg);
+	responsiveVoice.speak("The bank " + donor + " from " + entity + " was closed on " + party + " . The Acquiring Institution was " + d.color);
 	
 	mosie.classed("active", true);
 	d3.select(".tooltip")
