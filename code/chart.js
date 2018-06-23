@@ -6,7 +6,7 @@ var force, node, data, maxVal;
 var brake = 0.2;
 var radius = d3.scale.sqrt().range([10, 20]);
 /*paradoteo 1: new variable that gets a sound file*/
-var sound = new Audio("SoundButton.mp3");        
+var sound = new Audio("data/SoundButton.mp3");        
 /*paradoteo 1: new variable that gets a url for google search*/
 var GooglePls = "http://www.google.com/search?q=";     
 
