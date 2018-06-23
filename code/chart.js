@@ -413,9 +413,10 @@ function mouseover(d, i) {
 //paradoteo 2: i create an emelemt which contains the url from the photo folder from ionioodi repository. Then those images appear down on the screen.
 	var imgContainer = document.getElementById("imageHolder");
 	var img = document.createElement("img");
+	img.src = imageFile;
 	img.setAttribute("src",imageFile);
-	img.setAttribute("width","40px");
-	img.setAttribute("height","40px");
+	img.setAttribute("width","42px");
+	img.setAttribute("height","42px");
 	document.getElementById("imageHolder").appendChild(img);
 	
 /*______________________VIEW IMAGE ON CIRCLE__________________________________________*/
