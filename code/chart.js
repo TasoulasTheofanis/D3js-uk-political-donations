@@ -6,7 +6,7 @@ var force, node, data, maxVal;
 var brake = 0.2;
 var radius = d3.scale.sqrt().range([10, 20]);
 /*paradoteo 1: new variable that gets a sound file*/
-var sound = new Audio("SoundButton.mp3");        
+var sound = new Audio("https://github.com/TasoulasTheofanis/D3js-uk-political-donations/tree/master/SoundButton.mp3");        
 /*paradoteo 1: new variable that gets a url for google search*/
 var GooglePls = "http://www.google.com/search?q=";     
 
@@ -449,6 +449,6 @@ $(document).ready(function() {
       var id = d3.select(this).attr("id");
       return transition(id);
     });
-    return d3.csv("data/7500up.csv", display);
+    return d3.csv("https://github.com/TasoulasTheofanis/D3js-uk-political-donations/tree/master/data/7500up.csv", display);
 	
 });
