@@ -17,19 +17,19 @@
 
 <img src="https://i.imgur.com/ssfQUZg.png"/>  
 
-##### The following page shows the students who contributed to the team project. Each has defined a different kinetic representation of the font representing its github's username.
+### The following page shows the students who contributed to the team project. Each has defined a different kinetic representation of the font representing its github's username.
 
 <img src="https://i.imgur.com/zqy63XT.gif"/>  
 
-##### The following page uses the github api, to show the students who contributed to the team project. 
+### The following page uses the github api, to show the students who contributed to the team project. 
 
 <img src="https://i.imgur.com/E64zuIK.png"/> 
 
-Report of Project: [https://tasoulastheofanis.github.io/Report-SW-Data-Visualization-Tasoulas-Theofanis-P2015092/](https://tasoulastheofanis.github.io/Report-SW-Data-Visualization-Tasoulas-Theofanis-P2015092/)
+## Report of Project: [https://tasoulastheofanis.github.io/Report-SW-Data-Visualization-Tasoulas-Theofanis-P2015092/](https://tasoulastheofanis.github.io/Report-SW-Data-Visualization-Tasoulas-Theofanis-P2015092/)
 
-Source: [https://github.com/neilhawkins/d3-uk-political-donations](https://github.com/neilhawkins/d3-uk-political-donations)
+### Source: [https://github.com/neilhawkins/d3-uk-political-donations](https://github.com/neilhawkins/d3-uk-political-donations)
 
-## Useful links
+### Useful links
 
 * [Data Driven Documents](https://d3js.org/)
 * [Github pages](https://pages.github.com/)
