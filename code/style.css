@@ -19,13 +19,6 @@ header, nav {
 li {
     display: inline;
 }
-/* Paradoteo 2 - New position for the images's history*/
-#images{
-    left:1200px;
-    top:130px;
-    width: 210px;  
-    position:absolute;
-}
 
 /* 	Information boxes for different chart layouts */
 /* Positioning */
