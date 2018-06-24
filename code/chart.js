@@ -421,7 +421,7 @@ function mouseover(d, i) {
 function mouseout() {
 	/* no more tooltips */
 /* Paradoteo 1: Cancel the voice if the mouse is no longer over a circle*/	
-		window.speechSynthesis.cancel();
+		responsiveVoice.cancel();
 		var mosie = d3.select(this);
 		mosie.classed("active", false);
 
