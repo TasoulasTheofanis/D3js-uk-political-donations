@@ -409,7 +409,7 @@ function mouseover(d, i) {
 			.style("display","block");
 	
 /*______________________VIEW IMAGE ON CIRCLE__________________________________________*/
-//paradoteo 2: i create an emelemt which contains the url from the photo folder from ionioodi repository. Then those images appear down on the screen.
+//paradoteo 2: i create an emelement which contains the url from the photo folder from ionioodi repository. Then those images appear down on the screen.
 	var img = document.createElement("img");
 	img.src = imageFile;
 	img.width = 42;
