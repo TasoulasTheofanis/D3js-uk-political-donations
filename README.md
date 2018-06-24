@@ -17,11 +17,11 @@
 
 <img src="https://i.imgur.com/ssfQUZg.png"/>  
 
-### The following page shows the students who contributed to the team project. Each has defined a different kinetic representation of the font representing its github's username.
+### The following page shows the students who contributed to the team project. Each user has defined a different kinetic representation of the font representing its github's username. [Click here to view it](https://ioniodi.github.io/D3js-uk-political-donations/participants/).
 
 <img src="https://i.imgur.com/zqy63XT.gif"/>  
 
-### The following page uses the github api, to show the students who contributed to the team project. 
+### The following page uses the github api, to show the students who contributed to the team project. [Click here to view it](https://tasoulastheofanis.github.io/D3js-uk-political-donations/participants/2015092.html).
 
 <img src="https://i.imgur.com/E64zuIK.png"/> 
 
