@@ -5,7 +5,7 @@
 
 <img src="https://i.imgur.com/Qj09L7b.png"/>  
 
-### He may also choose a diferent group by
+### The user may also choose a diferent group by.
 
 <img src="https://i.imgur.com/tqpRnFB.png"/>
   
