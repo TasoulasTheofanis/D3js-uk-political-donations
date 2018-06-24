@@ -1,4 +1,4 @@
-## This project is a Data Visualization with the D3 library of Javascript. It represents &nbsp;&nbsp;1) Donations from United Kingdom &nbsp;2) Banks that had been closed on USA.
+## This project is a Data Visualization with the D3 library of Javascript. It represents &nbsp;&nbsp;1) Donations from United Kingdom &nbsp;&nbsp;2) Banks that had been closed on USA.
 
 ### When the user executes the code, he can choose which kind of visualization he wants to see. 
 ### Each sphere represents a donation/bank. On UK's donation the icon from the most donators is appeared, from the forked repository. 
