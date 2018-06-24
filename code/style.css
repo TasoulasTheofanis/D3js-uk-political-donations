@@ -33,6 +33,14 @@ li {
     display: none;
 }
 
+/* Paradoteo 2 - New position for the images's history*/
+#images{
+    left:1200px;
+    top:130px;
+    width: 210px;  
+    position:absolute;
+}
+
 /* View containers */
 #initial-content, #view-source-type {
     left: 650px;
