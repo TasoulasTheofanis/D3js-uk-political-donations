@@ -410,12 +410,8 @@ function mouseover(d, i) {
 			.style("display","block");
 	
 	
-//paradoteo 2: i create an emelemt which contains the url from the photo folder from ionioodi repository. Then those images appear down on the screen.
-	var img = document.createElement("img");
-	img.src = imageFile;
-	img.setAttribute("width","42px");
-	img.setAttribute("height","42px");
-	document.appendChild(img);
+//paradoteo 2: i create an image which contains the url from the photo folder from ionioodi repository. Then those images appear to the right side of the screen.
+$("#mouseTrackingCrumbs").prepend("<img src='" + imageFile +"' width='60' height='60' onError='this.src=\"https://github.com/favicon.ico\";' /><br/>");
 	
 /*______________________VIEW IMAGE ON CIRCLE__________________________________________*/
 	
