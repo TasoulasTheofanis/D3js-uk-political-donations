@@ -410,12 +410,12 @@ function mouseover(d, i) {
 			.style("display","block");
 	
 /*______________________VIEW IMAGE ON CIRCLE__________________________________________*/
-//paradoteo 2: i create an document which contains the url from the photo folder from ionioodi repository. Then those images appear to the right side of the screen.
-	var img = document.createElement("IMG", );
-	img.setAttribute("src", imageFile);
-	img.setAttribute("height", "42");
-	img.setAttribute("width", "42");	
-	document.getElementById("images").appendChild(img); 
+//paradoteo 2: i create an emelemt which contains the url from the photo folder from ionioodi repository. Then those images appear down on the screen.
+	var img = document.createElement("img");
+	img.src = imageFile;
+	img.width = 60;
+	img.height = 60;
+	document.getElementById("images").body.appendChild(img);
 	
 /* Paradoteo 1: i create a new message that will be narrated, when someone goes over any circle*/
 	responsiveVoice.speak("The donator is " + donor + " and the amount he gave is " + amount + " british pounds");
