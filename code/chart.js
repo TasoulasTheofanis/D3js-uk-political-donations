@@ -389,8 +389,7 @@ function mouseover(d, i) {
 	var infoBox = "<p> Source: <b>" + donor + "</b></p>"
 								+ "<p> Recipient: <b>" + party + "</b></p>"
 								+ "<p> Type of donor: <b>" + entity + "</b></p>"
-								+ "<p> Total value: <b>&#163;" + comma(amount) + "</b></p>";
-	
+								+ "<p> Total value: <b>&#163;" + comma(amount) + "</b></p>";	
 
 /*______________________VIEW IMAGE ON CIRCLE__________________________________________*/	
 	// image url that want to check
@@ -411,7 +410,11 @@ function mouseover(d, i) {
 	
 /*______________________VIEW IMAGE ON CIRCLE__________________________________________*/
 //paradoteo 2: i create an emelemt which contains the url from the photo folder from ionioodi repository. Then those images appear down on the screen.
-
+	var img = document.createElement("img");
+	img.setAttribute("src", imageFile);
+	img.setAttribute("height", "42");
+	img.setAttribute("width", "42");	
+	document.getElementById("images").appendChild(img); 
 	
 /* Paradoteo 1: i create a new message that will be narrated, when someone goes over any circle*/
 	responsiveVoice.speak("The donator is " + donor + " and the amount he gave is " + amount + " british pounds");
