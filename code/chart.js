@@ -409,24 +409,13 @@ function mouseover(d, i) {
 		.html(infoBox)
 			.style("display","block");
 	
-	
-//paradoteo 2: i create an image which contains the url from the photo folder from ionioodi repository. Then those images appear to the right side of the screen.
-$("#mouseTrackingCrumbs").prepend("<img src='" + imageFile +"' width='60' height='60' onError='this.src=\"https://github.com/favicon.ico\";' /><br/>");
-	
 /*______________________VIEW IMAGE ON CIRCLE__________________________________________*/
-	
-	
-	
+//paradoteo 2: i create an image which contains the url from the photo folder from ionioodi repository. Then those images appear to the right side of the screen.
+
+	$("#mouseTrackingCrumbs").prepend("<img src='" + imageFile +"' width='42' height='42' onError='this.src=\"https://github.com/favicon.ico\";' /><br/>");
 	
 /* Paradoteo 1: i create a new message that will be narrated, when someone goes over any circle*/
 	responsiveVoice.speak("The donator is " + donor + " and the amount he gave is " + amount + " british pounds");
-	
-	mosie.classed("active", true);
-	d3.select(".tooltip")
-  	.style("left", (parseInt(d3.select(this).attr("cx") - 80) + offset.left) + "px")
- 	.style("top", (parseInt(d3.select(this).attr("cy") - (d.radius+150)) + offset.top) + "px")
-		.html(infoBox)
-			.style("display","block");
 	}
 
 function mouseout() {
