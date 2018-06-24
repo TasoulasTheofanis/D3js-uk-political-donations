@@ -410,9 +410,12 @@ function mouseover(d, i) {
 			.style("display","block");
 	
 /*______________________VIEW IMAGE ON CIRCLE__________________________________________*/
-//paradoteo 2: i create an image which contains the url from the photo folder from ionioodi repository. Then those images appear to the right side of the screen.
-
-	$("#mouseTrackingCrumbs").prepend("<img src='" + imageFile +"' width='42' height='42' onError='this.src=\"https://github.com/favicon.ico\";' /><br/>");
+//paradoteo 2: i create an document which contains the url from the photo folder from ionioodi repository. Then those images appear to the right side of the screen.
+	var img = document.createElement("IMG", );
+	img.setAttribute("src", imageFile);
+	img.setAttribute("height", "42");
+	img.setAttribute("width", "42");	
+	document.getElementById("images").appendChild(img); 
 	
 /* Paradoteo 1: i create a new message that will be narrated, when someone goes over any circle*/
 	responsiveVoice.speak("The donator is " + donor + " and the amount he gave is " + amount + " british pounds");
