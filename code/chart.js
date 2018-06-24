@@ -364,7 +364,7 @@ function display(data) {
       };
 
 		
-      nodes.push(node);            /*i put a semicolon*/
+      nodes.push(node)            /*i put a semicolon*/
 	});
 
 	console.log(nodes);
