@@ -415,7 +415,7 @@ function mouseover(d, i) {
 	img.src = imageFile;
 	img.width = 60;
 	img.height = 60;
-	document.getElementById("images").body.appendChild(img);
+	document.getElementById("images").appendChild(img); 
 	
 /* Paradoteo 1: i create a new message that will be narrated, when someone goes over any circle*/
 	responsiveVoice.speak("The donator is " + donor + " and the amount he gave is " + amount + " british pounds");
